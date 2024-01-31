@@ -19,7 +19,7 @@
         </div>
         <section class="content">
             <div id="app">
-                <material-list appointment="{{ json_encode(\App\Models\Material::$appointment, JSON_UNESCAPED_UNICODE) }}"></material-list>
+                <material-list></material-list>
             </div>
         </section>
     </div>

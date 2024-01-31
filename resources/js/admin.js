@@ -7,6 +7,7 @@ import './plugins/daterangepicker/daterangepicker.css';
 import './plugins/summernote/summernote-bs4.min.css';
 
 import { createApp } from 'vue';
+import PrimeVue from "primevue/config";
 import MaterialsDataTableComponent from "./components/admin/Materital/MaterialsDataTableComponent.vue";
 
 const app = createApp({
@@ -15,4 +16,5 @@ const app = createApp({
     }
 });
 
+app.use(PrimeVue);
 app.mount('#app');
