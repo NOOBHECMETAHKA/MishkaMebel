@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\FurnitureDimensions;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FurnitureDimensions\FurnitureDimensionsIndexRequest;
 use App\Models\FurnitureDimensions;
-use App\Models\TypeTable;
-use Illuminate\Http\Request;
-
 class FurnitureDimensionsIndexController extends Controller
 {
-    public function index(){
-        return FurnitureDimensions::all();
+    public function index(FurnitureDimensionsIndexRequest $request){
+        $request_data = $request->validated();
+        $data = FurnitureDimensions::query();
+        return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

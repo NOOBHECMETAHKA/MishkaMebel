@@ -13,7 +13,7 @@ class MaterialUpdateController extends Controller
 {
     public function update($id){
         $validator = Validator::make(request()->toArray(), [
-            'name' => ['min:3', 'required', 'materials'],
+            'name' => ['min:3', 'required'],
             'appointment' => ['min:3', 'required'],
         ]);
 

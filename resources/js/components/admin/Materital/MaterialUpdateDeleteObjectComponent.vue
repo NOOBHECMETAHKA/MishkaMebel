@@ -18,6 +18,7 @@
         <td>
             <div class="btn-group">
                 <button
+                    @click.prevent="updateObjectMaterial()"
                     class="btn btn-warning">Изменить
                 </button>
                 <button
@@ -44,11 +45,28 @@ export default {
     },
     methods: {
         setMaterialValues(material){
+            this.materialID = material.id;
             this.materialName = material.name;
             this.nameAppointment = material.appointment;
         },
+        updateObjectMaterial(){
+          axios.put(`/api/materials/update/${this.materialID}`,
+              {name : this.materialName, appointment: this.nameAppointment})
+              .then(response => {
+                  console.log(response);
+                  this.$parent.serverAnswer = response.data.message;
+                  this.$parent.codeAnswer = response.status;
+              })
+              .catch(response => {
+                  console.log(response);
+                  this.$parent.serverAnswer = response.response.data.message;
+                  this.$parent.codeAnswer = response.response.status;
+              });
+
+          this.$parent.refreshData();
+        },
         deleteObjectMaterial(){
-            axios.delete(`/api/materials/delete/${this.element.id}`)
+            axios.delete(`/api/materials/delete/${this.materialID}`)
                 .then(response => {
                     console.log(response);
                     this.$parent.serverAnswer = response.data.message;

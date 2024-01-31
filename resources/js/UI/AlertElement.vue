@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="mb-3 w-50" v-if="serverAnswer !== '' && codeAnswer !== 0">
+        <div ref="alert-block" class="mb-3 w-50 __alert" v-if="getPermission()">
             <div class="alert alert-dismissible" :class="getStyleAlert(codeAnswer)">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <button @click="clickCloseWindow" class="close">&times;</button>
                 <h5><i :class="getStyleAlertIcon(codeAnswer)"></i>Что-то пошло не так!</h5>
                 <strong>Подробнее: </strong>Статус код: {{ this.codeAnswer }}. Сообщение от сервера: {{ this.serverAnswer }}
             </div>
@@ -34,11 +34,26 @@ export default {
             } else if (code <= 599){
                 return 'icon fas fa-ban'
             }
+        },
+        getPermission(){
+            return !(this.codeAnswer === 0 && this.serverAnswer === "");
+        },
+        clickCloseWindow(){
+            this.$refs["alert-block"].style.display = 'none';
+        },
+        openWindow(){
+            this.$refs["alert-block"].style.display = 'block';
         }
-    }
+    },
+
 }
 </script>
 
 <style lang="scss" scoped>
-
+    .__alert{
+        position: fixed;
+        z-index: 1035;
+        top: 30px;
+        right: 0;
+    }
 </style>

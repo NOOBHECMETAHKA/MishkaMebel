@@ -1,6 +1,6 @@
 <template>
     <div class="col-12">
-        <message-alert :codeAnswer="codeAnswer" :serverAnswer="serverAnswer"></message-alert>
+        <message-alert ref="message-alerter" :codeAnswer="codeAnswer" :serverAnswer="serverAnswer"></message-alert>
         <material-add-form></material-add-form>
         <div class="card">
             <!--        HeaderOfTable-->
@@ -95,12 +95,13 @@ import materialAddObjectComponent from "./MaterialAddObjectComponent.vue";
 import materialUpdateObjectComponent from "./MaterialUpdateDeleteObjectComponent.vue";
 import AlertElement from "../../../UI/AlertElement.vue";
 
+
 export default {
     components: {
         //Форма добвления записей
         MaterialAddForm: materialAddObjectComponent,
         MaterialUpdateForm: materialUpdateObjectComponent,
-        messageAlert: AlertElement
+        messageAlert: AlertElement,
     },
     props: {
         //Массив в формате json - назначения материалов
@@ -160,7 +161,8 @@ export default {
         refreshData(){
             axios.get("/api/materials").then((res) => {
                 this.collection = res.data;
-            })
+            });
+            this.$refs["message-alerter"].openWindow();
         },
         setCurrentPage(pageNumber) {
             this.currentPage = pageNumber;
@@ -178,6 +180,8 @@ export default {
                 this.sortReverse = !this.sortReverse;
             else
                 this.sortParam = value;
+
+            this.keyEditElement = null;
         },
         isEdit(id){
             return this.keyEditElement === id;

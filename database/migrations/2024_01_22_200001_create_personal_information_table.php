@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('personal_information', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('phone_number')->unique();
             $table->bigInteger('personal_information_user_id')->unsigned();
             $table->foreign('personal_information_user_id', 'personal_information_user_fk')
                 ->on('users')->references('id')
