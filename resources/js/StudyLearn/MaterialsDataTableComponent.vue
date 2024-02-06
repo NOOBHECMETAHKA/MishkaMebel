@@ -26,12 +26,12 @@
                             <a @click="setSortParam('name')">Наименование
                                 <img v-if="sortReverse"
                                      :class="sortParam==='name' ? '' : 'invisible'"
-                                     src="../../../svg/icon_sort_mode.svg"
+                                     src="../svg/icon_sort_mode.svg"
                                      alt=""
                                      class="__icon_sort_mode">
                                 <img v-else
                                      :class="sortParam==='name' ? '' : 'invisible'"
-                                     src="../../../svg/icon_reverse_sort_mode.svg"
+                                     src="../svg/icon_reverse_sort_mode.svg"
                                      alt=""
                                      class="__icon_sort_mode">
                             </a>
@@ -40,12 +40,12 @@
                             <a @click="setSortParam('appointment')">Назначение
                                 <img v-if="sortReverse"
                                      :class="sortParam==='appointment' ? '' : 'invisible'"
-                                     src="../../../svg/icon_sort_mode.svg"
+                                     src="../svg/icon_sort_mode.svg"
                                      alt=""
                                      class="__icon_sort_mode">
                                 <img v-else
                                      :class="sortParam==='appointment' ? '' : 'invisible'"
-                                     src="../../../svg/icon_reverse_sort_mode.svg"
+                                     src="../svg/icon_reverse_sort_mode.svg"
                                      alt=""
                                      class="__icon_sort_mode">
                             </a>
@@ -93,7 +93,7 @@
 import axios from 'axios';
 import materialAddObjectComponent from "./MaterialAddObjectComponent.vue";
 import materialUpdateObjectComponent from "./MaterialUpdateDeleteObjectComponent.vue";
-import AlertElement from "../../../UI/AlertElement.vue";
+import AlertElement from "../UI/AlertElement.vue";
 
 
 export default {

@@ -18,7 +18,9 @@
             </div>
         </div>
         <section class="content">
-
+            <div id="app">
+                <bed-base-list></bed-base-list>
+            </div>
         </section>
     </div>
 @endsection

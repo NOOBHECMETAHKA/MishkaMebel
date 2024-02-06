@@ -9,6 +9,7 @@ use App\Models\BedBase;
 class BedBaseIndexController extends Controller
 {
     public function index(){
-        return response()->json(BedBase::all(), options: JSON_UNESCAPED_UNICODE);
+        $data = BedBase::query();
+        return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

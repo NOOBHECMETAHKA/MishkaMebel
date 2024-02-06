@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class FurnitureSizeIndexController extends Controller
 {
     public function index(){
-        return FurnitureSize::all();
+        $data = FurnitureSize::query();
+        return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

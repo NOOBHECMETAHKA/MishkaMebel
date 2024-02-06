@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="container">
-        <a href="/admin/materials" class="nav-link">Админка</a>
+        <a href="/admin/material" class="nav-link">Админка</a>
     </div>
 @endsection

@@ -70,11 +70,22 @@
             <img src="dist/img/AdminLTELogo.png" alt="Мишка мебель" class="brand-image">
             <span class="brand-text font-weight-light">Панель управления</span>
         </a>
-
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar Menu -->
             <nav class="mt-2">
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">Рабочая область</li>
                     <li class="nav-header">Контент сайта</li>
@@ -99,7 +110,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
-                            <p>Крепления</p>
+                            <p>Крепления матрасов</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -115,9 +126,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
+                        <a href="{{ route('admin.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
-                            <p>Размеры</p>
+                            <p>Габариты</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -194,8 +205,6 @@
 <script src="dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/pages/dashboard.js"></script>
-
-
 
 </body>
 </html>

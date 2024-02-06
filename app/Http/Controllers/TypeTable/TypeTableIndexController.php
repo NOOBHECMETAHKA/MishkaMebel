@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 class TypeTableIndexController extends Controller
 {
     public function index(){
-
-
-
-        return TypeTable::all();
+        $data = TypeTable::query();
+        return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

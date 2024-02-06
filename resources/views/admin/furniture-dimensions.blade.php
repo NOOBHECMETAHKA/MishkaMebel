@@ -18,7 +18,9 @@
             </div>
         </div>
         <section class="content">
-
+            <div id="app">
+                <furniture-dimensions-list></furniture-dimensions-list>
+            </div>
         </section>
 </div>
 @endsection
