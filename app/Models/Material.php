@@ -10,13 +10,11 @@ class Material extends Model
     use HasFactory;
     protected $guarded = false;
     public static $tableName = 'materials';
-
     protected $hidden = [
         'is_deleted',
         'created_at',
         'updated_at',
     ];
-
     public static $appointment = [
         "Набивка",
         "Материал",

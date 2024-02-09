@@ -2,6 +2,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                :filters="filters"
                 :value="mattress_fastening"
                 v-model:filters="filters"
                 selectionMode="single"

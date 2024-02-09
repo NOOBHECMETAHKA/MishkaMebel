@@ -21,6 +21,12 @@ return new class extends Migration
             $table->foreign('mattresses_materials_id', 'mattresses_materials_fk')
                 ->on('materials')->references('id')
                 ->onDelete('cascade');
+
+            $table->unsignedBigInteger('mattresses_furniture_sizes_id');
+            $table->foreign('mattresses_furniture_sizes_id', 'mattresses_furniture_sizes_fk')
+                ->on('furniture_sizes')->references('id')
+                ->onDelete('cascade');
+
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });

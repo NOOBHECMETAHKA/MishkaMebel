@@ -10,7 +10,6 @@ class MattressFastening extends Model
     use HasFactory;
     protected $guarded = false;
     public static $tableName = 'mattress_fastenings';
-
     protected $hidden = [
         'is_deleted',
         'created_at',

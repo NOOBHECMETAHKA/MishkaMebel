@@ -18,7 +18,9 @@
             </div>
         </div>
         <section class="content">
-
+            <div id="app">
+                <mattress-list></mattress-list>
+            </div>
         </section>
     </div>
 @endsection

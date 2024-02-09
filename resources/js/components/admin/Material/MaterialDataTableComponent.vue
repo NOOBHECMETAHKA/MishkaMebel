@@ -28,6 +28,7 @@
                     </div>
                 </template>
                 <template #empty><span class="text-secondary">Материалы не найдены!</span></template>
+
                 <Column field="name" header="Наименование" class="text-secondary" :sortable="true"></Column>
                 <Column field="appointment" header="Назначение" class="text-secondary" :sortable="true"></Column>
 
@@ -81,7 +82,6 @@ export default {
         this.refresh();
     },
     methods: {
-
         refresh(){
             this.loading = true;
             axios.get('/api/materials').then(resp => {

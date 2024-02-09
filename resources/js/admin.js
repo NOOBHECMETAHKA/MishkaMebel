@@ -5,31 +5,31 @@ import 'primeicons/primeicons.css'
 
 
 import MaterialDataTableComponent from "./components/admin/Material/MaterialDataTableComponent.vue";
-// import BedDataTableComponent from "./components/admin/Bed/BedDataTableComponent.vue"
+import BedDataTableComponent from "./components/admin/Bed/BedDataTableComponent.vue"
 import BedBaseDataTableComponent from "./components/admin/BedBase/BedBaseDataTableComponent.vue"
 import FurnitureDimensionsDataTableComponent from "./components/admin/FurnitureDimensions/FurnitureDimensionsDataTableComponent.vue"
 import FurnitureSizeDataTableComponent from "./components/admin/FurnitureSize/FurnitureSizeDataTableComponent.vue"
-// import FurnitureStorageDataTableComponent from "./components/admin/FurnitureStorage/FurnitureStorageDataTableComponent.vue"
-// import MattressDataTableComponent from "./components/admin/Mattress/MattressDataTableComponent.vue"
-// import MattressCoverDataTableComponent from "./components/admin/MattressCover/MattressCoverDataTableComponent.vue"
+import FurnitureStorageDataTableComponent from "./components/admin/FurnitureStorage/FurnitureStorageDataTableComponent.vue"
+import MattressDataTableComponent from "./components/admin/Mattress/MattressDataTableComponent.vue"
+import MattressCoverDataTableComponent from "./components/admin/MattressCover/MattressCoverDataTableComponent.vue"
 import MattressFasteningDataTableComponent from "./components/admin/MattressFastening/MattressFasteningDataTableComponent.vue"
 // import PersonalInformationDataTableComponent from "./components/admin/PersonalInformation/PersonalInformationDataTableComponent.vue"
-// import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
+import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
 import TypeTableDataTableComponent from "./components/admin/TypeTable/TypeTableDataTableComponent.vue"
 
 const app = createApp({
     components: {
         MaterialList: MaterialDataTableComponent,
-        // BedList: BedDataTableComponent,
+        BedList: BedDataTableComponent,
         BedBaseList: BedBaseDataTableComponent,
         FurnitureDimensionsList: FurnitureDimensionsDataTableComponent,
         FurnitureSizeList: FurnitureSizeDataTableComponent,
-        // FurnitureStorageList: FurnitureStorageDataTableComponent,
-        // MattressList: MattressDataTableComponent,
-        // MattressCoverList: MattressCoverDataTableComponent,
+        FurnitureStorageList: FurnitureStorageDataTableComponent,
+        MattressList: MattressDataTableComponent,
+        MattressCoverList: MattressCoverDataTableComponent,
         MattressFasteningList: MattressFasteningDataTableComponent,
         // PersonalInformationList: PersonalInformationDataTableComponent,
-        // TableList: TableDataTableComponent,
+        TableList: TableDataTableComponent,
         TypeTableList: TypeTableDataTableComponent,
     }
 });

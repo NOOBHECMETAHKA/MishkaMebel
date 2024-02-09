@@ -2,6 +2,8 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                :value="beds"
+                :filters="filters"
                 selectionMode="single"
                 dataKey="id"
                 :metaKeySelection="false"
@@ -17,10 +19,17 @@
                     <div class="d-flex justify-content-between">
                         <span class="p-input-icon-left">
                             <i class="pi pi-search" />
-                            <InputText v-model="filters['global'].value" placeholder="�����"/>
+                            <InputText v-model="filters['global'].value" placeholder="Найти"/>
                         </span>
                     </div>
                 </template>
+
+                <Column field="type" header="Вид кровати" class="text-secondary" :sortable="true"></Column>
+                <Column field="have_boxes" header="Наличие ящиков" class="text-secondary" :sortable="true"></Column>
+                <Column field="bed_bases.name" header="Вид лежачих оснований" class="text-secondary" :sortable="true"></Column>
+                <Column field="materials.name" header="Материал" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
 
                 <template #paginatorstart>
                     <span class="text-secondary">Статус: 0</span>
@@ -46,6 +55,7 @@ import { PrimeIcons } from 'primevue/api';
 export default {
     data() {
         return {
+            beds: null,
             filters: {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
             },
@@ -59,9 +69,17 @@ export default {
         VueButton: Button,
         PrimeIcons,
     },
+    mounted() {
+        this.refresh();
+    },
     methods: {
         refresh(){
             this.loading = true;
+            axios.get('/api/beds').then(resp => {
+                this.beds = resp.data;
+                this.beds = this.beds.map(obj => ({ ...obj, have_boxes: obj.have_boxes === 0 ? 'Отсутствует' : 'Есть'}));
+                this.loading = false;
+            });
         }
     }
 }
