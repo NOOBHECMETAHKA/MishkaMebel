@@ -24,6 +24,8 @@
                     </div>
                 </template>
 
+                <template #empty><span class="text-secondary">Кровати не найдены!</span></template>
+
                 <Column field="type" header="Вид кровати" class="text-secondary" :sortable="true"></Column>
                 <Column field="have_boxes" header="Наличие ящиков" class="text-secondary" :sortable="true"></Column>
                 <Column field="bed_bases.name" header="Вид лежачих оснований" class="text-secondary" :sortable="true"></Column>

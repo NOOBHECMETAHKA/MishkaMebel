@@ -13,7 +13,7 @@ import FurnitureStorageDataTableComponent from "./components/admin/FurnitureStor
 import MattressDataTableComponent from "./components/admin/Mattress/MattressDataTableComponent.vue"
 import MattressCoverDataTableComponent from "./components/admin/MattressCover/MattressCoverDataTableComponent.vue"
 import MattressFasteningDataTableComponent from "./components/admin/MattressFastening/MattressFasteningDataTableComponent.vue"
-// import PersonalInformationDataTableComponent from "./components/admin/PersonalInformation/PersonalInformationDataTableComponent.vue"
+// import PersonalInformationDataTableComponent from "./components/admin-page/PersonalInformation/PersonalInformationDataTableComponent.vue"
 import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
 import TypeTableDataTableComponent from "./components/admin/TypeTable/TypeTableDataTableComponent.vue"
 

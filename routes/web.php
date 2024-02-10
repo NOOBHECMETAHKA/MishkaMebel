@@ -23,4 +23,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/admin/{page}', [\App\Http\Controllers\AdminController::class, 'index'])->where(['page' =>
 'bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|personal-information|table|type-table'])
-->name('admin.panel.view');
+->name('admin-page.panel.view');
+
+Route::get('/admin/{page}/add', [\App\Http\Controllers\AdminController::class, 'add'])->where(['page' =>
+'bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|personal-information|table|type-table'])
+->name('admin-page.panel.add-form');

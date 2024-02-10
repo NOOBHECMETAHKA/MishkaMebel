@@ -90,67 +90,67 @@
                     <li class="nav-header">Рабочая область</li>
                     <li class="nav-header">Контент сайта</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'mattress']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Матрасы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'mattress-cover']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-cover']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Чехлы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Размеры</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Крепления матрасов</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'material']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'material']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Материалы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'bed-base']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'bed-base']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Основания кроватей</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Габариты</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'bed']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'bed']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Кровати</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'furniture-storage']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-storage']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Хранилища вещей</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'table']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'table']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Столы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.panel.view', ['page' => 'type-table']) }}" class="nav-link">
+                        <a href="{{ route('admin-page.panel.view', ['page' => 'type-table']) }}" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>Типы столов</p>
                         </a>

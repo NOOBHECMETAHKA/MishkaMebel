@@ -7,5 +7,10 @@ use Illuminate\Http\Request;
 
 class FurnitureSizeAddController extends Controller
 {
-    //
+    public function add(){
+
+    }
+    public function store(){
+
+    }
 }
