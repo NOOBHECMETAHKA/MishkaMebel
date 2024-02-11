@@ -23,11 +23,6 @@ return new class extends Migration
             $table->integer('importance_rating')->unsigned();
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
-
-            $table->bigInteger('category_id')->unsigned();
-            $table->foreign('category_id', 'product_category_fk')
-                ->on('categories')->references('id')
-                ->onDelete('cascade');
         });
     }
 

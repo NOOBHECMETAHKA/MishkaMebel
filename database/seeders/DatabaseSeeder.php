@@ -8,6 +8,7 @@ use App\Models\FurnitureDimensions;
 use App\Models\FurnitureSize;
 use App\Models\Material;
 use App\Models\MattressFastening;
+use App\Models\Status;
 use App\Models\Table;
 use App\Models\TypeTable;
 use Illuminate\Database\Seeder;
@@ -76,11 +77,16 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Застежки-липучки'],
             ['name' => 'Резиновые ремни'],
         ]);
-        //Чехлы
-        //Матрасы
-        //Кровати
-        //Столы
-        //Хранилища вещей
+        //Статусы
+        DB::table(Status::$tableName)->insert([
+            ['name' => 'В рассмотрении', 'description' => 'Заказ оформлен и в скором времени мы с вами свяжемся'],
+            ['name' => 'В ожидании оплаты', 'description' => 'Заказ требуется оплатить по ранее установленным контактам'],
+            ['name' => 'Отменён', 'description' => 'Заказ отменён. Если возникли вопросы обратитесь к администрации!'],
+            ['name' => 'Передан в доставку', 'description' => 'Заказ передан в доставку и в скором времени прибудет в место назначения!'],
+            ['name' => 'На складе', 'description' => 'Заказ хранится на складе организации'],
+            ['name' => 'Утерян', 'description' => 'Ваш заказ утерян! Мы разбираемся в чём причина!'],
+            ['name' => 'Уничтожен', 'description' => 'Ваш заказ уничтожен!']
+        ]);
     }
 
 

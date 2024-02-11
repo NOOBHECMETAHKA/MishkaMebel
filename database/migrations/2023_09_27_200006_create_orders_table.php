@@ -17,14 +17,13 @@ return new class extends Migration
             $table->id();
             $table->decimal('total_cost', 10, 2, true);
 
-
-            $table->bigInteger('status_order_id')->unsigned();
-            $table->foreign('status_order_id', 'status_order_fk')
+            $table->bigInteger('order_status_id')->unsigned();
+            $table->foreign('order_status_id', 'order_status_fk')
                 ->on('statuses')->references('id')
                 ->onDelete('cascade');
 
-            $table->bigInteger('address_order_id')->unsigned();
-            $table->foreign('address_order_id', 'address_order_fk')
+            $table->bigInteger('order_address_id')->unsigned();
+            $table->foreign('order_address_id', 'order_address_fk')
                 ->on('addresses')->references('id')
                 ->onDelete('cascade');
 

@@ -24,8 +24,8 @@ return new class extends Migration
 
             $table->boolean('is_deleted')->default(0);
 
-            $table->bigInteger('user_addresses_id')->unsigned();
-            $table->foreign('user_addresses_id', 'user_addresses_fk')
+            $table->bigInteger('addresses_user_id')->unsigned();
+            $table->foreign('addresses_user_id', 'addresses_user_fk')
                 ->on('users')->references('id')
                 ->onDelete('cascade');
         });
