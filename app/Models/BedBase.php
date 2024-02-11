@@ -17,4 +17,6 @@ class BedBase extends Model
         'created_at',
         'updated_at',
     ];
+
+
 }

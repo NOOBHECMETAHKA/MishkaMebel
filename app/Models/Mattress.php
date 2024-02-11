@@ -40,10 +40,10 @@ class Mattress extends Model
     ];
 
     public function materials(){
-        return $this->hasOne(Material::class, 'id', 'mattresses_materials_id ');
+        return $this->hasOne(Material::class, 'id', 'mattresses_materials_id');
     }
 
     public function furniture_sizes(){
-        return $this->hasOne(FurnitureSize::class, 'id', 'mattresses_furniture_sizes_id ');
+        return $this->hasOne(FurnitureSize::class, 'id', 'mattresses_furniture_sizes_id');
     }
 }

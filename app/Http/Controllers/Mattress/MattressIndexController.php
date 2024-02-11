@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class MattressIndexController extends Controller
 {
     public function index(){
-        $data = Mattress::with(Material::$tableName, FurnitureSize::$tableName);
+        $data = Mattress::with([Material::$tableName, FurnitureSize::$tableName]);
         return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

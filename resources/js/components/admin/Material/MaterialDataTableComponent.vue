@@ -1,6 +1,5 @@
 <template>
     <div class="col-12">
-        <material-modal-redactor></material-modal-redactor>
         <div class="card p-3">
             <DataTable
                 selectionMode="single"

@@ -11,24 +11,34 @@ use Illuminate\Support\Facades\Validator;
 
 class FurnitureDimensionsAddController extends Controller {
     public function store() {
-        $validator = Validator::make(request()->toArray(), [
-            'length' => ['decimal:10,2', 'required'],
-            'width' => ['decimal:10,2', 'required'],
-            'height' => ['decimal:10,2', 'required'],
+        $data = \request()->validate([
+            'length' => ['required'],
+            'width' => ['required'],
+            'height' => ['required'],
         ]);
 
-        $valid = ValidatorAPI::getJSONErrors($validator, [
-            'length' => 'длина',
-            'width' => 'ширина',
-            'height' => 'высота'
-        ]);
-
-        if($valid){
-            return response($valid, 400);
-        }
-
-        DB::table(FurnitureDimensions::$tableName)->insertOrIgnore($validator->valid());
+        DB::table(FurnitureDimensions::$tableName)->insert($data);
 
         return response()->json(['message' => 'Данные успешно добавлены!']);
     }
+
+//    $validator = Validator::make(request()->toArray(), [
+//            'length' => ['decimal:10,2', 'required'],
+//            'width' => ['decimal:10,2', 'required'],
+//            'height' => ['decimal:10,2', 'required'],
+//        ]);
+//
+//        $valid = ValidatorAPI::getJSONErrors($validator, [
+//            'length' => 'длина',
+//            'width' => 'ширина',
+//            'height' => 'высота'
+//        ]);
+//
+//        if($valid){
+//            return response($valid, 400);
+//        }
+//
+//        DB::table(FurnitureDimensions::$tableName)->insertOrIgnore($validator->valid());
+//
+//        return response()->json(['message' => 'Данные успешно добавлены!']);
 }

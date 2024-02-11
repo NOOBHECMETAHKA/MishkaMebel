@@ -12,6 +12,6 @@ class AdminController extends Controller
     }
 
     public function add($page){
-        return View('admin-forms.form-add'.$page);
+        return View('admin-forms-add.'.$page);
     }
 }

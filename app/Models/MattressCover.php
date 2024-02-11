@@ -16,9 +16,9 @@ class MattressCover extends Model
         'updated_at',
     ];
     public function mattress_fastenings(){
-        return $this->hasOne(MattressFastening::class, 'id', 'mattress_fastenings_id ');
+        return $this->hasOne(MattressFastening::class, 'id', 'mattress_fastenings_id');
     }
     public function furniture_sizes(){
-        return $this->hasOne(FurnitureSize::class, 'id', 'mattress_covers_furniture_sizes_id ');
+        return $this->hasOne(FurnitureSize::class, 'id', 'mattress_covers_furniture_sizes_id');
     }
 }

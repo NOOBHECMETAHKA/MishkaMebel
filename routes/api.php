@@ -20,10 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['namespace' => 'TypeTable', 'prefix' => 'types-table'], function (){
    Route::get('/', [\App\Http\Controllers\TypeTable\TypeTableIndexController::class, 'index']);
-});
-
-Route::group(['namespace' => 'FurnitureDimensions', 'prefix' => 'furniture-dimensions'], function (){
-    Route::get('/', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsIndexController::class, 'index']);
+   Route::post('/store', [\App\Http\Controllers\TypeTable\TypeTableAddController::class, 'store']);
 });
 
 Route::group(['namespace' => 'Material', 'prefix' => 'materials'], function ($id){
@@ -39,10 +36,17 @@ Route::group(['namespace' => 'BedBase', 'prefix' => 'bed-bases'], function (){
 
 Route::group(['namespace' => 'FurnitureSize', 'prefix' => 'furniture-sizes'], function (){
     Route::get('/', [\App\Http\Controllers\FurnitureSize\FurnitureSizeIndexController::class, 'index']);
+    Route::post('/store', [\App\Http\Controllers\FurnitureSize\FurnitureSizeAddController::class, 'store']);
+});
+
+Route::group(['namespace' => 'FurnitureDimensions', 'prefix' => 'furniture-dimensions'], function (){
+    Route::get('/', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsIndexController::class, 'index']);
+    Route::post('/store', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsAddController::class, 'store']);
 });
 
 Route::group(['namespace' => 'MattressFastening', 'prefix' => 'mattress-fastenings'], function (){
     Route::get('/', [\App\Http\Controllers\MattressFastening\MattressFasteningIndexController::class, 'index']);
+    Route::post('/store', [\App\Http\Controllers\MattressFastening\MattressFasteningAddController::class, 'store']);
 });
 
 Route::group(['namespace' => 'Mattress', 'prefix' => 'mattresses'], function (){
@@ -51,10 +55,6 @@ Route::group(['namespace' => 'Mattress', 'prefix' => 'mattresses'], function (){
 
 Route::group(['namespace' => 'MattressCover', 'prefix' => 'mattress-covers'], function (){
     Route::get('/', [\App\Http\Controllers\MattressCover\MattressCoverIndexController::class, 'index']);
-});
-
-Route::group(['namespace' => 'MattressFastening', 'prefix' => 'mattress-fastenings'], function (){
-    Route::get('/', [\App\Http\Controllers\MattressFastening\MattressFasteningIndexController::class, 'index']);
 });
 
 Route::group(['namespace' => 'Table', 'prefix' => 'tables'], function (){

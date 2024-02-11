@@ -91,67 +91,78 @@
                     <li class="nav-header">Контент сайта</li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'mattress']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Mattress.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Матрасы</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-cover']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/MattressCover.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Чехлы</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureSize.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Размеры</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/MattressFastening.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Крепления матрасов</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'material']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Material.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Материалы</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'bed-base']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/BedBase.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Основания кроватей</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureDimensions.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Габариты</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'bed']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Bed.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Кровати</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-storage']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureStorage.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Хранилища вещей</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'table']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Table.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Столы</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page.panel.view', ['page' => 'type-table']) }}" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/TypeTable.svg") }}" alt="">
+{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Типы столов</p>
                         </a>
                     </li>

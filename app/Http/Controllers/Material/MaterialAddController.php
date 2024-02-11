@@ -11,22 +11,31 @@ use Illuminate\Support\Facades\Validator;
 class MaterialAddController extends Controller
 {
     public function store() {
-        $validator = Validator::make(request()->toArray(), [
-            'name' => ['min:3', 'required', 'unique:materials'],
-            'appointment' => ['min:3', 'required'],
+        $data = \request()->validate([
+            'name' => 'string|required|unique:materials',
+            'appointment' => 'string|required',
         ]);
 
-        $valid = ValidatorAPI::getJSONErrors($validator, [
-            'name' => 'наименование',
-            'appointment' => 'назначение'
-        ]);
+        DB::table(Material::$tableName)->insert($data);
 
-        if($valid){
-            return response($valid, 400);
-        }
-
-        DB::table(Material::$tableName)->insertOrIgnore($validator->valid());
-
-        return response()->json(['message' => 'Данные успешно добавлены!']);
+        return redirect()->route('admin-page.panel.view', ['page' => 'material']);
     }
+
+    //$validator = Validator::make(request()->toArray(), [
+    //            'name' => ['min:3', 'required', 'unique:materials'],
+    //            'appointment' => ['min:3', 'required'],
+    //        ]);
+    //
+    //        $valid = ValidatorAPI::getJSONErrors($validator, [
+    //            'name' => 'наименование',
+    //            'appointment' => 'назначение'
+    //        ]);
+    //
+    //        if($valid){
+    //            return response($valid, 400);
+    //        }
+    //
+    //        DB::table(Material::$tableName)->insertOrIgnore($validator->valid());
+    //
+    //        return response()->json(['message' => 'Данные успешно добавлены!']);
 }

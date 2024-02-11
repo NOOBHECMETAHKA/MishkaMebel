@@ -24,6 +24,8 @@
                     </div>
                 </template>
 
+                <template #empty><span class="text-secondary">Столы не найдены!</span></template>
+
                 <Column field="materials.name" header="Матеариал" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.length" header="Габаритная длина" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.width" header="Габаритная ширина" class="text-secondary" :sortable="true"></Column>

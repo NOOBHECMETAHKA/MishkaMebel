@@ -18,6 +18,11 @@
             </div>
         </div>
         <section class="content">
+            <div class="col-6">
+                <div class="mb-3">
+                    <a class="btn btn-success" href="{{ route("admin-page.panel.add-form", ["page" => "mattress-fastening"]) }}">Добавить</a>
+                </div>
+            </div>
             <div id="app">
                 <mattress-fastening-list></mattress-fastening-list>
             </div>

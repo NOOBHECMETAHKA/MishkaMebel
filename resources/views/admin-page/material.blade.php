@@ -18,6 +18,11 @@
             </div>
         </div>
         <section class="content">
+            <div class="col-6">
+                <div class="mb-3">
+                    <a class="btn btn-success" href="{{ route("admin-page.panel.add-form", ["page" => "material"]) }}">Добавить</a>
+                </div>
+            </div>
             <div id="app">
                 <material-list appointment="{{ json_encode(\App\Models\Material::$appointment, JSON_UNESCAPED_UNICODE) }}"></material-list>
             </div>

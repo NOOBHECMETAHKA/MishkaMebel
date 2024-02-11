@@ -3,7 +3,6 @@ import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css';
 import 'primeicons/primeicons.css'
 
-
 import MaterialDataTableComponent from "./components/admin/Material/MaterialDataTableComponent.vue";
 import BedDataTableComponent from "./components/admin/Bed/BedDataTableComponent.vue"
 import BedBaseDataTableComponent from "./components/admin/BedBase/BedBaseDataTableComponent.vue"
@@ -13,9 +12,15 @@ import FurnitureStorageDataTableComponent from "./components/admin/FurnitureStor
 import MattressDataTableComponent from "./components/admin/Mattress/MattressDataTableComponent.vue"
 import MattressCoverDataTableComponent from "./components/admin/MattressCover/MattressCoverDataTableComponent.vue"
 import MattressFasteningDataTableComponent from "./components/admin/MattressFastening/MattressFasteningDataTableComponent.vue"
-// import PersonalInformationDataTableComponent from "./components/admin-page/PersonalInformation/PersonalInformationDataTableComponent.vue"
 import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
 import TypeTableDataTableComponent from "./components/admin/TypeTable/TypeTableDataTableComponent.vue"
+
+// import PersonalInformationDataTableComponent from "./components/admin-page/PersonalInformation/PersonalInformationDataTableComponent.vue"
+
+import FurnitureSizeModalRedactor from "./components/admin/FurnitureSize/FurnitureSizeModalRedactor.vue";
+import FurnitureDimensionModalRedactor from "./components/admin/FurnitureDimensions/FurnitureDimensionModalRedactor.vue";
+import MattressFasteningModalRedactor from "./components/admin/MattressFastening/MattressFasteningModalRedactor.vue";
+import TypeTableModalRedactor from "./components/admin/TypeTable/TypeTableModalRedactor.vue";
 
 const app = createApp({
     components: {
@@ -31,6 +36,11 @@ const app = createApp({
         // PersonalInformationList: PersonalInformationDataTableComponent,
         TableList: TableDataTableComponent,
         TypeTableList: TypeTableDataTableComponent,
+
+        FurnitureSizeModalRedactor,
+        FurnitureDimensionModalRedactor,
+        MattressFasteningModalRedactor,
+        TypeTableModalRedactor
     }
 });
 

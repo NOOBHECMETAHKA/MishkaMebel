@@ -19,4 +19,10 @@ class Material extends Model
         "Набивка",
         "Материал",
     ];
+    public function materials(){
+        return $this->hasMany(Mattress::class, 'id', 'mattresses_materials_id');
+    }
+    public function furniture_sizes(){
+        return $this->hasMany(FurnitureSize::class, 'id', 'mattresses_furniture_sizes_id');
+    }
 }

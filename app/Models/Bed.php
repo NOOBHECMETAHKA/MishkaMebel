@@ -16,8 +16,8 @@ class Bed extends Model
         'updated_at',
     ];
     public static $typeBed = [
+        "Односпальная",
         "Двуспальная",
-        "Односпальная"
     ];
     public function bed_bases(){
         return $this->hasOne(BedBase::class, 'id', 'beds_bases_id');

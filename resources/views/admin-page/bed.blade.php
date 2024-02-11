@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-secondary">Добавление кровати</h1>
+                        <h1 class="m-0 text-secondary">Кровати</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -18,6 +18,11 @@
             </div>
         </div>
         <section class="content">
+            <div class="col-6">
+                <div class="mb-3">
+                    <a class="btn btn-success" href="{{ route("admin-page.panel.add-form", ["page" => "bed"]) }}">Добавить</a>
+                </div>
+            </div>
             <div id="app">
                 <bed-list></bed-list>
             </div>
