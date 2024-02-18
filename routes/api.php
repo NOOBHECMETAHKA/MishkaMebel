@@ -26,8 +26,6 @@ Route::group(['namespace' => 'TypeTable', 'prefix' => 'types-table'], function (
 Route::group(['namespace' => 'Material', 'prefix' => 'materials'], function ($id){
     Route::get('/', [\App\Http\Controllers\Material\MaterialIndexController::class, 'index']);
     Route::post('/store', [\App\Http\Controllers\Material\MaterialAddController::class, 'store']);
-    Route::put('/update/{id}', [\App\Http\Controllers\Material\MaterialUpdateController::class, 'update']);
-    Route::delete('/delete/{id}', [\App\Http\Controllers\Material\MaterialDeleteController::class, 'destroy']);
 });
 
 Route::group(['namespace' => 'BedBase', 'prefix' => 'bed-bases'], function (){
@@ -68,3 +66,24 @@ Route::group(['namespace' => 'Bed', 'prefix' => 'beds'], function (){
 Route::group(['namespace' => 'FurnitureStorage', 'prefix' => 'furniture-storage'], function () {
     Route::get('/', [\App\Http\Controllers\FurnitureStorage\FurnitureStorageIndexController::class, 'index']);
 });
+
+Route::group(['namespace' => 'PersonalInformation', 'prefix' => 'personal-information'], function () {
+    Route::get('/', [\App\Http\Controllers\PersonalInformation\PersonalInformationIndexController::class, 'index']);
+});
+
+Route::post('/furniture-size/update/{id}', [\App\Http\Controllers\FurnitureSize\FurnitureSizeUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.furniture-size');
+Route::post('/furniture-dimensions/update/{id}', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.furniture-dimensions');
+
+
+Route::post('/bed/delete/{id}', [\App\Http\Controllers\Bed\BedDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.bed');
+Route::post('/bed-base/delete/{id}', [\App\Http\Controllers\BedBase\BedBaseDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.bed-base');
+Route::post('/furniture-dimensions/delete/{id}', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.furniture-dimensions');
+Route::post('/furniture-size/delete/{id}', [\App\Http\Controllers\FurnitureSize\FurnitureSizeDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.furniture-size');
+Route::post('/furniture-storage/delete/{id}', [\App\Http\Controllers\FurnitureStorage\FurnitureStorageDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.furniture-storage');
+Route::post('/material/delete/{id}', [\App\Http\Controllers\Material\MaterialDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.material');
+Route::post('/mattress/delete/{id}', [\App\Http\Controllers\Mattress\MattressDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.mattress');
+Route::post('/mattress-cover/delete/{id}', [\App\Http\Controllers\MattressCover\MattressCoverDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.mattress-cover');
+Route::post('/mattress-fastening/delete/{id}', [\App\Http\Controllers\MattressFastening\MattressFasteningDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.mattress-fastening');
+Route::post('/personal-information/delete/{id}', [\App\Http\Controllers\PersonalInformation\PersonalInformationDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.personal-information');
+Route::post('/table/delete/{id}', [\App\Http\Controllers\Table\TableDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.table');
+Route::post('/type-table/delete/{id}', [\App\Http\Controllers\TypeTable\TypeTableDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.type-table');

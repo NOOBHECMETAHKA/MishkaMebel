@@ -25,7 +25,7 @@
                 <div class="d-flex flex-row gap-3">
                     <h1 class="p-0 m-0">Мишка мебель</h1>
                 </div>
-                <span class="text-center">Личный кабинет</span>
+                <span class="text-center"><a href="/login">Личный кабинет</a></span>
             </div>
             <div class="mt-3 d-flex flex-row justify-content-between align-items-center">
                 <div>

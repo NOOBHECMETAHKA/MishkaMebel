@@ -10,8 +10,8 @@ export default defineConfig({
                 'resources/sass/app.scss',
                 'resources/js/app.js',
                 //Admin styles
-                'resources/sass/admin-page.scss',
-                'resources/js/admin-page.js'
+                'resources/sass/admin-page-content.scss',
+                'resources/js/admin-page-content.js'
             ],
             refresh: true,
         }),

@@ -38,7 +38,7 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-w navbar-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -51,8 +51,17 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            @guest
+                <li class="nav-item d-none d-sm-inline-block">
+                    <span class="nav-link">Вы не авторизованы!</span>
+                </li>
+            @else
+                <li class="nav-item d-none d-sm-inline-block">
+                    <span class="nav-link">Электронная почта: {{ Auth::user()->email }}</span>
+                </li>
+            @endguest
             <li class="nav-item">
-                <a href="#" class="nav-link">{ Текущий пользователь }</a>
+                <a href="#" class="nav-link"></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -88,81 +97,106 @@
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">Рабочая область</li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'statuses']) }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Status.svg") }}" alt="">
+                            <p>Статусы</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/User.svg") }}" alt="">
+                            <p>Пользователи</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'orders']) }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Order.svg") }}" alt="">
+                            <p>Заказы</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'products']) }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Product.svg") }}" alt="">
+                            <p>Товары</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'photos']) }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Photo.svg") }}" alt="">
+                            <p>Фотографии</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'discounts']) }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Discount.svg") }}" alt="">
+                            <p>Скидки</p>
+                        </a>
+                    </li>
                     <li class="nav-header">Контент сайта</li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'mattress']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Mattress.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Матрасы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-cover']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'mattress-cover']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/MattressCover.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Чехлы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'furniture-size']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureSize.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Размеры</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'mattress-fastening']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/MattressFastening.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Крепления матрасов</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'material']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'material']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Material.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Материалы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'bed-base']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'bed-base']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/BedBase.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Основания кроватей</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'furniture-dimensions']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureDimensions.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Габариты</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'bed']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'bed']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Bed.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Кровати</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'furniture-storage']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'furniture-storage']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/FurnitureStorage.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Хранилища вещей</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'table']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'table']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Table.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Столы</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin-page.panel.view', ['page' => 'type-table']) }}" class="nav-link">
+                        <a href="{{ route('admin-page-content.panel.view', ['page' => 'type-table']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/TypeTable.svg") }}" alt="">
-{{--                            <i class="nav-icon fas fa-table"></i>--}}
                             <p>Типы столов</p>
                         </a>
                     </li>

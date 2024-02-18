@@ -20,6 +20,6 @@ class MattressAddController extends Controller
 
         DB::table(Mattress::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'mattress']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'mattress']);
     }
 }

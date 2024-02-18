@@ -1,7 +1,31 @@
 <template>
+    <!--    ModalWindow-->
+    <div class="modal fade" id="modal-danger" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Удаление основание кроватей</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>Вы действительно хотите удалить данное основание кровати?</span>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger" @click="deleteSelected" data-dismiss="modal">Удалить</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--    ModalWindow-->
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                v-model:selection="selectedElement"
                 v-model:filters="filters"
                 :value="this.bedBases"
                 selectionMode="single"
@@ -25,9 +49,22 @@
                 </template>
                 <template #empty><span class="text-secondary">Основания кроватей не найдены!</span></template>
                 <template #paginatorstart>
-                    <span class="text-secondary">Статус: 0</span>
+                    <span class="text-secondary">Количество: {{ this.count }}</span>
                 </template>
                 <Column field="name" header="Наименование" class="text-secondary" :sortable="true"></Column>
+
+                <Column>
+                    <template #body="slotProps">
+                        <div class="d-flex" style="gap: 20px">
+                            <a :href='`/admin/bed-base/edit/${slotProps.data.id}`'>
+                                <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
+                            </a>
+                            <i @click="chooseElement(slotProps.data)"
+                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                               data-toggle="modal" data-target="#modal-danger"></i>
+                        </div>
+                    </template>
+                </Column>
 
                 <template #paginatorend>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
@@ -50,10 +87,12 @@ export default {
     data() {
         return {
             bedBases: null,
+            count: 0,
             filters: {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
             },
             loading: true,
+            selectedElement: null,
         };
     },
     components:{
@@ -71,8 +110,19 @@ export default {
             this.loading = true;
             axios.get('/api/bed-bases').then(resp => {
                 this.bedBases = resp.data;
+                this.count = resp.data.length;
                 this.loading = false;
             });
+        },
+        chooseElement(slotElement){
+            this.selectedElement = slotElement;
+        },
+        deleteSelected(){
+            if(this.selectedElement != null){
+                axios.post(`/api/bed-base/delete/${this.selectedElement.id}`);
+                this.selectedElement = null;
+                this.refresh();
+            }
         }
     }
 }

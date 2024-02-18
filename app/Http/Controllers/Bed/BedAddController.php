@@ -26,6 +26,6 @@ class BedAddController extends Controller
 
         DB::table(Bed::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'bed']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'bed']);
     }
 }

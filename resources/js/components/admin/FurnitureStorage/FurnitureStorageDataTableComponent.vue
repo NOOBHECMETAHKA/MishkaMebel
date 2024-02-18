@@ -1,7 +1,31 @@
 <template>
+    <!--    ModalWindow-->
+    <div class="modal fade" id="modal-danger" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Удаление хранилище</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>Вы действительно хотите удалить данное хранилище вещей?</span>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger" @click="deleteSelected" data-dismiss="modal">Удалить</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--    ModalWindow-->
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                v-model:selection="selectedElement"
                 :filters="filters"
                 :value="furniture_storages"
                 selectionMode="single"
@@ -24,14 +48,29 @@
                     </div>
                 </template>
 
+                <template #empty><span class="text-secondary">Хранилища вещей не найдены!</span></template>
+
                 <Column field="view" header="Вид" class="text-secondary" :sortable="true"></Column>
                 <Column field="type" header="Тип" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.length" header="Длина" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.height" header="Высота" class="text-secondary" :sortable="true"></Column>
 
+                <Column>
+                    <template #body="slotProps">
+                        <div class="d-flex" style="gap: 20px">
+                            <a :href='`/admin/furniture-storage/edit/${slotProps.data.id}`'>
+                                <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
+                            </a>
+                            <i @click="chooseElement(slotProps.data)"
+                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                               data-toggle="modal" data-target="#modal-danger"></i>
+                        </div>
+                    </template>
+                </Column>
+
                 <template #paginatorstart>
-                    <span class="text-secondary">Статус: 0</span>
+                    <span class="text-secondary">Количество: {{ this.count }}</span>
                 </template>
 
                 <template #paginatorend>
@@ -55,10 +94,12 @@ export default {
     data() {
         return {
             furniture_storages: null,
+            count: 0,
             filters: {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
             },
             loading: true,
+            selectedElement: null
         };
     },
     components:{
@@ -76,9 +117,20 @@ export default {
             this.loading = true;
             axios.get('/api/furniture-storage').then(resp => {
                 this.furniture_storages = resp.data;
+                this.count = resp.data.length;
                 this.loading = false;
             });
         },
+        chooseElement(slotElement){
+            this.selectedElement = slotElement;
+        },
+        deleteSelected(){
+            if(this.selectedElement != null){
+                axios.post(`/api/furniture-storage/delete/${this.selectedElement.id}`);
+                this.selectedElement = null;
+                this.refresh();
+            }
+        }
     }
 }
 </script>

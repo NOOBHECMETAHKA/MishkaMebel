@@ -18,7 +18,7 @@ class MaterialAddController extends Controller
 
         DB::table(Material::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'material']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'material']);
     }
 
     //$validator = Validator::make(request()->toArray(), [

@@ -1,8 +1,10 @@
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css';
+// import 'primevue/resources/themes/lara-dark-blue/theme.css';
 import 'primeicons/primeicons.css'
 
+//DataTables
 import MaterialDataTableComponent from "./components/admin/Material/MaterialDataTableComponent.vue";
 import BedDataTableComponent from "./components/admin/Bed/BedDataTableComponent.vue"
 import BedBaseDataTableComponent from "./components/admin/BedBase/BedBaseDataTableComponent.vue"
@@ -14,16 +16,21 @@ import MattressCoverDataTableComponent from "./components/admin/MattressCover/Ma
 import MattressFasteningDataTableComponent from "./components/admin/MattressFastening/MattressFasteningDataTableComponent.vue"
 import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
 import TypeTableDataTableComponent from "./components/admin/TypeTable/TypeTableDataTableComponent.vue"
+// import PersonalInformationDataTableComponent from "./components/admin-page-content/PersonalInformation/PersonalInformationDataTableComponent.vue"
 
-// import PersonalInformationDataTableComponent from "./components/admin-page/PersonalInformation/PersonalInformationDataTableComponent.vue"
-
+//AddForms
 import FurnitureSizeModalRedactor from "./components/admin/FurnitureSize/FurnitureSizeModalRedactor.vue";
 import FurnitureDimensionModalRedactor from "./components/admin/FurnitureDimensions/FurnitureDimensionModalRedactor.vue";
 import MattressFasteningModalRedactor from "./components/admin/MattressFastening/MattressFasteningModalRedactor.vue";
 import TypeTableModalRedactor from "./components/admin/TypeTable/TypeTableModalRedactor.vue";
 
+//UpdateForms
+import FurnitureSizeModalRedactorUpdate from "./components/admin/FurnitureSize/FurnitureSizeModalRedactor-update.vue";
+import FurnitureDimensionModalRedactorUpdate from "./components/admin/FurnitureDimensions/FurnitureDimensionModalRedactor-update.vue";
+
 const app = createApp({
     components: {
+        //Модули вывода
         MaterialList: MaterialDataTableComponent,
         BedList: BedDataTableComponent,
         BedBaseList: BedBaseDataTableComponent,
@@ -37,10 +44,15 @@ const app = createApp({
         TableList: TableDataTableComponent,
         TypeTableList: TypeTableDataTableComponent,
 
+        //Формы добавления
         FurnitureSizeModalRedactor,
         FurnitureDimensionModalRedactor,
         MattressFasteningModalRedactor,
-        TypeTableModalRedactor
+        TypeTableModalRedactor,
+
+        //Формы обновления
+        FurnitureSizeModalRedactorUpdate,
+        FurnitureDimensionModalRedactorUpdate
     }
 });
 

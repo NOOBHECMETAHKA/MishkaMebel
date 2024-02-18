@@ -17,6 +17,6 @@ class TypeTableAddController extends Controller
         DB::table(TypeTable::$tableName)->insert($data);
 
         return response()->json(['message' => 'Данные успешно добавлены!']);
-//        return redirect()->route('admin-page.panel.view', ['page' => 'type-table']);
+//        return redirect()->route('admin-page-content.panel.view', ['page' => 'type-table']);
     }
 }

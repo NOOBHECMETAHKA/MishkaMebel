@@ -1,4 +1,27 @@
 <template>
+    <!--    ModalWindow-->
+    <div class="modal fade" id="modal-danger" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Удаление материала</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span>Вы действительно хотите удалить данный материал?</span>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger" @click="deleteSelected" data-dismiss="modal">Удалить</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!--    ModalWindow-->
     <div class="col-12">
         <div class="card p-3">
             <DataTable
@@ -6,7 +29,6 @@
                 dataKey="id"
                 :metaKeySelection="false"
                 removableSort
-                v-model:selection="selectedMaterial"
                 v-model:filters="filters"
                 :loading="loading"
                 :value="this.materials"
@@ -15,9 +37,7 @@
                 :rowsPerPageOptions="[5, 10, 20, 50]"
                 :size="'small'"
                 tableStyle="min-width: 50rem"
-                data-key="id"
-                @row-select="onRowSelect"
-                @row-unselect="onRowUnselect">
+                data-key="id">
                 <template #header>
                     <div class="d-flex justify-content-between">
                         <span class="p-input-icon-left">
@@ -30,6 +50,19 @@
 
                 <Column field="name" header="Наименование" class="text-secondary" :sortable="true"></Column>
                 <Column field="appointment" header="Назначение" class="text-secondary" :sortable="true"></Column>
+
+                <Column>
+                    <template #body="slotProps">
+                        <div class="d-flex" style="gap: 20px">
+                            <a :href='`/admin/material/edit/${slotProps.data.id}`'>
+                                <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
+                            </a>
+                            <i @click="chooseElement(slotProps.data)"
+                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                               data-toggle="modal" data-target="#modal-danger"></i>
+                        </div>
+                    </template>
+                </Column>
 
                 <template #paginatorstart>
                     <span class="text-secondary">Статус выполнения: 0</span>
@@ -52,8 +85,6 @@ import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 
-import MaterialModalRedactor from "./MaterialModalRedactor.vue";
-
 export default {
     props: {
         //Массив в формате json - назначения материалов
@@ -75,7 +106,6 @@ export default {
         InputText,
         VueButton: Button,
         PrimeIcons,
-        MaterialModalRedactor
     },
     mounted() {
         this.refresh();
@@ -84,16 +114,21 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/materials').then(resp => {
+                console.log(resp);
                 this.materials = resp.data;
                 this.loading = false;
             });
         },
-        onRowSelect(event) {
-            this.selectedMaterial = event.data.valueOf();
+        chooseElement(slotElement){
+            this.selectedMaterial = slotElement;
         },
-        onRowUnselect(event) {
-            this.selectedMaterial = null;
-        }
+        deleteSelected(){
+            if(this.selectedMaterial != null){
+                axios.post(`/api/material/delete/${this.selectedMaterial.id}`);
+                this.selectedMaterial = null;
+                this.refresh();
+            }
+        },
     }
 }
 </script>

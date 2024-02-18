@@ -8,26 +8,23 @@ use App\Models\Material;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\View\View;
 
 class MaterialUpdateController extends Controller
 {
+    public function edit($id){
+        $object = Material::all()->where('id', $id)->first();
+        return View('admin-forms-update-content.material', compact('object'));
+    }
+
     public function update($id){
-        $validator = Validator::make(request()->toArray(), [
-            'name' => ['min:3', 'required'],
-            'appointment' => ['min:3', 'required'],
+        $data = \request()->validate([
+                'name' => ['min:3', 'required'],
+                'appointment' => ['min:3', 'required'],
         ]);
 
-        $valid = ValidatorAPI::getJSONErrors($validator, [
-            'name' => 'наименование',
-            'appointment' => 'назначение'
-        ]);
+        DB::table(Material::$tableName)->where('id', $id)->update($data);
 
-        if($valid){
-            return response($valid, 400);
-        }
-
-        DB::table(Material::$tableName)->where('id', $id)->update($validator->valid());
-
-        return response()->json(['message' => 'Данные успешно обновлены!']);
+        return redirect()->route('admin-page-content.panel.view', 'material');
     }
 }

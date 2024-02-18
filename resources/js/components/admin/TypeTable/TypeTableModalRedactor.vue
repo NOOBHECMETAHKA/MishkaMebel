@@ -36,7 +36,7 @@ export default {
     },
     methods: {
         sendData(){
-            if(this.name.length > 0){
+            if(this.name.length > 3){
                 const len = this.type_tables.filter(obj => obj.name === this.name).length;
                 if(len === 0){
                     this.loading = true;
@@ -45,7 +45,7 @@ export default {
                     window.location.href = '/admin/type-table';
                     this.loading = false;
                 } else this.message = 'Подобный тип стола уже существует!';
-            } else this.message = "Поле наименование должно быть заполнено!";
+            } else this.message = "Поле наименование должно быть больше 3!";
         }
     }
 }

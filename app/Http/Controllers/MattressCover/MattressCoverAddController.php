@@ -22,6 +22,6 @@ class MattressCoverAddController extends Controller
 
         DB::table(MattressCover::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'mattress-cover']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'mattress-cover']);
     }
 }

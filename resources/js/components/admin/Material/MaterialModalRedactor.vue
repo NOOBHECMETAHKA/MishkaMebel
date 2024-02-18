@@ -13,7 +13,7 @@
             <div class="form-group">
                 <div class="mb-3">
                     <label for="nameMaterial" class="text-secondary">Наименование</label>
-                    <input v-model="materialName" id="nameMaterial" class="form-control" type="text" placeholder="Наименование материала">
+                    <input v-model="materialName" minlength="3" maxlength="255" id="nameMaterial" class="form-control" type="text" placeholder="Наименование материала">
                 </div>
                 <div class="mb-3">
                     <label for="nameAppointment" class="text-secondary">Назначение</label>

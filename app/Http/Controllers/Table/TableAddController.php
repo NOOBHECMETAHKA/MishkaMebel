@@ -17,6 +17,6 @@ class TableAddController extends Controller
 
         DB::table(Table::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'table']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'table']);
     }
 }

@@ -19,6 +19,6 @@ class FurnitureStorageAddController extends Controller
 
         DB::table(FurnitureStorage::$tableName)->insert($data);
 
-        return redirect()->route('admin-page.panel.view', ['page' => 'furniture-storage']);
+        return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-storage']);
     }
 }

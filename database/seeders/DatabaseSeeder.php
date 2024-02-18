@@ -11,6 +11,7 @@ use App\Models\MattressFastening;
 use App\Models\Status;
 use App\Models\Table;
 use App\Models\TypeTable;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -87,6 +88,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Утерян', 'description' => 'Ваш заказ утерян! Мы разбираемся в чём причина!'],
             ['name' => 'Уничтожен', 'description' => 'Ваш заказ уничтожен!']
         ]);
+        User::factory(30)->create();
     }
 
 

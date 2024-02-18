@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-column gap-2 w-75">
         <label for="name" class="text-secondary">Наименование крепления</label>
-        <input-text id="name" v-model="name" aria-describedby="username-help"/>
+        <input-text id="name" minlength="3" maxlength="255" v-model="name" aria-describedby="username-help"/>
         <small id="name-help">
             <span class="text-danger">{{ this.message }}</span>
         </small>
@@ -37,7 +37,7 @@ export default {
     },
     methods: {
         sendData(){
-           if(this.name.length > 0){
+           if(this.name.length > 3){
                const len = this.mattress_fastening.filter(obj => obj.name === this.name).length;
                if(len === 0){
                    this.loading = true;
@@ -46,7 +46,7 @@ export default {
                    window.location.href = '/admin/mattress-fastening';
                    this.loading = false;
                } else this.message = 'Подобное крепление уже существует!';
-           } else this.message = "Поле наименование должно быть заполнено!";
+           } else this.message = "Поле наименование должно быть больше 3!";
         }
     }
 }

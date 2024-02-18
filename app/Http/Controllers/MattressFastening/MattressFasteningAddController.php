@@ -18,6 +18,6 @@ class MattressFasteningAddController extends Controller
         DB::table(MattressFastening::$tableName)->insert($data);
 
         return response()->json(['message' => 'Данные успешно добавлены!']);
-//        return redirect()->route('admin-page.panel.view', ['page' => 'mattress-fastening']);
+//        return redirect()->route('admin-page-content.panel.view', ['page' => 'mattress-fastening']);
     }
 }
