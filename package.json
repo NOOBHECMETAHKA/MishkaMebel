@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "@heroicons/vue": "^2.1.1",
+        "@vuelidate/core": "^2.0.3",
+        "@vuelidate/validators": "^2.0.4",
         "bootstrap-icons": "^1.11.3",
         "datatables.net": "^1.13.8",
         "jquery": "^3.7.1",

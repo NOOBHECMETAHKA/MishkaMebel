@@ -22,14 +22,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/{page}', [\App\Http\Controllers\AdminController::class, 'indexContent'])->where(['page' =>
-'photo|bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|personal-information|table|type-table'])
+'photo|bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|table|type-table'])
 ->name('admin-page-content.panel.view');
 
-Route::get('/admin/{page}/add', [\App\Http\Controllers\AdminController::class, 'add'])->where(['page' =>
-'bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|personal-information|table|type-table'])
+Route::get('/admin/{page}/add', [\App\Http\Controllers\AdminController::class, 'addContent'])->where(['page' =>
+'bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|table|type-table'])
 ->name('admin-page-content.panel.add-form');
 
-Route::get('/admin/additional/{page}', [\App\Http\Controllers\AdminController::class, 'indexWorkSpace'])->where(['page' => 'products|statuses|addresses|orders|discounts|photos'])->name('admin-page-workspace.panel.view');;
+Route::get('/admin/additional/{page}', [\App\Http\Controllers\AdminController::class, 'indexWorkSpace'])->where(['page' =>
+'products|statuses|addresses|orders|discounts|photos|personal-information'])->name('admin-page-workspace.panel.view');
+
+Route::get('/admin/additional/{page}/add', [\App\Http\Controllers\AdminController::class, 'addWorkSpace'])->where(['page' =>
+    'products|discounts|photos'])->name('admin-page-workspace.panel.add-form');
 
 Route::group(["prefix" => "admin"], function($id){
     Route::post('/bed/store', [\App\Http\Controllers\Bed\BedAddController::class, 'store'])->name('admin.bed.store');
@@ -39,6 +43,9 @@ Route::group(["prefix" => "admin"], function($id){
     Route::post('/mattress/store', [\App\Http\Controllers\Mattress\MattressAddController::class, 'store'])->name('admin.mattress.store');
     Route::post('/mattress-cover/store', [\App\Http\Controllers\MattressCover\MattressCoverAddController::class, 'store'])->name('admin.mattress-cover.store');
     Route::post('/table/store', [\App\Http\Controllers\Table\TableAddController::class, 'store'])->name('admin.table.store');
+
+
+    Route::post('/photos/store', [\App\Http\Controllers\Photos\PhotosAddController::class, 'store'])->name('admin.photos.store');
 });
 
 Route::group(["prefix" => "admin"], function($id){
@@ -54,6 +61,14 @@ Route::group(["prefix" => "admin"], function($id){
 //    Route::get('/personal-information/edit/{id}',  [\App\Http\Controllers\PersonalInformation\PersonalInformationUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update-form.personal-information');
     Route::get('/table/edit/{id}',  [\App\Http\Controllers\Table\TableUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update-form.table');
     Route::get('/type-table/edit/{id}',  [\App\Http\Controllers\TypeTable\TypeTableUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update-form.type-table');
+
+    Route::get('/products/edit/{id}', [\App\Http\Controllers\Products\ProductsUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-workspace.panel.update-form.products');
+    Route::get('/statuses/edit/{id}', [\App\Http\Controllers\Statuses\StatusesUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-workspace.panel.update-form.statuses');
+    Route::get('/orders/edit/{id}', [\App\Http\Controllers\Orders\OrdersUpdateController::class, 'edit'])->where(['id', '+[0-9]'])->name('admin-page-workspace.panel.update-form.orders');
+
+    Route::post('/products/update/{id}', [\App\Http\Controllers\Products\ProductsUpdateController::class, 'update'])->name('admin-page-workspace.panel.update.products');
+    Route::post('/statuses/update/{id}', [\App\Http\Controllers\Statuses\StatusesUpdateController::class, 'update'])->name('admin-page-workspace.panel.update.statuses');
+    Route::post('/orders/update/{id}', [\App\Http\Controllers\Addresses\AddressesUpdateController::class, 'update'])->name('admin-page-workspace.panel.update.orders');
 
 
     Route::post('/bed/update/{id}', [\App\Http\Controllers\Bed\BedUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.bed');

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('furniture_storages', function (Blueprint $table) {
             $table->id();
-            $table->string('view');
             $table->string('type');
 
             $table->bigInteger('furniture_storages_furniture_dimensions_id')->unsigned();

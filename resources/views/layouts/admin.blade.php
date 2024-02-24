@@ -27,7 +27,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
-    @vite(['resources/sass/admin.scss', 'resources/js/admin.js'])
+    @vite(['resources/sass/admin.scss', 'resources/js/admin.js', 'resources/js/admin-additional.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -104,7 +104,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'personal-information']) }}" class="nav-link">
                             <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/User.svg") }}" alt="">
                             <p>Пользователи</p>
                         </a>
@@ -230,8 +230,6 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- ChartJS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js"></script>
 <!-- JQVMap -->
 <script src="plugins/jqvmap/jquery.vmap.min.js"></script>
 <script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
@@ -248,8 +246,5 @@
 <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/pages/dashboard.js"></script>
-
 </body>
 </html>

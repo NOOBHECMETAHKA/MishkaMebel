@@ -16,7 +16,6 @@ import MattressCoverDataTableComponent from "./components/admin/MattressCover/Ma
 import MattressFasteningDataTableComponent from "./components/admin/MattressFastening/MattressFasteningDataTableComponent.vue"
 import TableDataTableComponent from "./components/admin/Table/TableDataTableComponent.vue"
 import TypeTableDataTableComponent from "./components/admin/TypeTable/TypeTableDataTableComponent.vue"
-// import PersonalInformationDataTableComponent from "./components/admin-page-content/PersonalInformation/PersonalInformationDataTableComponent.vue"
 
 //AddForms
 import FurnitureSizeModalRedactor from "./components/admin/FurnitureSize/FurnitureSizeModalRedactor.vue";

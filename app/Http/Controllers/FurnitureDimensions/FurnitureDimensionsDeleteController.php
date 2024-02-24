@@ -11,6 +11,6 @@ class FurnitureDimensionsDeleteController extends Controller
 {
     public function destroy($id){
         DB::table(FurnitureDimensions::$tableName)->where('id', $id)->delete($id);
-        return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-dimensions']);
+        return response()->json(['message' => 'Запись успешно удалена!'], options: JSON_UNESCAPED_UNICODE);
     }
 }

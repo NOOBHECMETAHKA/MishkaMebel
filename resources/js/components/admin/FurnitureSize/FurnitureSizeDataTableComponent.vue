@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-                v-model:selection="selectedElement"
+
                 :value="furniture_size"
                 v-model:filters="filters"
                 selectionMode="single"
@@ -120,14 +120,15 @@ export default {
         },
         chooseElement(slotElement){
             this.selectedElement = slotElement;
+            console.log(this.selectedElement);
         },
         deleteSelected(){
             if(this.selectedElement != null){
-                axios.post(`/api/furniture-size/delete/${this.selectedElement.id}`);
+                axios.delete(`/api/furniture-size/delete/${this.selectedElement.id}`);
                 this.selectedElement = null;
                 this.refresh();
             }
-        }
+        },
     }
 }
 </script>

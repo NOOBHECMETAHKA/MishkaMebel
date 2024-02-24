@@ -74,6 +74,9 @@ Route::group(['namespace' => 'PersonalInformation', 'prefix' => 'personal-inform
 Route::post('/furniture-size/update/{id}', [\App\Http\Controllers\FurnitureSize\FurnitureSizeUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.furniture-size');
 Route::post('/furniture-dimensions/update/{id}', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.furniture-dimensions');
 
+Route::post('/products/update/{id}', [\App\Http\Controllers\Products\ProductsUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.product');
+
+
 
 Route::post('/bed/delete/{id}', [\App\Http\Controllers\Bed\BedDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.bed');
 Route::post('/bed-base/delete/{id}', [\App\Http\Controllers\BedBase\BedBaseDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.bed-base');
@@ -87,3 +90,16 @@ Route::post('/mattress-fastening/delete/{id}', [\App\Http\Controllers\MattressFa
 Route::post('/personal-information/delete/{id}', [\App\Http\Controllers\PersonalInformation\PersonalInformationDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.personal-information');
 Route::post('/table/delete/{id}', [\App\Http\Controllers\Table\TableDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.table');
 Route::post('/type-table/delete/{id}', [\App\Http\Controllers\TypeTable\TypeTableDeleteController::class, 'destroy'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.delete.type-table');
+
+Route::get('/products', [\App\Http\Controllers\Products\ProductsIndexController::class, 'index']);
+Route::get('/statuses', [\App\Http\Controllers\Statuses\StatusesIndexController::class, 'index']);
+Route::get('/addresses', [\App\Http\Controllers\Addresses\AddressesIndexController::class, 'index']);
+Route::get('/orders', [\App\Http\Controllers\Orders\OrdersIndexController::class, 'index']);
+Route::get('/discounts', [\App\Http\Controllers\Discounts\DiscountsIndexController::class, 'index']);
+Route::get('/photos', [\App\Http\Controllers\Photos\PhotosIndexController::class, 'index']);
+
+Route::post('/products/{id}/freeze/{isFreeze}', [\App\Http\Controllers\Products\ProductsUpdateController::class, 'freeze'])->where(['id','+[0-9]'], ['isFreeze' => 'frost|defrost']);
+Route::post('/products/store', [\App\Http\Controllers\Products\ProductsAddController::class, 'store'])->name('admin.products.store');
+Route::post('/discounts/store', [\App\Http\Controllers\Discounts\DiscountsAddController::class, 'store'])->name('admin.discounts.store');
+
+Route::post('/products/delete/{id}', [\App\Http\Controllers\Products\ProductsDeleteController::class, 'destroy'])->where(['id', '+[0-9]']);

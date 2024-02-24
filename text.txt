@@ -1,0 +1,6 @@
+Тип: {{item.type}},
+возростная категория: {{item.age_category}},
+жёсткий: {{item.hardness}},
+материал: {{item.materials.name}},
+длина: {{item.furniture_sizes.length}},
+ширина: {{item.furniture_sizes.width}}

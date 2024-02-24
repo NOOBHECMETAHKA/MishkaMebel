@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-                v-model:selection="selectedElement"
+
                 :filters="filters"
                 :value="furniture_storages"
                 selectionMode="single"
@@ -50,7 +50,6 @@
 
                 <template #empty><span class="text-secondary">Хранилища вещей не найдены!</span></template>
 
-                <Column field="view" header="Вид" class="text-secondary" :sortable="true"></Column>
                 <Column field="type" header="Тип" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.length" header="Длина" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.width" header="Ширина" class="text-secondary" :sortable="true"></Column>

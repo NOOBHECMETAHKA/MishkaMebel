@@ -27,7 +27,6 @@
             <DataTable
                 :filters="filters"
                 :value="mattress_fastening"
-                v-model:selection="selectedMattressFasting"
                 v-model:filters="filters"
                 selectionMode="single"
                 dataKey="id"

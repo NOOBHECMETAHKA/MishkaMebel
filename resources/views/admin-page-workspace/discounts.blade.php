@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="content-wrapper">
+    <div class="content-wrapper">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -20,12 +20,12 @@
         <section class="content">
             <div class="col-6">
                 <div class="mb-3">
-                    <a class="btn btn-success" href="">Добавить</a>
+                    <a class="btn btn-success" href="{{ route('admin-page-workspace.panel.add-form', ['page' => 'discounts']) }}">Добавить</a>
                 </div>
             </div>
-            <div>
-
+            <div id="app-additional">
+                <discount-data-table-component></discount-data-table-component>
             </div>
         </section>
-</div>
+    </div>
 @endsection

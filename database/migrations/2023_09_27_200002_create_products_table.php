@@ -20,8 +20,10 @@ return new class extends Migration
             $table->text('description');
             $table->string('guarantee');
             $table->decimal("price", 10,2, true);
-            $table->decimal("discount", 10,2, true);
-            $table->integer('importance_rating')->unsigned();
+
+            $table->string('category');
+            $table->unsignedBigInteger('products_product_id');
+
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
         });

@@ -10,8 +10,7 @@ use Illuminate\Http\Request;
 class PersonalInformationIndexController extends Controller
 {
     public function index() {
-        $data = User::query();
-        $data->leftJoin(PersonalInformation::$tableName, 'personal_information_user_id', '=', User::$tableName.'.id');
+        $data = User::with([PersonalInformation::$tableName]);
         return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

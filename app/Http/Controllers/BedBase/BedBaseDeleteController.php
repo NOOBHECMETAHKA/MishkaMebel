@@ -11,6 +11,6 @@ class BedBaseDeleteController extends Controller
 {
     public function destroy($id){
         DB::table(BedBase::$tableName)->where('id', $id)->delete($id);
-        return redirect()->route('admin-page-content.panel.view', ['page' => 'bed-base']);
+        return response()->json(['message' => 'Запись успешно удалена!'], options: JSON_UNESCAPED_UNICODE);
     }
 }

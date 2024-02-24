@@ -25,7 +25,6 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-                v-model:selection="selectedElement"
                 v-model:filters="filters"
                 :value="this.bedBases"
                 selectionMode="single"

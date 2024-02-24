@@ -18,11 +18,6 @@
             </div>
         </div>
         <section class="content">
-            <div class="col-6">
-                <div class="mb-3">
-                    <a class="btn btn-success" href="">Добавить</a>
-                </div>
-            </div>
             <div>
 
             </div>

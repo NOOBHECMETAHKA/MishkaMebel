@@ -11,8 +11,26 @@ class Product extends Model
     protected $guarded = false;
     public static $tableName = 'products';
     protected $hidden = [
-        'is_deleted',
+        'url_name',
         'created_at',
         'updated_at',
     ];
+    public static $guarantee = [
+        'Нету гарантии',
+        '3 месяца',
+        '1 год',
+        '2 года',
+        '3 года',
+        '5 лет',
+    ];
+    public static $category = [
+        'mattresses' => 'Матрасы',
+        'mattress-covers' => 'Чехолы',
+        'beds' => 'Кровати',
+        'furniture-storage' => 'Хранилища вещей',
+        'tables' => 'Столы',
+    ];
+    public function discounts(){
+        return $this->belongsTo(Discount::class, 'id', 'discounts_product_id');
+    }
 }

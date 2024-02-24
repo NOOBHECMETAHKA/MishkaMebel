@@ -21,17 +21,14 @@
         <section class="content">
             <form action="{{ route('admin.furniture-storage.store') }}" method="post">
                 @csrf
-                <div class="form-group">
-                    <label for="view" class="fw-bold text-secondary">Вид</label>
-                    <input name="view" minlength="3" maxlength="255" type="text" class="form-control" id="view" placeholder="Вид хранилища" value="{{ old('view') }}" required>
-                    @error('view')
-                        <span class="error text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
 
                 <div class="form-group">
-                    <label for="type" class="fw-bold text-secondary">Тип</label>
-                    <input name="type" minlength="3" maxlength="255" type="text" class="form-control" id="type" placeholder="Тип хранилища" value="{{ old('type') }}" required>
+                    <label for="type-mattress" class="fw-bold text-secondary">Тип хранилища</label>
+                    <select name="type" id="type-mattress" class="form-control" >
+                        @foreach(\App\Models\FurnitureStorage::$type as $type)
+                            <option value="{{ $type }}" @selected(old('type') == $type)>{{ $type }}</option>
+                        @endforeach
+                    </select>
                     @error('type')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror

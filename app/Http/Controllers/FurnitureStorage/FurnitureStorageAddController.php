@@ -12,7 +12,6 @@ class FurnitureStorageAddController extends Controller
 {
     public function store(){
         $data = \request()->validate([
-            'view' => 'string|required',
             'type' => 'string|required',
             'furniture_storages_furniture_dimensions_id' => 'int|required'
         ]);

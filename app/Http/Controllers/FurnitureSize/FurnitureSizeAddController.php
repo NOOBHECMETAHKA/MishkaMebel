@@ -17,7 +17,7 @@ class FurnitureSizeAddController extends Controller
 
         DB::table(FurnitureSize::$tableName)->insert($data);
 
-        return response()->json(['message' => 'Данные успешно добавлены!']);
+        return response()->json(['message' => 'Данные успешно добавлены!'], JSON_UNESCAPED_UNICODE);
         //return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-size']);
     }
 }

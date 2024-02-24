@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-                v-model:selection="selectedElement"
+
                 :filters="filters"
                 :value="mattress_cover"
                 selectionMode="single"

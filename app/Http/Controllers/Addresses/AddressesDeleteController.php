@@ -11,6 +11,6 @@ class AddressesDeleteController extends Controller
 {
     public function destroy($id){
         DB::table(Address::$tableName)->where('id', $id)->delete();
-        //
+        return response()->json(['message' => 'Запись успешно удалена!'], options: JSON_UNESCAPED_UNICODE);
     }
 }

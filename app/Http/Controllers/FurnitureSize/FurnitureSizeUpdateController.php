@@ -22,6 +22,6 @@ class FurnitureSizeUpdateController extends Controller
 
         DB::table(FurnitureSize::$tableName)->where('id', $id)->update($data);
 
-        return response()->json(['message' => 'Данные успешно добавлены!']);
+        return response()->json(['message' => 'Данные успешно изменены!'], JSON_UNESCAPED_UNICODE);
     }
 }

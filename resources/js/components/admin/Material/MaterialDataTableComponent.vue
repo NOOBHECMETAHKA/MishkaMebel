@@ -65,7 +65,7 @@
                 </Column>
 
                 <template #paginatorstart>
-                    <span class="text-secondary">Статус выполнения: 0</span>
+                    <span class="text-secondary">Количество записей: {{ this.count }}</span>
                 </template>
 
                 <template #paginatorend>
@@ -93,6 +93,7 @@ export default {
     data() {
         return {
             materials: null,
+            count: 0,
             filters: {
                 global: { value: null, matchMode: FilterMatchMode.CONTAINS },
             },
@@ -114,8 +115,8 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/materials').then(resp => {
-                console.log(resp);
                 this.materials = resp.data;
+                this.count = resp.data.length;
                 this.loading = false;
             });
         },

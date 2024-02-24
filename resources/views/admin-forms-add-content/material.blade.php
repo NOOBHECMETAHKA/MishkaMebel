@@ -35,7 +35,7 @@
                     <select name="appointment" id="appointment" class="form-control">
                         @foreach(\App\Models\Material::$appointment as $appointment)
                             <option
-                                @if(old('appointment') == $appointment) selected @endif
+                                @selected(old('appointment') == $appointment)
                             value="{{ $appointment }}">{{ $appointment }}</option>
                         @endforeach
                     </select>

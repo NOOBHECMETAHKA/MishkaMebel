@@ -25,7 +25,6 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-                v-model:selection="selectedElement"
                 :filters="filters"
                 :value="tables"
                 selectionMode="single"
@@ -61,9 +60,11 @@
                             <a :href='`/admin/table/edit/${slotProps.data.id}`'>
                                 <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
                             </a>
-                            <i @click="chooseElement(slotProps.data)"
-                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
-                               data-toggle="modal" data-target="#modal-danger"></i>
+                            <span>
+                                <i @click="chooseElement(slotProps.data)"
+                                   class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                                   data-toggle="modal" data-target="#modal-danger"></i>
+                            </span>
                         </div>
                     </template>
                 </Column>
@@ -123,8 +124,10 @@ export default {
         },
         chooseElement(slotElement){
             this.selectedElement = slotElement;
+            console.log(this.selectedElement);
         },
         deleteSelected(){
+            console.log(this.selectedElement);
             if(this.selectedElement != null){
                 axios.post(`/api/table/delete/${this.selectedElement.id}`);
                 this.selectedElement = null;

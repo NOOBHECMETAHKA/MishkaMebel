@@ -11,6 +11,6 @@ class FurnitureStorageDeleteController extends Controller
 {
     public function destroy($id){
         DB::table(FurnitureStorage::$tableName)->where('id', $id)->delete();
-        return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-storage']);
+        return response()->json(['message' => 'Запись успешно удалена!'], options: JSON_UNESCAPED_UNICODE);
     }
 }

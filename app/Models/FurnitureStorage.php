@@ -15,6 +15,13 @@ class FurnitureStorage extends Model
         'created_at',
         'updated_at',
     ];
+    public static $type = [
+        'Шкаф',
+        'Тумбочка',
+        'Комод',
+        'Стелаж',
+        'Полка'
+    ];
     public function furniture_dimensions(){
         return $this->hasOne(FurnitureDimensions::class, 'id', 'furniture_storages_furniture_dimensions_id');
     }

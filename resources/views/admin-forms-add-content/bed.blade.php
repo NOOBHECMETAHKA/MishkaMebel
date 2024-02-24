@@ -25,8 +25,7 @@
                     <label for="type-bed" class="fw-bold text-secondary">Тип кровати</label>
                     <select name="type" id="type-bed" class="form-control" >
                         @foreach(\App\Models\Bed::$typeBed as $type)
-                            @if(old('type') == $type) selected @endif
-                            <option value="{{ $type }}">{{ $type }}</option>
+                            <option value="{{ $type }}" @selected(old('type') == $type)>{{ $type }}</option>
                         @endforeach
                     </select>
                     @error('type')

@@ -18,13 +18,8 @@
             </div>
         </div>
         <section class="content">
-            <div class="col-6">
-                <div class="mb-3">
-                    <a class="btn btn-success" href="">Добавить</a>
-                </div>
-            </div>
-            <div>
-
+            <div id="app-additional">
+                <status-data-table-component></status-data-table-component>
             </div>
         </section>
 </div>
