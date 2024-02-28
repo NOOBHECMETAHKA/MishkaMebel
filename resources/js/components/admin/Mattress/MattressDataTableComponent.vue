@@ -54,8 +54,16 @@
 
                 <Column field="materials.name" header="Материал" class="text-secondary" :sortable="true"></Column>
 
-                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.width} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">

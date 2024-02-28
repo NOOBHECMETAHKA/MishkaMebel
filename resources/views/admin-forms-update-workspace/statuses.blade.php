@@ -25,7 +25,7 @@
                     <label class="text-secondary">Описание</label>
                     <textarea name="description" class="form-control" rows="3" placeholder="Описание статуса" style="height: 207px; max-height: 300px">{{ $object->description }}</textarea>
                     @error('description')
-                    <span class="error text-danger">{{ str_replace('description', 'описание', $message) }}</span>
+                    <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -34,7 +34,7 @@
                         <label class="form-check-label text-secondary">Заблокировать?</label>
                     </div>
                     @error('is_deleted')
-                    <span class="error text-danger">{{ str_replace('is deleted', 'статус', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">

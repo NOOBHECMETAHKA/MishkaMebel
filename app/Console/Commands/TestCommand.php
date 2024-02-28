@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Status;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -27,6 +28,7 @@ class TestCommand extends Command
      */
     public function handle()
     {
-
+        $data = User::all();
+        $this->info($data->toJson());
     }
 }

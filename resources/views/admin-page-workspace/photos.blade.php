@@ -18,13 +18,8 @@
             </div>
         </div>
         <section class="content">
-            <div class="col-6">
-                <div class="mb-3">
-                    <a class="btn btn-success" href="{{ route('admin-page-workspace.panel.add-form', ['page' => 'photos']) }}">Добавить</a>
-                </div>
-            </div>
-            <div>
-
+            <div id="app-additional">
+                <photo-data-table-component></photo-data-table-component>
             </div>
         </section>
 </div>

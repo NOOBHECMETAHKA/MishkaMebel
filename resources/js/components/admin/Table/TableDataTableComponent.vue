@@ -50,9 +50,21 @@
                 <template #empty><span class="text-secondary">Столы не найдены!</span></template>
 
                 <Column field="materials.name" header="Матеариал" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.length" header="Габаритная длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.width" header="Габаритная ширина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.height" header="Габаритная высота" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_dimensions.length" header="Габаритная длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_dimensions.width" header="Габаритная ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.width} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_dimensions.height" header="Габаритная высота" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.height} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">

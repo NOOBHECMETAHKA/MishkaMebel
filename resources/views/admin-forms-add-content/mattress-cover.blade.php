@@ -39,7 +39,7 @@
                             value="{{ $mattressFastening->id }}">{{ $mattressFastening->name }}</option>
                         @endforeach
                     </select>
-                    @error('mattress_covers_furniture_sizes_id')
+                    @error('mattress_fastenings_id')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>

@@ -51,8 +51,16 @@
 
                 <Column field="function" header="Функциональное назначение" class="text-secondary" :sortable="true"></Column>
                 <Column field="mattress_fastenings.name" header="Крепление" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.width} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">

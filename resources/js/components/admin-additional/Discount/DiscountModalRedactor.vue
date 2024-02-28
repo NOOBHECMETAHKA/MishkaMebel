@@ -4,6 +4,9 @@
             <label class="text-secondary">Дата истечения</label>
             <div>
                 <InputNumber v-model="this.percent" inputId="percent" suffix="%" :min="2" :max="99"/>
+                <div>
+                    <small class="text-secondary" v-if="!v$.percent.required.$response">Поле должно быть заполнено!</small>
+                </div>
             </div>
         </div>
         <div class="form-group w-50">
@@ -39,7 +42,7 @@ import InputMask from "primevue/inputmask";
 import axios from "axios";
 import InputNumber from "primevue/inputnumber";
 import { useVuelidate } from '@vuelidate/core';
-import { required, minLength, minValue, maxLength } from '@vuelidate/validators';
+import { required } from '@vuelidate/validators';
 import Textarea from "primevue/textarea";
 import SelectButton from "primevue/selectbutton";
 
@@ -78,19 +81,28 @@ export default {
     },
     methods: {
         onSubmit(){
+            let dateChecker = (this.todayNow.getTime()) > (new Date(this.expirationDiscountDate).getTime());
             if(this.v$.$invalid){
                 this.v$.$touch();
                 return;
             } else{
-                this.addDiscount();
+                console.log("Проверка базовых полей пройдена!");
+                console.log(dateChecker);
+                if(!dateChecker){
+                    console.log("Проверка даты пройдена!");
+                    this.addDiscount();
+                }
             }
         },
         addDiscount(){
-
+            axios.post('/api/discounts/store', { percent: this.percent, expiration_discount: this.expirationDiscountDate, discounts_product_id: this.discountsProductId }).then(resp => {
+                console.log(resp);
+                window.location.href = '/admin/additional/discounts';
+                this.loading = false;
+            });
         },
         getProducts(){
             axios.get('/api/products').then(resp => {
-                console.log(resp);
                 this.products = resp.data;
                 this.loading = false;
             });

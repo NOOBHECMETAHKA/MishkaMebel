@@ -49,9 +49,21 @@
 
                 <template #empty><span class="text-secondary">Габариты не найдены!</span></template>
 
-                <Column field="length" header="Длина" class="text-secondary" :sortable="true" ></Column>
-                <Column field="width" header="Ширина" class="text-secondary" :sortable="true" ></Column>
-                <Column field="height" header="Высота" class="text-secondary" :sortable="true" ></Column>
+                <Column field="length" header="Длина" class="text-secondary" :sortable="true" >
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="width" header="Ширина" class="text-secondary" :sortable="true" >
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.width} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="height" header="Высота" class="text-secondary" :sortable="true" >
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.height} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">

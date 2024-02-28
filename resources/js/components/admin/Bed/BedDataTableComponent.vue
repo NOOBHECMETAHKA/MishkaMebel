@@ -53,8 +53,16 @@
                 <Column field="have_boxes" header="Наличие ящиков" class="text-secondary" :sortable="true"></Column>
                 <Column field="bed_bases.name" header="Вид лежачих оснований" class="text-secondary" :sortable="true"></Column>
                 <Column field="materials.name" header="Материал" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_sizes.length" header="Длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_sizes.width" header="Ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_sizes.width} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">
@@ -62,9 +70,11 @@
                             <a :href='`/admin/bed/edit/${slotProps.data.id}`'>
                                 <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
                             </a>
-                            <i @click="chooseElement(slotProps.data)"
-                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
-                               data-toggle="modal" data-target="#modal-danger"></i>
+                            <span>
+                                <i @click="chooseElement(slotProps.data)"
+                                   class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                                   data-toggle="modal" data-target="#modal-danger"></i>
+                            </span>
                         </div>
                     </template>
                 </Column>

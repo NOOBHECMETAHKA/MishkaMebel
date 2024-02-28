@@ -63,11 +63,21 @@
             <li class="nav-item">
                 <a href="#" class="nav-link"></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
-                </a>
-            </li>
+                <li>
+                    <a class="nav-link" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Logout.svg") }}" alt="">
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" data-widget="fullscreen" href="#" role="button">--}}
+{{--                    <i class="fas fa-expand-arrows-alt"></i>--}}
+{{--                </a>--}}
+{{--            </li>--}}
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -96,6 +106,27 @@
                 </div>
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-header">Управление</li>
+                    <li class="nav-item">
+
+                        <a href="{{ route('admin-page.view.charts') }}" class="nav-link">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>Панель статистики</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page.view.contact-settings') }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Contact.svg") }}" alt="">
+                            <p>Контакты</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin-page.view.map-yandex-settings') }}" class="nav-link">
+                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Map.svg") }}" alt="">
+                            <p>Геолокация</p>
+                        </a>
+                    </li>
+
                     <li class="nav-header">Рабочая область</li>
                     <li class="nav-item">
                         <a href="{{ route('admin-page-workspace.panel.view', ['page' => 'statuses']) }}" class="nav-link">

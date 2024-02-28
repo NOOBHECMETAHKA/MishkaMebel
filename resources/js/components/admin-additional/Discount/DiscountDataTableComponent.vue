@@ -62,9 +62,7 @@
 
                 <Column field="expiration_discount" header="Срок окончания" class="text-secondary" :sortable="true">
                     <template #body="slotProps">
-                        <span>{{  String(new Date(slotProps.data.expiration_discount).getDate()).padStart(2, '0') }}</span>.
-                        <span>{{ String(new Date(slotProps.data.expiration_discount).getMonth()).padStart(2, '0') }}</span>.
-                        <span>{{ new Date(slotProps.data.expiration_discount).getFullYear() }}</span>
+                        <span>{{  String(new Date(slotProps.data.expiration_discount).getDate()).padStart(2, '0') }}</span>.<span>{{ String(new Date(slotProps.data.expiration_discount).getMonth()).padStart(2, '0') }}</span>.<span>{{ new Date(slotProps.data.expiration_discount).getFullYear() }}</span>
                     </template>
                 </Column>
 
@@ -72,7 +70,7 @@
 
                 <Column header="Подробнее о цене" class="text-secondary">
                     <template #body="slotProps">
-                        <span><s>{{ slotProps.data.products.price }}</s>| {{ this.getPercent(slotProps.data.products.price, slotProps.data.percent) }}</span>
+                        <span><s>{{ slotProps.data.products.price }}</s>| {{ this.getPercent(slotProps.data.products.price, slotProps.data.percent) }} рублей</span>
                     </template>
                 </Column>
 

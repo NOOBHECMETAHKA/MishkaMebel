@@ -49,8 +49,16 @@
                 </template>
                 <template #empty><span class="text-secondary">Материалы не найдены!</span></template>
 
-                <Column field="length" header="Длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="width" header="Ширина" class="text-secondary" :sortable="true"></Column>
+                <Column field="length" header="Длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="width" header="Ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.width} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">
@@ -58,9 +66,11 @@
                             <a :href='`/admin/furniture-size/edit/${slotProps.data.id}`'>
                                 <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
                             </a>
-                            <i @click="chooseElement(slotProps.data)"
-                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
-                               data-toggle="modal" data-target="#modal-danger"></i>
+                            <span>
+                                <i @click="chooseElement(slotProps.data)"
+                                   class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                                   data-toggle="modal" data-target="#modal-danger"></i>
+                            </span>
                         </div>
                     </template>
                 </Column>

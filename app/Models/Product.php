@@ -30,6 +30,9 @@ class Product extends Model
         'furniture-storage' => 'Хранилища вещей',
         'tables' => 'Столы',
     ];
+    public function photos(){
+        return $this->hasMany(Photo::class, 'product_photo_id','id');
+    }
     public function discounts(){
         return $this->belongsTo(Discount::class, 'id', 'discounts_product_id');
     }

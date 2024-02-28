@@ -19,13 +19,29 @@
             </div>
         </div>
         <section class="content">
-{{--            <form action="{{ route('') }}" method="post" class="m-3">--}}
-{{--                @csrf--}}
+            <form action="{{ route('admin.photos.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
 
-{{--                <div class="form-group">--}}
-{{--                    <button type="submit" class="btn btn-success">Добавить</button>--}}
-{{--                </div>--}}
-{{--            </form>--}}
+                <div class="form-group">
+                    <label for="imagesInput" class="form-label text-secondary">Товар</label>
+                    <select name="product_photo_id" class="form-control">
+                        @foreach(\App\Models\Product::all() as $product)
+                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagesInput" class="form-label text-secondary">Выберите изображения</label>
+                    <div class="mt-1">
+                        <input type="file" name="image[]" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Добавить</button>
+                </div>
+            </form>
         </section>
 </div>
 @endsection

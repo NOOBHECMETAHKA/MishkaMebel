@@ -26,7 +26,7 @@
                     <label for="name" class="fw-bold text-secondary">Наименование</label>
                     <input name="name" minlength="3" maxlength="255" type="text" class="form-control" id="name" placeholder="Наименование" required>
                     @error('name')
-                        <span class="error text-danger">{{ str_replace('name', 'наименование', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
 
@@ -40,7 +40,7 @@
                         @endforeach
                     </select>
                     @error('beds_bases_id')
-                    <span class="error text-danger">{{ $message }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">

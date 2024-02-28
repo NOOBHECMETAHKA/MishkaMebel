@@ -51,9 +51,21 @@
                 <template #empty><span class="text-secondary">Хранилища вещей не найдены!</span></template>
 
                 <Column field="type" header="Тип" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.length" header="Длина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.width" header="Ширина" class="text-secondary" :sortable="true"></Column>
-                <Column field="furniture_dimensions.height" header="Высота" class="text-secondary" :sortable="true"></Column>
+                <Column field="furniture_dimensions.length" header="Длина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.length} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_dimensions.width" header="Ширина" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.width} см` }}</span>
+                    </template>
+                </Column>
+                <Column field="furniture_dimensions.height" header="Высота" class="text-secondary" :sortable="true">
+                    <template #body="slotProps">
+                        <span class="text-secondary">{{ `${slotProps.data.furniture_dimensions.height} см` }}</span>
+                    </template>
+                </Column>
 
                 <Column>
                     <template #body="slotProps">
@@ -61,9 +73,11 @@
                             <a :href='`/admin/furniture-storage/edit/${slotProps.data.id}`'>
                                 <i class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);" ></i>
                             </a>
-                            <i @click="chooseElement(slotProps.data)"
-                               class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
-                               data-toggle="modal" data-target="#modal-danger"></i>
+                            <span>
+                                <i @click="chooseElement(slotProps.data)"
+                                   class="pi pi-trash" style="font-size: 1rem; color: var(--primary-color);"
+                                   data-toggle="modal" data-target="#modal-danger"></i>
+                            </span>
                         </div>
                     </template>
                 </Column>

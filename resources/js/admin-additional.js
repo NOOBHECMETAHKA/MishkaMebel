@@ -2,7 +2,8 @@ import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css';
 // import 'primevue/resources/themes/lara-dark-blue/theme.css';
-import 'primeicons/primeicons.css'
+import 'primeicons/primeicons.css';
+import Tooltip from 'primevue/tooltip';
 
 import StatusDataTableComponent from "./components/admin-additional/Status/StatusDataTableComponent.vue";
 import ProductDataTableComponent from "./components/admin-additional/Product/ProductDataTableComponent.vue";
@@ -11,7 +12,10 @@ import ProductModalRedactorUpdate from "./components/admin-additional/Product/Pr
 import PersonalInformationDataTableComponent from "./components/admin-additional/PersonalInformation/PersonalInformationDataTableComponent.vue";
 import DiscountDataTableComponent from "./components/admin-additional/Discount/DiscountDataTableComponent.vue";
 import DiscountModalRedactor from "./components/admin-additional/Discount/DiscountModalRedactor.vue";
+import PhotoDataTableComponent from "./components/admin-additional/Photo/PhotoDataTableComponent.vue";
 
+//statistic
+import TypeProductCountChartStatistic from "./components/admin-additional/Statistic/TypeProductCountChartStatistic.vue";
 
 const app = createApp({
     components: {
@@ -22,7 +26,11 @@ const app = createApp({
         PersonalInformationDataTableComponent,
         DiscountDataTableComponent,
 
-        DiscountModalRedactor
+        DiscountModalRedactor,
+        PhotoDataTableComponent,
+        TypeProductCountChartStatistic,
+
+        Tooltip
     }
 });
 
@@ -34,4 +42,7 @@ app.use(PrimeVue, {
         tooltip: 1100       //tooltip
     }
 });
+
+app.directive('tooltip', Tooltip);
+
 app.mount('#app-additional');

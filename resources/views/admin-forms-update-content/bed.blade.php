@@ -30,7 +30,7 @@
                         @endforeach
                     </select>
                     @error('type')
-                        <span class="error text-danger">{{ str_replace('type', 'тип', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -43,7 +43,7 @@
                         @endforeach
                     </select>
                     @error('beds_bases_id')
-                        <span class="error text-danger">{{ str_replace('beds_bases_id', 'основание кровати', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -56,7 +56,7 @@
                         @endforeach
                     </select>
                     @error('beds_materials_id')
-                        <span class="error text-danger">{{ str_replace('beds_materials_id', 'материал', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -69,7 +69,7 @@
                         @endforeach
                     </select>
                     @error('bed_furniture_sizes_id')
-                        <span class="error text-danger">{{ str_replace('bed_furniture_sizes_id', 'размеры', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -78,7 +78,7 @@
                         <label class="form-check-label text-secondary">Наличие ящиков</label>
                     </div>
                     @error('have_boxes')
-                        <span class="error text-danger">{{ str_replace('have boxes', 'наличие ящиков', $message) }}</span>
+                        <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group">
