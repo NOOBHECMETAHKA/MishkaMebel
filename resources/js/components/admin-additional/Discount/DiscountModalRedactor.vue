@@ -1,7 +1,7 @@
 <template>
     <form @submit.prevent="onSubmit()">
         <div class="form-group">
-            <label class="text-secondary">Дата истечения</label>
+            <label class="text-secondary">Процент скидки</label>
             <div>
                 <InputNumber v-model="this.percent" inputId="percent" suffix="%" :min="2" :max="99"/>
                 <div>
@@ -27,6 +27,7 @@
             </div>
             <div v-else>
                 <div class="alert alert-warning">
+                    <h4 class="alert-heading">Предупреждение!</h4>
                     <span>Товары в ассортименте отсуствуют!</span>
                 </div>
             </div>

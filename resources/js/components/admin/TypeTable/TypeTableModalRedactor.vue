@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex flex-column gap-2 w-75">
-        <label for="name" class="text-secondary">Наименование крепления</label>
+        <label for="name" class="text-secondary">Наименование типа стола</label>
         <input-text id="name" v-model="name" aria-describedby="username-help"/>
         <small id="name-help">
             <span class="text-danger">{{ this.message }}</span>

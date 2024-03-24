@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\TypeTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class TypeTableUpdateController extends Controller
 {
     public function edit($id){
@@ -20,6 +20,8 @@ class TypeTableUpdateController extends Controller
         ]);
 
         DB::table(TypeTable::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Типы столов"');
+
         return redirect()->route('admin-page-content.panel.view', 'type-table');
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class ProductsAddController extends Controller
 {
     private $dictionary = array(
@@ -32,6 +32,7 @@ class ProductsAddController extends Controller
         $data['url_name'] = strtr(mb_strtolower($data['name']), $this->dictionary);
 
         DB::table(Product::$tableName)->insert($data);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Товары"');
 
         return response()->json(['message' => 'Данные успешно добавлены!'], JSON_UNESCAPED_UNICODE);
     }

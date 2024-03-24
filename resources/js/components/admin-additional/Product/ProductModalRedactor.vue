@@ -55,7 +55,8 @@
                     </div>
                     <div v-else>
                         <div class="alert alert-warning" role="alert">
-                            Проверьте есть ли записи на странице матрасы?
+                            <h4 class="alert-heading">Предупреждение!</h4>
+                            Проверьте есть ли записи на странице "Матрасы"!
                         </div>
                     </div>
                 </div>
@@ -67,7 +68,8 @@
                     </div>
                     <div v-else>
                         <div class="alert alert-warning" role="alert">
-                            Проверьте есть ли записи на странице матрасы?
+                            <h4 class="alert-heading">Предупреждение!</h4>
+                            Проверьте есть ли записи на странице "Чехлы"!
                         </div>
                     </div>
                 </div>
@@ -82,7 +84,8 @@
                     </div>
                     <div v-else>
                         <div class="alert alert-warning" role="alert">
-                            Проверьте есть ли записи на странице матрасы?
+                            <h4 class="alert-heading">Предупреждение!</h4>
+                            Проверьте есть ли записи на странице "Кровати"!
                         </div>
                     </div>
                 </div>
@@ -95,7 +98,8 @@
                     </div>
                     <div v-else>
                         <div class="alert alert-warning" role="alert">
-                            Проверьте есть ли записи на странице матрасы?
+                            <h4 class="alert-heading">Предупреждение!</h4>
+                            Проверьте есть ли записи на странице "Хранилище вещей"!
                         </div>
                     </div>
                 </div>
@@ -108,7 +112,8 @@
                     </div>
                     <div v-else>
                         <div class="alert alert-warning" role="alert">
-                            Проверьте есть ли записи на странице матрасы?
+                            <h4 class="alert-heading">Предупреждение!</h4>
+                            Проверьте есть ли записи на странице "Столы"!
                         </div>
                     </div>
                 </div>

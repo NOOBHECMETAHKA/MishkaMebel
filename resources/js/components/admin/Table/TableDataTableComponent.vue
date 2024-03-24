@@ -25,6 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                ref="dt"
                 :filters="filters"
                 :value="tables"
                 selectionMode="single"
@@ -49,6 +50,7 @@
 
                 <template #empty><span class="text-secondary">Столы не найдены!</span></template>
 
+                <Column field="type_tables.name" header="Тип стола" class="text-secondary" :sortable="true"></Column>
                 <Column field="materials.name" header="Матеариал" class="text-secondary" :sortable="true"></Column>
                 <Column field="furniture_dimensions.length" header="Габаритная длина" class="text-secondary" :sortable="true">
                     <template #body="slotProps">
@@ -87,6 +89,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
             </DataTable>
@@ -145,7 +148,10 @@ export default {
                 this.selectedElement = null;
                 this.refresh();
             }
-        }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
+        },
     },
 }
 </script>

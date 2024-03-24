@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MattressFastening;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class MattressFasteningUpdateController extends Controller
 {
     public function edit($id){
@@ -20,6 +20,7 @@ class MattressFasteningUpdateController extends Controller
         ]);
 
         DB::table(MattressFastening::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Крепления"');
         return redirect()->route('admin-page-content.panel.view', 'mattress-fastening');
     }
 }

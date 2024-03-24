@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
 
+            $table->unsignedBigInteger('type_table_id');
+            $table->foreign('type_table_id', 'type_table_fk')
+                ->on('type_tables')->references('id')
+                ->onDelete('cascade');
+
             $table->unsignedBigInteger('tables_materials_id');
             $table->foreign('tables_materials_id', 'tables_materials_fk')
                 ->on('materials')->references('id')

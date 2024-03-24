@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="dark">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" data-bs-theme="{{ Session::get('theme') }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md {{ Session::get('theme') == 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' }} shadow-sm">
             <div class="container">
                 <div>
                     <a class="navbar-brand text-secondary fs-4" href="{{ url('/') }}">
@@ -37,28 +37,26 @@
                     <ul class="navbar-nav me-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link fs-5" href="{{ route('login') }}">{{ __('Авторизация') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Авторизация') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link fs-5" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Регистрация') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="text-secondary">{{ \App\Models\User::query()->where('id', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())->first()->email }}</span>
+                                <a id="navbarDropdown nav-link" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <span>{{ \App\Models\User::query()->where('id', \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())->first()->email }}</span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -71,6 +69,38 @@
                                 </div>
                             </li>
                         @endguest
+
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Темы
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <form action="{{ route('main-page.change-theme', ['theme' => 'light']) }}" method="post">
+                                            @csrf
+                                            <button
+                                                type="submit"
+                                                class="dropdown-item"
+                                                href="#">
+                                                <img class="text-secondary" src="{{ asset('image/svg/BrightnessHigh.svg') }}" alt=""> Светлая тема
+                                            </button>
+                                        </form>
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('main-page.change-theme', ['theme' => 'dark']) }}" method="post">
+                                            @csrf
+                                            <button
+                                                type="submit"
+                                                class="dropdown-item"
+                                                href="#">
+                                                <img class="text-secondary" src="{{ asset('image/svg/Moon.svg') }}" alt=""> Тёмная тема
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -25,6 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                ref="dt"
                 selectionMode="single"
                 dataKey="id"
                 :metaKeySelection="false"
@@ -48,7 +49,7 @@
                 </template>
                 <template #empty><span class="text-secondary">Товары не найдены!</span></template>
 
-                <Column header="Статус" class="text-secondary">
+                <Column field="is_deleted" header="Статус" class="text-secondary">
                     <template #body="slotProps">
                         <Tag :value="slotProps.data.is_deleted ? 'Скрыт' : 'В ассортименте'" :severity="slotProps.data.is_deleted ? 'danger' : 'success'" />
                     </template>
@@ -57,7 +58,7 @@
                 <Column field="name" header="Наименование" class="text-secondary" :sortable="true"></Column>
                 <Column field="description" header="Описание" class="text-secondary" :sortable="true"></Column>
                 <Column field="guarantee" header="Гарантия" class="text-secondary" :sortable="true"></Column>
-                <Column field="price" header="Price" :sortable="true">
+                <Column field="price" header="Цена" class="text-secondary" :sortable="true">
                     <template #body="slotProps">
                         <span class="text-secondary">{{ `${slotProps.data.price} рублей` }}</span>
                     </template>
@@ -94,6 +95,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
             </DataTable>
@@ -173,6 +175,9 @@ export default {
         getCategory(keyCategory){
             let json = JSON.parse(this.translate);
             return json[keyCategory];
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
         },
     }
 }

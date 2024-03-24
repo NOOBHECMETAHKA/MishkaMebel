@@ -34,8 +34,7 @@ class User extends Authenticatable
         'remember_token',
         'is_banned',
         'created_at',
-        'updated_at',
-        'id'
+        'updated_at'
     ];
 
     /**
@@ -50,4 +49,12 @@ class User extends Authenticatable
     public function personal_information(){
         return $this->belongsTo(PersonalInformation::class,'id', 'personal_information_user_id');
     }
+    public function addresses(){
+        return $this->hasMany(Address::class, 'addresses_user_id', 'id');
+    }
+    public static $roles = [
+        'admin' => 'Администратор',
+        'manager' => 'Контент менеджер',
+        'user' => 'Пользователь'
+    ];
 }

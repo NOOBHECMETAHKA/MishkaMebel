@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FurnitureStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class FurnitureStorageUpdateController extends Controller
 {
     public function edit($id){
@@ -21,6 +21,7 @@ class FurnitureStorageUpdateController extends Controller
         ]);
 
         DB::table(FurnitureStorage::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Хранилище вещей"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-storage']);
     }

@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-body">
                     <iframe
-                        src="{{ env('MAP_YANDEX_MAP_SRC') }}"
+                        src="{{ $map ? $map['mapYandexSRC'] : env('MAP_YANDEX_MAP_SRC') }}"
                         width="100%"
                         height="400"
                         frameborder="0">

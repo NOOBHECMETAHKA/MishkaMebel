@@ -106,26 +106,30 @@
                 </div>
 
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-header">Управление</li>
-                    <li class="nav-item">
+                    @if(Auth::user()->role === 'admin')
+                        <li class="nav-header">Управление</li>
 
-                        <a href="{{ route('admin-page.view.charts') }}" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
-                            <p>Панель статистики</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin-page.view.contact-settings') }}" class="nav-link">
-                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Contact.svg") }}" alt="">
-                            <p>Контакты</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin-page.view.map-yandex-settings') }}" class="nav-link">
-                            <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Map.svg") }}" alt="">
-                            <p>Геолокация</p>
-                        </a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-page.view.developer-console') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tv"></i>
+                                <p>Консоль разработчика</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin-page.view.charts') }}" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Панель статистики</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin-page.view.map-yandex-settings') }}" class="nav-link">
+                                <img class="nav-icon fas" height="20px" src="{{ asset("image/svg/Map.svg") }}" alt="">
+                                <p>Геолокация</p>
+                            </a>
+                        </li>
+                    @endif
 
                     <li class="nav-header">Рабочая область</li>
                     <li class="nav-item">

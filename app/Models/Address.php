@@ -16,4 +16,7 @@ class Address extends Model
         'created_at',
         'updated_at',
     ];
+    public function users(){
+        return $this->hasOne(User::class, 'id', 'addresses_user_id');
+    }
 }

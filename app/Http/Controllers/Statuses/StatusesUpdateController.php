@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class StatusesUpdateController extends Controller
 {
     public function edit($id){
@@ -27,6 +27,7 @@ class StatusesUpdateController extends Controller
         }
 
         DB::table(Status::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Статусы"');
 
         return redirect()->route('admin-page-workspace.panel.view', ['page' => 'statuses']);
     }

@@ -18,8 +18,8 @@
             </div>
         </div>
         <section class="content">
-            <div>
-
+            <div id="app-additional">
+                <order-data-table-component></order-data-table-component>
             </div>
         </section>
 </div>

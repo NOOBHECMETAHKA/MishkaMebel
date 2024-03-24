@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Photos;
 
+use App\Classes\ImageManager;
 use App\Http\Controllers\Controller;
-use App\Http\ImageManager;
 use App\Models\Photo;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PhotosUpdateController extends Controller
 {
@@ -32,6 +32,7 @@ class PhotosUpdateController extends Controller
         }
 
         DB::table(Photo::$tableName)->insert($formPhotoElements);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Фотографии"');
 
         return redirect()->route('admin-page-workspace.panel.view', ['page' => 'photos']);
     }

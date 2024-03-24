@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-
+                ref="dt"
                 :filters="filters"
                 :value="mattress_cover"
                 selectionMode="single"
@@ -80,6 +80,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
             </DataTable>
@@ -136,7 +137,10 @@ export default {
                 this.selectedElement = null;
                 this.refresh();
             }
-        }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
+        },
     }
 }
 </script>

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Photos;
 
+use App\Classes\ImageManager;
 use App\Http\Controllers\Controller;
-use App\Http\ImageManager;
 use App\Models\Photo;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PhotosAddController extends Controller
 {
@@ -27,6 +27,7 @@ class PhotosAddController extends Controller
         }
 
         DB::table(Photo::$tableName)->insert($formPhotoElements);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Фотографии"');
 
         return redirect()->route('admin-page-workspace.panel.view', ['page' => 'photos']);
     }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BedBase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BedBaseUpdateController extends Controller
 {
@@ -20,6 +21,7 @@ class BedBaseUpdateController extends Controller
         ]);
 
         DB::table(BedBase::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Основание кровати"');
 
         return redirect()->route('admin-page-content.panel.view', 'bed-base');
     }

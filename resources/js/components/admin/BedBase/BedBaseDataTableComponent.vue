@@ -25,6 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                ref="dt"
                 v-model:filters="filters"
                 :value="this.bedBases"
                 selectionMode="single"
@@ -122,7 +123,10 @@ export default {
                 this.selectedElement = null;
                 this.refresh();
             }
-        }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
+        },
     }
 }
 </script>

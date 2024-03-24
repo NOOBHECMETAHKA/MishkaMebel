@@ -7,6 +7,7 @@ use App\Models\BedBase;
 use App\Models\Table;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BedBaseAddController extends Controller
 {
@@ -16,6 +17,7 @@ class BedBaseAddController extends Controller
         ]);
 
         DB::table(BedBase::$tableName)->insert($data);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Основание кровати"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'bed-base']);
     }

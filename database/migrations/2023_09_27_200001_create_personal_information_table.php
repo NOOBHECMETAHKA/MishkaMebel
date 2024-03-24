@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreign('personal_information_user_id', 'personal_information_user_fk')
                 ->on('users')->references('id')
                 ->onDelete('cascade');
-            $table->boolean('is_banned')->default(0);
             $table->timestamps();
         });
     }

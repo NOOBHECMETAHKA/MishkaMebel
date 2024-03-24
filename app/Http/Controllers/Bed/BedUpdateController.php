@@ -7,8 +7,8 @@ use App\Models\Bed;
 use App\Models\BedBase;
 use App\Models\FurnitureSize;
 use App\Models\Material;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BedUpdateController extends Controller
 {
@@ -33,6 +33,7 @@ class BedUpdateController extends Controller
         }
 
         DB::table(Bed::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Кровать"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'bed']);
     }

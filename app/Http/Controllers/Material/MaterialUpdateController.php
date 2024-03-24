@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Material;
 
 use App\Http\Controllers\Controller;
-use App\Http\ValidatorAPI;
 use App\Models\Material;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class MaterialUpdateController extends Controller
 {
@@ -24,6 +21,7 @@ class MaterialUpdateController extends Controller
         ]);
 
         DB::table(Material::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Материал"');
 
         return redirect()->route('admin-page-content.panel.view', 'material');
     }

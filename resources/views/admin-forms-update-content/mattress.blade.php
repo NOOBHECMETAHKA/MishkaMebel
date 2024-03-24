@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mattresses_materials_id" class="fw-bold text-secondary">Метериалы</label>
+                    <label for="mattresses_materials_id" class="fw-bold text-secondary">Материалы</label>
                     <select name="mattresses_materials_id" id="mattresses_materials_id" class="form-control">
                         @foreach(\App\Models\Material::all()->where('appointment', \App\Models\Material::$appointment[0]) as $materials)
                             <option

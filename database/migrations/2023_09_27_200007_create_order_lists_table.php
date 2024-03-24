@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('order_lists', function (Blueprint $table) {
             $table->id();
 
-            $table->timestamps();
-
             $table->decimal('price_sum_product', 10, 2)->unsigned();
             $table->bigInteger('count_product')->unsigned();
+
+
 
             $table->bigInteger('product_order_list_id')->unsigned();
             $table->foreign('product_order_list_id', 'product_order_list_fk')
@@ -32,6 +32,7 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->boolean('is_deleted')->default(0);
+            $table->timestamps();
         });
     }
 

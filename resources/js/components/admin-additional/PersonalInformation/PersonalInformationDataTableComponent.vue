@@ -23,13 +23,16 @@
                         </span>
                     </div>
                 </template>
-                <template #empty><span class="text-secondary">Персональная информация не найдены!</span></template>
+                <template #empty><span class="text-secondary">Персональная информация не найдена!</span></template>
 
                 <Column expander style="width: 5rem"/>
 
                 <template #expansion="slotProps">
                     <div v-if="slotProps.data.personal_information === null">
-                        <span>Персональная информация отсуствует!</span>
+                        <div class="alert alert-default-secondary w-25">
+                            <span>Персональная информация отсуствует!</span>
+                        </div>
+                        <personal-information-user-modal-redactor :obj-user="slotProps.data" @success-send-personal-info="refresh"/>
                     </div>
                     <div v-else>
                         <table class="table table-bordered">
@@ -42,25 +45,47 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <form class="form-group" v-if="this.userRole === 'admin'">
+                            <button class="btn btn-danger" @click.prevent="deletePersonalInfo(slotProps.data)">Удалить персональную информацию</button>
+                        </form>
                     </div>
+                    <personal-information-role-modal-redactor
+                        v-if="this.userRole === 'admin'"
+                        :obj-user="slotProps.data"
+                        :obj-role="slotProps.data.role"
+                        :obj-roles="availableRoles"
+                        @success-send-personal-info="refresh"/>
                 </template>
 
-                <Column header="Роль" field="role"></Column>
+                <Column class="text-secondary" header="Электронная почта" field="email"></Column>
 
-                <Column header="Электронная почта" field="email"></Column>
-
-                <Column header="Персональная информация">
+                <Column class="text-secondary" header="Персональная информация">
                     <template #body="slotProps">
-                        <Tag :value="slotProps.data.personal_information === null  ? 'Отсуствует' : 'Есть'" :severity="slotProps.data.personal_information === null ? 'danger' : 'success'" />
+                        <Tag
+                            :value="slotProps.data.personal_information === null  ? 'Отсуствует' : 'Есть'"
+                            :severity="slotProps.data.personal_information === null ? 'danger' : 'success'" />
+                    </template>
+                </Column>
+
+                <Column class="text-secondary" field="role" header="Роль">
+                    <template #body="slotProps">
+                        <Tag
+                            :icon="getIconByRoleUser(slotProps.data.role)"
+                            :severity="getValueStyleTagByRole(slotProps.data.role)"
+                            :value="this.availableRoles[slotProps.data.role]"/>
                     </template>
                 </Column>
 
                 <template #paginatorstart>
-                    <span class="text-secondary">Количество записей: {{ this.count }}</span>
+                    <span class="text-secondary" v-if="this.userRole === 'admin'">Количество записей: {{ this.count }}</span>
                 </template>
 
                 <template #paginatorend>
-                    <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
+                    <vue-button
+                        type="button"
+                        icon="pi pi-refresh"
+                        @click.prevent="refresh()"
+                        text/>
                 </template>
             </DataTable>
         </div>
@@ -70,15 +95,23 @@
 <script>
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 
+import InputText from "primevue/inputtext";
+import InputMask from "primevue/inputmask";
+
 import Tag from "primevue/tag";
+import PersonalInformationUserModalRedactor from "./PersonalInformationUserModalRedactor.vue";
+import PersonalInformationRoleModalRedactor from "./PersonalInformationRoleModalRedactor.vue";
 
 export default {
+    props: {
+      objRoles: String,
+      userRole: String
+    },
     data() {
         return {
             collectionInfo: null,
@@ -88,18 +121,24 @@ export default {
             },
             loading: true,
             selectedElement: null,
-            expandedRows: null
+            expandedRows: null,
+            availableRoles: null
         };
     },
     components:{
+        PersonalInformationUserModalRedactor,
+        PersonalInformationRoleModalRedactor,
+
         DataTable,
         Column,
         InputText,
         VueButton: Button,
         PrimeIcons,
-        Tag
+        Tag,
+        InputMask,
     },
     mounted() {
+        this.availableRoles = JSON.parse(this.objRoles);
         this.refresh();
     },
     methods: {
@@ -108,9 +147,45 @@ export default {
             axios.get('/api/personal-information').then(resp => {
                 this.collectionInfo = resp.data;
                 this.count = resp.data.length;
+
+                if(this.userRole === 'manager'){
+                    this.collectionInfo = this.collectionInfo.filter(el => el.personal_information !== null);
+                }
+
+
                 this.loading = false;
             });
         },
+        getIconByRoleUser(role){
+            switch(role){
+                case 'user':
+                    return 'pi pi-user';
+                case 'manager':
+                    return 'pi pi-tag';
+                case 'admin':
+                    return 'pi pi-wrench';
+            }
+        },
+        getValueStyleTagByRole(role){
+            switch(role){
+                case 'user':
+                    return 'info';
+                case 'manager':
+                    return 'success';
+                case 'admin':
+                    return 'danger';
+            }
+        },
+        deletePersonalInfo(slotData){
+            this.loading = true;
+            const personal_info_id  = slotData.personal_information.id;
+            if(personal_info_id !== null){
+                axios.post(`api/personal-information/delete/${personal_info_id}`).then(resp => {
+                    this.refresh();
+                    this.loading = false;
+                });
+            }
+        }
     }
 }
 </script>

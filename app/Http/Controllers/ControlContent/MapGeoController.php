@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\ControlContent;
 
+use App\Classes\ConfigManager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Config;
 
 class MapGeoController extends Controller
 {
     public function index(){
-        return View('admin-page.yandex-map');
+        $map = ConfigManager::readContent(ConfigManager::$mapStorageURL);
+        return View('admin-page.yandex-map', compact('map'));
     }
 
     public function change(){
@@ -18,8 +21,7 @@ class MapGeoController extends Controller
            'mapYandexSRC' => 'required|min:3'
         ]);
 
-        Config::set('MAP_YANDEX_MAP_SRC', $data['mapYandexSRC']);
-
+        ConfigManager::forseSave(ConfigManager::$mapStorageURL, $data);
         return redirect()->back();
     }
 }

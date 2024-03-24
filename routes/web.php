@@ -21,7 +21,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(["prefix" => "admin"], function($id){
+Route::post('/theme/change/{theme}', [\App\Http\Controllers\HomeController::class, 'changTheme'])->where(['theme' => 'dark|light'])->name('main-page.change-theme');
+
+Route::group(["prefix" => "admin", 'middleware' => ['auth', 'manager']], function($id){
     Route::get('/{page}', [\App\Http\Controllers\AdminController::class, 'indexContent'])->where(['page' =>
         'photo|bed|bed-base|furniture-dimensions|furniture-size|furniture-storage|material|mattress|mattress-cover|mattress-fastening|table|type-table'])
         ->name('admin-page-content.panel.view');
@@ -36,12 +38,13 @@ Route::group(["prefix" => "admin"], function($id){
     Route::get('/additional/{page}/add', [\App\Http\Controllers\AdminController::class, 'addWorkSpace'])->where(['page' =>
         'products|discounts|photos'])->name('admin-page-workspace.panel.add-form');
 
-    Route::group(['prefix' => '/panel'], function (){
+    Route::group(['prefix' => '/panel', 'middleware' => ['auth', 'admin']], function (){
         Route::get('/charts', [\App\Http\Controllers\ControlContent\StatisticChartController::class, 'index'])->name('admin-page.view.charts');
         Route::get('/yandex-map/settings', [\App\Http\Controllers\ControlContent\MapGeoController::class, 'index'])->name('admin-page.view.map-yandex-settings');
-        Route::get('/contact/settings', [\App\Http\Controllers\ControlContent\MapGeoController::class, 'index'])->name('admin-page.view.contact-settings');
+        Route::get('/console', [\App\Http\Controllers\ControlContent\DeveloperConsoleController::class, 'index'])->name('admin-page.view.developer-console');
 
         Route::post('/yandex-map/settings/change', [\App\Http\Controllers\ControlContent\MapGeoController::class, 'change'])->name('admin-page.view.map-yandex-settings.store');
+        Route::post('/console/clear', [\App\Http\Controllers\ControlContent\DeveloperConsoleController::class, 'destroy'])->name('admin-page.view.developer-console.destroy');
     });
 
     Route::post('/bed/store', [\App\Http\Controllers\Bed\BedAddController::class, 'store'])->name('admin.bed.store');

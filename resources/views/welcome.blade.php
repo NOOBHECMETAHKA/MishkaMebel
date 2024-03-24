@@ -9,14 +9,17 @@
                 <div>
                     <span class="fw-bold">Добро пожаловать в панель управления магазином детской мебели. Для начала работы авторизируйтесь!</span>
                 </div>
-                @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                @endif
             </div>
             <div class="card-footer">
-                <a href="/admin/panel/charts" class="btn btn-success">Перейти к работе</a>
+                @if(\Illuminate\Support\Facades\Auth::check())
+                    @if(\Illuminate\Support\Facades\Auth::user()->role != 'user')
+                        <a href="/admin/panel/charts" class="btn btn-success">Перейти к работе</a>
+                    @else
+                        <small class="text-danger">У вас нету доступа к панели управления. Дождитесь пока администраторы изменят вам роль!</small>
+                    @endif
+                @else
+                    <small class="text-danger">Вам следует авторизоваться!</small>
+                @endif
             </div>
         </div>
     </div>

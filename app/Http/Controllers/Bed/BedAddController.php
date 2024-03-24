@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Bed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class BedAddController extends Controller
 {
@@ -25,6 +26,7 @@ class BedAddController extends Controller
         }
 
         DB::table(Bed::$tableName)->insert($data);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Кровать"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'bed']);
     }

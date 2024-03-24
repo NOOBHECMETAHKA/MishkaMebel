@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('ordered_in');
             $table->decimal('total_cost', 10, 2, true);
 
             $table->bigInteger('order_status_id')->unsigned();
@@ -29,7 +30,7 @@ return new class extends Migration
 
             $table->boolean('enabling_deliveries')->default(0);
             $table->boolean('is_deleted')->default(0);
-            $table->timestamps();
+            $table->timestamp('create_at');
         });
     }
 

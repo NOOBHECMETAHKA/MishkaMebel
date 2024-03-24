@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FurnitureDimensions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class FurnitureDimensionsUpdateController extends Controller
 {
@@ -22,6 +23,7 @@ class FurnitureDimensionsUpdateController extends Controller
         ]);
 
         DB::table(FurnitureDimensions::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Габариты"');
 
         return response()->json(['message' => 'Данные успешно добавлены!']);
     }

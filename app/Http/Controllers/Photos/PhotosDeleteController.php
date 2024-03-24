@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Photos;
 
+use App\Classes\ImageManager;
 use App\Http\Controllers\Controller;
-use App\Http\ImageManager;
 use App\Models\Photo;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class PhotosDeleteController extends Controller
 {
@@ -18,6 +18,7 @@ class PhotosDeleteController extends Controller
             ImageManager::delete($el->link);
         }
         $query->delete();
+        Log::channel('single-users-action')->info('Удаление одной из моделей "Фотографии"');
         return response()->json(['message' => 'Запись успешно удалена!'], options: JSON_UNESCAPED_UNICODE);
     }
 }

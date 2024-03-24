@@ -8,7 +8,7 @@ use App\Models\Material;
 use App\Models\Mattress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class MattressUpdateController extends Controller
 {
     public function edit($id){
@@ -27,6 +27,7 @@ class MattressUpdateController extends Controller
         ]);
 
         DB::table(Mattress::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Матрас"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'mattress']);
     }

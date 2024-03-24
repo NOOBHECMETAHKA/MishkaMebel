@@ -21,4 +21,7 @@ class Table extends Model
     public function furniture_dimensions(){
         return $this->hasOne(FurnitureDimensions::class, 'id', 'tables_furniture_dimensions_id');
     }
+    public function type_tables(){
+        return $this->hasOne(TypeTable::class, 'id', 'type_table_id');
+    }
 }

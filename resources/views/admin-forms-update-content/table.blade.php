@@ -21,6 +21,21 @@
         <section class="content">
             <form action="{{ route('admin-page-content.panel.update.table', ['id' => $object->id]) }}" method="post">
                 @csrf
+
+                <div class="form-group">
+                    <label for="type_table_id" class="fw-bold text-secondary">Тип стола</label>
+                    <select name="type_table_id" id="type_table_id" class="form-control">
+                        @foreach(\App\Models\TypeTable::all() as $type_table)
+                            <option
+                                @if($object->type_table_id == $type_table->id) selected @endif
+                            value="{{ $type_table->id }}">{{ $type_table->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('type_table_id')
+                    <span class="error text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="tables_materials_id" class="fw-bold text-secondary">Материал</label>
                     <select name="tables_materials_id" id="tables_materials_id" class="form-control">
@@ -36,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tables_furniture_dimensions_id" class="fw-bold text-secondary">Габариты кровати</label>
+                    <label for="tables_furniture_dimensions_id" class="fw-bold text-secondary">Габариты стола</label>
                     <select name="tables_furniture_dimensions_id" id="tables_furniture_dimensions_id" class="form-control">
                         @foreach(\App\Models\FurnitureDimensions::all() as $furnitureDimensions)
                             <option

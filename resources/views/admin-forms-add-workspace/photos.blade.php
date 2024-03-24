@@ -22,6 +22,7 @@
             <form action="{{ route('admin.photos.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
+                @if(count(\App\Models\Product::all()) > 0)
                 <div class="form-group">
                     <label for="imagesInput" class="form-label text-secondary">Товар</label>
                     <select name="product_photo_id" class="form-control">
@@ -30,6 +31,12 @@
                         @endforeach
                     </select>
                 </div>
+                @else
+                    <div class="alert alert-warning">
+                        <h5 class="alert-heading">Предупреждение!</h5>
+                        <span>Товары в ассортименте отсуствуют!</span>
+                    </div>
+                @endif
 
                 <div class="form-group">
                     <label for="imagesInput" class="form-label text-secondary">Выберите изображения</label>

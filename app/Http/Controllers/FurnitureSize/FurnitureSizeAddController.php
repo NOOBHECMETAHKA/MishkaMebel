@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FurnitureSize;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class FurnitureSizeAddController extends Controller
 {
@@ -16,8 +17,8 @@ class FurnitureSizeAddController extends Controller
         ]);
 
         DB::table(FurnitureSize::$tableName)->insert($data);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Размеры"');
 
-        return response()->json(['message' => 'Данные успешно добавлены!'], JSON_UNESCAPED_UNICODE);
-        //return redirect()->route('admin-page-content.panel.view', ['page' => 'furniture-size']);
+        return response()->json(['message' => 'Данные успешно добавлены!'], 200);
     }
 }

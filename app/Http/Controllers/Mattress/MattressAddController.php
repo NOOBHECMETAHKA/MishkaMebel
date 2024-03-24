@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mattress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class MattressAddController extends Controller
 {
     public function store(){
@@ -19,6 +19,7 @@ class MattressAddController extends Controller
         ]);
 
         DB::table(Mattress::$tableName)->insert($data);
+        Log::channel('single-users-action')->info('Добавление одной из моделей "Матрас"');
 
         return redirect()->route('admin-page-content.panel.view', ['page' => 'mattress']);
     }

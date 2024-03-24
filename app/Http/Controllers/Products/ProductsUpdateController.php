@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Log;
 class ProductsUpdateController extends Controller
 {
     private $dictionary = array(
@@ -37,6 +37,7 @@ class ProductsUpdateController extends Controller
         $data['url_name'] = strtr(mb_strtolower($data['name']), $this->dictionary);
 
         DB::table(Product::$tableName)->where('id', $id)->update($data);
+        Log::info('Изменение одной из моделей "Товары"');
 
         return response()->json(['message' => 'Данные успешно добавлены!'], JSON_UNESCAPED_UNICODE);
     }
@@ -45,6 +46,8 @@ class ProductsUpdateController extends Controller
         $data = ['is_deleted' => ($function == 'frost') ? 1 : 0];
 
         DB::table(Product::$tableName)->where('id', $id)->update($data);
+        Log::channel('single-users-action')->info('Изменение одной из моделей "Товары"');
+
         return response()->json(['message' => 'Данные успешно обновлены!']);
     }
 }

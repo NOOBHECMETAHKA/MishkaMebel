@@ -24,6 +24,7 @@
     <!--    ModalWindow-->
     <div class="col-12">
         <div class="alert alert-default-secondary">
+            <h4 class="alert-heading">Предупреждение!</h4>
             <div>
                 <alert-bootstrap5-icon></alert-bootstrap5-icon>
                 <span>  Действует <b>последняя</b> установленная скидка!</span>
@@ -59,6 +60,7 @@
                         <span>{{ slotProps.data.percent }}%</span>
                     </template>
                 </Column>
+
 
                 <Column field="expiration_discount" header="Срок окончания" class="text-secondary" :sortable="true">
                     <template #body="slotProps">

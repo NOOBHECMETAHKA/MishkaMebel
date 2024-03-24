@@ -25,6 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
+                ref="dt"
                 selectionMode="single"
                 dataKey="id"
                 :metaKeySelection="false"
@@ -39,7 +40,7 @@
                 tableStyle="min-width: 50rem"
                 data-key="id">
                 <template #header>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex">
                         <span class="p-input-icon-left">
                             <i class="pi pi-search" />
                             <InputText v-model="filters['global'].value" placeholder="Найти" class="text-secondary"/>
@@ -69,6 +70,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
             </DataTable>
@@ -84,6 +86,8 @@ import Button from "primevue/button";
 import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
+
+import Toolbar from "primevue/toolbar";
 
 export default {
     props: {
@@ -107,6 +111,8 @@ export default {
         InputText,
         VueButton: Button,
         PrimeIcons,
+
+        Toolbar
     },
     mounted() {
         this.refresh();
@@ -129,6 +135,9 @@ export default {
                 this.selectedMaterial = null;
                 this.refresh();
             }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
         },
     }
 }

@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-
+                ref="dt"
                 v-model:filters="filters"
                 :value="types_table"
                 tableStyle="min-width: 50rem"
@@ -69,6 +69,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
             </DataTable>
@@ -81,6 +82,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
+
 import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
@@ -125,7 +127,10 @@ export default {
                 this.selectedElement = null;
                 this.refresh();
             }
-        }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
+        },
     }
 }
 </script>

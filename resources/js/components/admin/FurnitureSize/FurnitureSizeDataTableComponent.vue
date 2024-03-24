@@ -25,7 +25,7 @@
     <div class="col-12">
         <div class="card p-3">
             <DataTable
-
+                ref="dt"
                 :value="furniture_size"
                 v-model:filters="filters"
                 selectionMode="single"
@@ -80,6 +80,7 @@
                 </template>
 
                 <template #paginatorend>
+                    <vue-button type="button" icon="pi pi-download" @click.prevent="exportCSV()" text/>
                     <vue-button type="button" icon="pi pi-refresh" @click.prevent="refresh()" text/>
                 </template>
 
@@ -138,6 +139,9 @@ export default {
                 this.selectedElement = null;
                 this.refresh();
             }
+        },
+        exportCSV() {
+            this.$refs.dt.exportCSV();
         },
     }
 }

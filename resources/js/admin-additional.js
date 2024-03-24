@@ -13,7 +13,8 @@ import PersonalInformationDataTableComponent from "./components/admin-additional
 import DiscountDataTableComponent from "./components/admin-additional/Discount/DiscountDataTableComponent.vue";
 import DiscountModalRedactor from "./components/admin-additional/Discount/DiscountModalRedactor.vue";
 import PhotoDataTableComponent from "./components/admin-additional/Photo/PhotoDataTableComponent.vue";
-
+import ContactInfoDatableComponent from "./components/admin-additional/ContactInfo/ContactInfoDatableComponent.vue";
+import OrderDataTableComponent from "./components/admin-additional/Order/OrderDataTableComponent.vue";
 //statistic
 import TypeProductCountChartStatistic from "./components/admin-additional/Statistic/TypeProductCountChartStatistic.vue";
 
@@ -25,12 +26,12 @@ const app = createApp({
         ProductModalRedactorUpdate,
         PersonalInformationDataTableComponent,
         DiscountDataTableComponent,
-
         DiscountModalRedactor,
         PhotoDataTableComponent,
         TypeProductCountChartStatistic,
-
-        Tooltip
+        ContactInfoDatableComponent,
+        OrderDataTableComponent,
+        Tooltip,
     }
 });
 

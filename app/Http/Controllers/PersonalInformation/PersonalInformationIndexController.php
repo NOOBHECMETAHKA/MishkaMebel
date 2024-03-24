@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\PersonalInformation;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\PersonalInformation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class PersonalInformationIndexController extends Controller
 {
     public function index() {
-        $data = User::with([PersonalInformation::$tableName]);
+        $data = User::with([PersonalInformation::$tableName, Address::$tableName]);
         return response()->json($data->get(), options: JSON_UNESCAPED_UNICODE);
     }
 }

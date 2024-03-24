@@ -19,7 +19,10 @@
         </div>
         <section class="content">
             <div id="app-additional">
-                <personal-information-data-table-component></personal-information-data-table-component>
+                <personal-information-data-table-component
+                    user-role="{{ \Illuminate\Support\Facades\Auth::user()->role }}"
+                    obj-roles="{{ json_encode(\App\Models\User::$roles, JSON_UNESCAPED_UNICODE) }}">
+                </personal-information-data-table-component>
             </div>
         </section>
     </div>

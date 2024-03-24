@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Classes;
 
 use Illuminate\Support\Facades\Storage;
 

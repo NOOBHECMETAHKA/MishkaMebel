@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-secondary">Добавлние матрасов</h1>
+                        <h1 class="m-0 text-secondary">Добавление матрасов</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="mattresses_materials_id" class="fw-bold text-secondary">Метериалы</label>
+                    <label for="mattresses_materials_id" class="fw-bold text-secondary">Материалы</label>
                     <select name="mattresses_materials_id" id="mattresses_materials_id" class="form-control">
                         @foreach(\App\Models\Material::all()->where('appointment', \App\Models\Material::$appointment[0]) as $materials)
                             <option

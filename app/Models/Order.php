@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 
 class Order extends Model
@@ -16,5 +17,14 @@ class Order extends Model
         'created_at',
         'updated_at',
     ];
-
+    public function order_lists(){
+        return $this
+            ->hasMany(OrderList::class, 'order_order_list_id', 'id');
+    }
+    public function statuses(){
+        return $this->belongsTo(Status::class, 'order_status_id', 'id');
+    }
+    public function products() : BelongsToMany{
+        return $this->belongsToMany(Product::class);
+    }
 }

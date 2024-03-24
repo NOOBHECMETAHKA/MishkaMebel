@@ -33,7 +33,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="bade-base" class="fw-bold text-secondary">Основания кроватей</label>
+                    <label for="bade-base" class="fw-bold text-secondary">Основания кровати</label>
                     <select name="beds_bases_id" id="bade-base" class="form-control">
                         @foreach(\App\Models\BedBase::all() as $bedBases)
                             <option
@@ -46,7 +46,7 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="materials" class="fw-bold text-secondary">Метериалы</label>
+                    <label for="materials" class="fw-bold text-secondary">Материал</label>
                     <select name="beds_materials_id" id="materials" class="form-control">
                         @foreach(\App\Models\Material::all()->where('appointment', \App\Models\Material::$appointment[1]) as $materials)
                             <option

@@ -203,5 +203,7 @@ return [
         'product_photo_id' => 'товар',
         'image' => 'изображения',
         'is_deleted' => 'блокировка',
+        'phone_number' => 'номера телефона',
+        'type_table_id' => 'тип стола',
     ],
 ];

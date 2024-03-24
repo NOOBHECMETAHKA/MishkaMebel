@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http;
+namespace App\Classes;
 
 class ValidatorAPI {
 
@@ -22,12 +22,6 @@ class ValidatorAPI {
         }
         //Конкретинация ошибок
         $messages['message'] = join(' ', $messages['message']);
-        //Изменение ключевых слов
-        if(count($vocabulary) > 0){
-            foreach($vocabulary as $key => $value){
-                $messages['message'] = str_replace($key, $value, $messages['message']);
-            }
-        }
         //Отправка JSON
         return json_encode($messages, JSON_UNESCAPED_UNICODE);
     }
