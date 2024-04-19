@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Discounts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Discounts\DiscountsAddRequest;
 use App\Models\Discount;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,12 +12,8 @@ use Illuminate\Support\Facades\Log;
 
 class DiscountsAddController extends Controller
 {
-    public function store(){
-        $data = \request()->validate([
-            'percent' => 'required|int',
-            'expiration_discount' => 'required',
-            'discounts_product_id' => 'required|int',
-        ]);
+    public function store(DiscountsAddRequest $request){
+        $data = $request->validated();
 
         $data['expiration_discount'] = Carbon::parse(str_replace('"', '', $data['expiration_discount']));
 

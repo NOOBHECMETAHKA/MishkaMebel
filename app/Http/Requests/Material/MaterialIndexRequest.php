@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Material;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MaterialIndexRequest extends FormRequest
 {
@@ -14,8 +15,15 @@ class MaterialIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'sort' => '',
-            'param' => ''
+            'sort' => [
+                Rule::in(['desc'])
+            ],
+            'param' => [
+                Rule::in(['name', 'appointment'])
+            ],
+            'appointment' => [
+                Rule::in(['material', 'stuffing'])
+            ],
         ];
     }
 }

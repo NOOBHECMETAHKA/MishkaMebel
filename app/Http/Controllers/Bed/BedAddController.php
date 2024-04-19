@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bed;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bed\BedAddRequest;
 use App\Models\Bed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,14 +11,8 @@ use Illuminate\Support\Facades\Log;
 
 class BedAddController extends Controller
 {
-    public function store(){
-        $data = \request()->validate([
-            'type' => 'string|required',
-            'have_boxes' => '',
-            'beds_bases_id' => 'int|required',
-            'beds_materials_id' => 'int|required',
-            'bed_furniture_sizes_id' => 'int|required',
-        ]);
+    public function store(BedAddRequest $request){
+        $data = $request->validated();
 
         if(isset($data['have_boxes'])){
             $data['have_boxes'] = 1;

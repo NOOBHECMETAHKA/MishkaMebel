@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Products\ProductsAddRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,15 +20,8 @@ class ProductsAddController extends Controller
         'э' => 'e', 'ю' => 'yu', 'я' => 'ya', ' ' => '_'
     );
 
-    public function store(){
-        $data = \request()->validate([
-            'name' => 'required|unique:products',
-            'description' => 'required',
-            'guarantee' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'products_product_id' => 'required|int'
-        ]);
+    public function store(ProductsAddRequest $request){
+        $data = $request->validated();
 
         $data['url_name'] = strtr(mb_strtolower($data['name']), $this->dictionary);
 

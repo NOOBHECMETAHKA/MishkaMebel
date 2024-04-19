@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MattressCover;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MattressCover\MattressCoverUpdateRequest;
 use App\Models\MattressCover;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,12 +15,8 @@ class MattressCoverUpdateController extends Controller
         return View('admin-forms-update-content.mattress-cover', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'function' => 'string|required',
-            'mattress_fastenings_id' => 'int|required',
-            'mattress_covers_furniture_sizes_id' => 'int|required'
-        ]);
+    public function update($id, MattressCoverUpdateRequest $request){
+        $data = $request->validated();
 
         DB::table(MattressCover::$tableName)->where('id', $id)->update($data);
         Log::channel('single-users-action')->info('Изменение одной из моделей "Чехлы"');

@@ -13,7 +13,7 @@
             <div class="card-footer">
                 @if(\Illuminate\Support\Facades\Auth::check())
                     @if(\Illuminate\Support\Facades\Auth::user()->role != 'user')
-                        <a href="/admin/panel/charts" class="btn btn-success">Перейти к работе</a>
+                        <a href="/admin/mattress" class="btn btn-success">Перейти к работе</a>
                     @else
                         <small class="text-danger">У вас нету доступа к панели управления. Дождитесь пока администраторы изменят вам роль!</small>
                     @endif

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FurnitureStorage;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\FurnitureStorage\FurnitureStorageUpdateRequest;
 use App\Models\FurnitureStorage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +15,8 @@ class FurnitureStorageUpdateController extends Controller
         return View('admin-forms-update-content.furniture-storage', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'type' => 'string|required',
-            'furniture_storages_furniture_dimensions_id' => 'int|required'
-        ]);
+    public function update($id, FurnitureStorageUpdateRequest $request){
+        $data = $request->validated();
 
         DB::table(FurnitureStorage::$tableName)->where('id', $id)->update($data);
         Log::channel('single-users-action')->info('Изменение одной из моделей "Хранилище вещей"');

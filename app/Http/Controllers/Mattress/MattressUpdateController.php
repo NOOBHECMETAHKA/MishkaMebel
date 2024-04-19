@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mattress;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Mattress\MattressUpdateRequest;
 use App\Models\FurnitureSize;
 use App\Models\Material;
 use App\Models\Mattress;
@@ -17,14 +18,8 @@ class MattressUpdateController extends Controller
         return View('admin-forms-update-content.mattress', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'type' => 'string|required',
-            'age_category' => 'string|required',
-            'hardness' => 'string|required',
-            'mattresses_materials_id' => 'int|required',
-            'mattresses_furniture_sizes_id' => 'int|required'
-        ]);
+    public function update($id, MattressUpdateRequest $request){
+        $data = $request->validated();
 
         DB::table(Mattress::$tableName)->where('id', $id)->update($data);
         Log::channel('single-users-action')->info('Изменение одной из моделей "Матрас"');

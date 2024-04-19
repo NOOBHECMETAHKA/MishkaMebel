@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Products\ProductsUpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,15 +25,8 @@ class ProductsUpdateController extends Controller
         return View('admin-forms-update-workspace.products', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'guarantee' => 'required',
-            'price' => 'required',
-            'category' => 'required',
-            'products_product_id' => 'required|int'
-        ]);
+    public function update($id, ProductsUpdateRequest $request){
+        $data = $request->validated();
 
         $data['url_name'] = strtr(mb_strtolower($data['name']), $this->dictionary);
 

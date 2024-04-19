@@ -19,7 +19,7 @@
         </div>
         <section class="content">
             <div class="col-6">
-                @if(count(\App\Models\FurnitureSize::all()) > 0 and count(\App\Models\Material::all()->where('appointment', \App\Models\Material::$appointment[1])) > 0)
+                @if(count(\App\Models\FurnitureDimensions::all()) > 0 and count(\App\Models\Material::all()->where('appointment', \App\Models\Material::$appointment[1])) > 0 and count(\App\Models\TypeTable::all()) > 0)
                     <div class="mb-3">
                         <a class="btn btn-success" href="{{ route("admin-page-content.panel.add-form", ["page" => "table"]) }}">Добавить</a>
                     </div>

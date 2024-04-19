@@ -11,6 +11,7 @@
             <div class="__login_form_border">
                 <form action="{{ route('login') }}" method="post">
                     @csrf
+{{--                    csrf защитное поле для отправки данных на сервер--}}
                     <div class="form-group mb-3">
                         <label class="text-secondary fs-4">Электронная почта</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>

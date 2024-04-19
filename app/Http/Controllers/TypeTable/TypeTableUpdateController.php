@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TypeTable;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TypeTable\TypeTableUpdateRequest;
 use App\Models\TypeTable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +15,8 @@ class TypeTableUpdateController extends Controller
         return View('admin-forms-update-content.type-table', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'name' => ['min:3', 'required'],
-        ]);
+    public function update($id, TypeTableUpdateRequest $request){
+        $data = $request->validated();
 
         DB::table(TypeTable::$tableName)->where('id', $id)->update($data);
         Log::channel('single-users-action')->info('Изменение одной из моделей "Типы столов"');

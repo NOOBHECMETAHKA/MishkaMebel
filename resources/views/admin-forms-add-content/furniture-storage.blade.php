@@ -40,7 +40,7 @@
                         @foreach(\App\Models\FurnitureDimensions::all() as $furnitureDimensions)
                             <option
                                 @if(old('furniture_storages_furniture_dimensions_id') == $furnitureDimensions->id) selected @endif
-                            value="{{ $furnitureDimensions->id }}">{{ round($furnitureDimensions->length) }} сантиметров на {{ round($furnitureDimensions->width) }} сантиметров на {{ round($furnitureDimensions->height) }}</option>
+                            value="{{ $furnitureDimensions->id }}">{{ round($furnitureDimensions->length) }} сантиметров на {{ round($furnitureDimensions->width) }} сантиметров на {{ round($furnitureDimensions->height) }} сантиметров</option>
                         @endforeach
                     </select>
                     @error('furniture_storages_furniture_dimensions_id')

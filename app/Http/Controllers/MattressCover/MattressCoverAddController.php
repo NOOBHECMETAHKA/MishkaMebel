@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\MattressCover;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MattressCover\MattressCoverAddRequest;
 use App\Models\MattressCover;
 use App\Models\Table;
 use Illuminate\Http\Request;
@@ -10,12 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 class MattressCoverAddController extends Controller
 {
-    public function store(){
-        $data = \request()->validate([
-            'function' => 'string|required',
-            'mattress_fastenings_id' => 'int|required',
-            'mattress_covers_furniture_sizes_id' => 'int|required'
-        ]);
+    public function store(MattressCoverAddRequest $request){
+        $data = $request->validated();
 
         DB::table(MattressCover::$tableName)->insert($data);
         Log::channel('single-users-action')->info('Добавление одной из моделей "Чехлы"');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Bed;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Bed\BedUpdateRequest;
 use App\Models\Bed;
 use App\Models\BedBase;
 use App\Models\FurnitureSize;
@@ -17,14 +18,8 @@ class BedUpdateController extends Controller
         return View('admin-forms-update-content.bed', compact('object'));
     }
 
-    public function update($id){
-        $data = \request()->validate([
-            'type' => 'string|required',
-            'have_boxes' => '',
-            'beds_bases_id' => 'int|required',
-            'beds_materials_id' => 'int|required',
-            'bed_furniture_sizes_id' => 'int|required',
-        ]);
+    public function update($id, BedUpdateRequest $request){
+        $data = $request->validated();
 
         if(isset($data['have_boxes'])){
             $data['have_boxes'] = 1;

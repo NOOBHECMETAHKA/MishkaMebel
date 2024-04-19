@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Table;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Table\TableUpdateRequest;
 use App\Models\FurnitureDimensions;
 use App\Models\Material;
 use App\Models\Table;
@@ -16,7 +17,7 @@ class TableUpdateController extends Controller
         return View('admin-forms-update-content.table', compact('object'));
     }
 
-    public function update($id){
+    public function update($id, TableUpdateRequest $request){
         $data = \request()->validate([
             'type_table_id' => 'int|required',
             'tables_materials_id' => 'int|required',

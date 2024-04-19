@@ -2,11 +2,11 @@
     <div class="flex flex-wrap gap-3">
         <div class="d-flex flex-column">
             <label class="font-bold block mb-2 text-secondary">Длина</label>
-            <input-number v-model="length" :min="0" :max="1000" inputId="mile" suffix=" cm" :max-fraction-digits="2"/>
+            <input-number v-model="length" :min="0" :max="1000" inputId="mile" suffix=" см" :max-fraction-digits="2"/>
         </div>
         <div class="d-flex flex-column">
             <label class="font-bold block mb-2 text-secondary">Ширина</label>
-            <input-number v-model="width" :min="0" :max="1000" inputId="mile" suffix=" cm" :max-fraction-digits="2"/>
+            <input-number v-model="width" :min="0" :max="1000" inputId="mile" suffix=" см" :max-fraction-digits="2"/>
         </div>
 
         <div class="form-group mt-3" v-if="message !== ''">
