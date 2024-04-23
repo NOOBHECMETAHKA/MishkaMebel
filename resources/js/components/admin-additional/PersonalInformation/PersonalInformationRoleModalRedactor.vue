@@ -18,7 +18,6 @@
 
 <script>
 
-
 import SelectButton from "primevue/selectbutton";
 import {useVuelidate} from "@vuelidate/core";
 import {maxLength, minLength, required} from "@vuelidate/validators";

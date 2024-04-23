@@ -148,8 +148,8 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/products').then(resp => {
-                this.collectionInfo = resp.data;
-                this.count = resp.data.length;
+                this.collectionInfo = resp.data.data;
+                this.count = resp.data.data.length;
                 this.loading = false;
             });
         },

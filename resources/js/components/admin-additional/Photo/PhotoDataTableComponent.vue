@@ -38,10 +38,10 @@
                         <Galleria :value="this.selectedElement.photos" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true" containerStyle="max-width: 640px"
                                   :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="true" :showIndicators="true">
                             <template #item="slotProps">
-                                <img :src="`storage\\`+ slotProps.item.link" alt="Фотография" style="width: 100%; display: block;" />
+                                <img :src="slotProps.item.link" alt="Фотография" style="width: 100%; display: block;" />
                             </template>
                             <template #thumbnail="slotProps">
-                                <img :src="`storage\\`+ slotProps.item.link" alt="Фотография" style="display: block;" />
+                                <img :src="slotProps.item.link" alt="Фотография" style="display: block;" />
                             </template>
                         </Galleria>
                     </div>
@@ -176,8 +176,8 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/photos').then(resp => {
-                this.collectionInfo = resp.data;
-                this.count = resp.data.length;
+                this.collectionInfo = resp.data.data;
+                this.count = resp.data.data.length;
                 this.loading = false;
             });
         },

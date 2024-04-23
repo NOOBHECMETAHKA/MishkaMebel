@@ -39,7 +39,6 @@ Route::get('/orders', [\App\Http\Controllers\Orders\OrdersIndexController::class
 Route::get('/discounts', [\App\Http\Controllers\Discounts\DiscountsIndexController::class, 'index']);
 Route::get('/photos', [\App\Http\Controllers\Photos\PhotosIndexController::class, 'index']);
 
-
 Route::post('/types-table/store', [\App\Http\Controllers\TypeTable\TypeTableAddController::class, 'store']);
 Route::post('/mattress-fastenings/store', [\App\Http\Controllers\MattressFastening\MattressFasteningAddController::class, 'store']);
 Route::post('/materials/store', [\App\Http\Controllers\Material\MaterialAddController::class, 'store']);

@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('main-page');
 
+Route::get('/catalog/{page}', function() {
+    return view('welcome');
+})->where(['page' => '.*']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -89,7 +93,6 @@ Route::group(["prefix" => "admin", 'middleware' => ['auth', 'manager']], functio
     Route::post('/table/update/{id}', [\App\Http\Controllers\Table\TableUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.table');
     Route::post('/type-table/update/{id}', [\App\Http\Controllers\TypeTable\TypeTableUpdateController::class, 'update'])->where(['id', '+[0-9]'])->name('admin-page-content.panel.update.type-table');
 });
-
 
 
 
