@@ -12,6 +12,8 @@ import axios from "axios";
 
 const app = createApp(App);
 
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
 app.config.globalProperties.axios = axios;
 
 app.use(router);

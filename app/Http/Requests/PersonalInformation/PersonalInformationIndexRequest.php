@@ -22,7 +22,7 @@ class PersonalInformationIndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'personal_information_user_id' => 'int'
         ];
     }
 }

@@ -17,9 +17,9 @@
 import Chart from 'primevue/chart';
 import { PrimeIcons } from 'primevue/api';
 
-import PieChartBootstrap5Icon from "@/svg/PieChart-Bootstrap5-Icon.vue";
-import QuestionCircleBootstrap5Icon from "@/svg/QuestionCircle-Bootstrap5-Icon.vue";
-import ReceptionBootstrap5Icon from "@/svg/Reception-Bootstrap5-Icon.vue";
+import PieChartBootstrap5Icon from "../../icons/PieChart-Bootstrap5-Icon.vue";
+import QuestionCircleBootstrap5Icon from "../../icons/QuestionCircle-Bootstrap5-Icon.vue";
+import ReceptionBootstrap5Icon from "../../icons/Reception-Bootstrap5-Icon.vue";
 
 export default {
     props: {

@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css';
-// import 'primevue/resources/themes/lara-dark-blue/theme.css';
 import 'primeicons/primeicons.css'
 
 //DataTables
@@ -26,6 +25,7 @@ import TypeTableModalRedactor from "./components/admin/TypeTable/TypeTableModalR
 //UpdateForms
 import FurnitureSizeModalRedactorUpdate from "./components/admin/FurnitureSize/FurnitureSizeModalRedactor-update.vue";
 import FurnitureDimensionModalRedactorUpdate from "./components/admin/FurnitureDimensions/FurnitureDimensionModalRedactor-update.vue";
+import axios from "axios";
 
 const app = createApp({
     components: {
@@ -63,4 +63,10 @@ app.use(PrimeVue, {
         tooltip: 1100       //tooltip
     }
 });
+
+axios.defaults.baseURL = 'http://127.0.0.1';
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+app.config.globalProperties.axios = axios;
+
 app.mount('#app');

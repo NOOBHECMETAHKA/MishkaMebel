@@ -109,7 +109,7 @@ import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 
-import AlertBootstrap5Icon from "@/svg/Alert-Bootstrap5-Icon.vue";
+import AlertBootstrap5Icon from "../../icons/Alert-Bootstrap5-Icon.vue";
 export default {
     data() {
         return {

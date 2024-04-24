@@ -14,10 +14,6 @@
               <a href="#" class="__footer_block_content-description">Instagram</a>
             </li>
             <li>
-              <img src="/image/svg/facebook.svg" alt="">
-              <a href="#" class="__footer_block_content-description">Facebook</a>
-            </li>
-            <li>
               <img src="/image/svg/messenger.svg" alt="">
               <a href="#" class="__footer_block_content-description">ВКонтакте</a>
             </li>

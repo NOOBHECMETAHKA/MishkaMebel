@@ -113,8 +113,8 @@ import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 
 import Tag from "primevue/tag";
-import SnowBootstrap5Icon from "@/svg/Snow-Bootstrap5-Icon.vue";
-import FireBootstrap5Icon from "@/svg/Fire-Bootstrap5-Icon.vue";
+import SnowBootstrap5Icon from "../../icons/Snow-Bootstrap5-Icon.vue";
+import FireBootstrap5Icon from "../../icons/Fire-Bootstrap5-Icon.vue";
 
 export default {
     props: {

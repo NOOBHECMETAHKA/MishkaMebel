@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" href="/public/dist/img/AdminLTELogo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +25,7 @@
             <div class="container">
                 <div>
                     <a class="navbar-brand text-secondary fs-4" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <img style="width: 60px;" src="/dist/img/AdminLTELogo.png" alt="">
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -69,37 +70,6 @@
                             </li>
                         @endguest
 
-                        <li class="nav-item">
-                            <div class="dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Темы
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <form action="{{ route('main-page.change-theme', ['theme' => 'light']) }}" method="post">
-                                            @csrf
-                                            <button
-                                                type="submit"
-                                                class="dropdown-item"
-                                                href="#">
-                                                <img class="text-secondary" src="{{ asset('image/svg/BrightnessHigh.svg') }}" alt=""> Светлая тема
-                                            </button>
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form action="{{ route('main-page.change-theme', ['theme' => 'dark']) }}" method="post">
-                                            @csrf
-                                            <button
-                                                type="submit"
-                                                class="dropdown-item"
-                                                href="#">
-                                                <img class="text-secondary" src="{{ asset('image/svg/Moon.svg') }}" alt=""> Тёмная тема
-                                            </button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
                     </ul>
                 </div>
             </div>

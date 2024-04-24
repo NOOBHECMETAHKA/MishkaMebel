@@ -3,11 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-8 h-100">
-            <div class="form-group mb-3 d-flex justify-content-center">
-                <img class="w-25" src="dist/img/AdminLTELogo.png" alt="">
-            </div>
-            <h1 class="text-center text-secondary text-uppercase">Регистрация</h1>
+        <div class="col-md-8 h-100 p-5" style="border: 5px #F39326 dashed; border-radius: 20px">
+            <h1 class="text-center text-uppercase" style="color: #F39326">Регистрация</h1>
             <div class="__login_form_border">
                 <form action="{{ route('register') }}" method="post">
                     @csrf

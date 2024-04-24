@@ -60,7 +60,7 @@ export default {
         },
         setUserRole(){
             const data = ({role: this.roleUser.value});
-            axios.post(`api/personal-information/update/${this.objUser.id}`, data).then(resp => {
+            axios.post(`/api/personal-information/update/${this.objUser.id}`, data).then(resp => {
                 this.$emit('success-send-personal-info', data);
             }).catch(error => {
                 this.message = error.response.data.message;

@@ -135,7 +135,7 @@ export default {
         },
         deleteSelected(){
             if(this.selectedElement != null){
-                axios.delete(`/api/furniture-size/delete/${this.selectedElement.id}`);
+                axios.post(`/api/furniture-size/delete/${this.selectedElement.id}`);
                 this.selectedElement = null;
                 this.refresh();
             }

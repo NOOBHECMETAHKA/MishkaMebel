@@ -133,7 +133,7 @@ import { PrimeIcons } from 'primevue/api';
 
 import Galleria from 'primevue/galleria';
 
-import EyeBootstrap5Icon from "@/svg/Eye-Bootstrap5-Icon.vue";
+import EyeBootstrap5Icon from "../../icons/Eye-Bootstrap5-Icon.vue";
 import Tag from "primevue/tag";
 
 export default {
