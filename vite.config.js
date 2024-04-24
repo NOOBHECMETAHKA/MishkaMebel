@@ -9,9 +9,13 @@ export default defineConfig({
                 //App styles
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+                'resources/js/default.js',
                 //Admin styles
                 'resources/sass/admin-page-content.scss',
-                'resources/js/admin-page-content.js'
+                'resources/js/admin-page-content.js',
+
+                'resources/css/mishka-mebel.css',
+                'resources/css/normalize.css'
             ],
             refresh: true,
         }),

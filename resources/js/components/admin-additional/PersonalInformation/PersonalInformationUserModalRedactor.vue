@@ -76,7 +76,7 @@ export default {
         },
         addPersonalInformation(){
             const data = ({name: this.fullNameUser, phone_number: this.phoneNumber, personal_information_user_id: this.objUser.id});
-            axios.post('api/personal-information/store', data).then(resp => {
+            axios.post('/api/personal-information/store', data).then(resp => {
                 this.$emit('success-send-personal-info', data);
             }).catch(error => {
                 this.message = error.response.data.message;

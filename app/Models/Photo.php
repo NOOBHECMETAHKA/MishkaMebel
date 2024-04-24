@@ -17,5 +17,9 @@ class Photo extends Model
         'updated_at',
     ];
 
+    public function getImageUrlAttribute(){
+        return url('storage/'.$this->link);
+    }
+
 
 }

@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
 import 'primevue/resources/themes/aura-light-blue/theme.css';
-// import 'primevue/resources/themes/lara-dark-blue/theme.css';
 import 'primeicons/primeicons.css';
 import Tooltip from 'primevue/tooltip';
 
@@ -17,6 +16,7 @@ import ContactInfoDatableComponent from "./components/admin-additional/ContactIn
 import OrderDataTableComponent from "./components/admin-additional/Order/OrderDataTableComponent.vue";
 //statistic
 import TypeProductCountChartStatistic from "./components/admin-additional/Statistic/TypeProductCountChartStatistic.vue";
+import axios from "axios";
 
 const app = createApp({
     components: {
@@ -34,6 +34,10 @@ const app = createApp({
         Tooltip,
     }
 });
+
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+app.config.globalProperties.axios = axios;
 
 app.use(PrimeVue, {
     zIndex: {

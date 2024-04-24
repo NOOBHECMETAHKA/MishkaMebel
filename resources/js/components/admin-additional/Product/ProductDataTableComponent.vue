@@ -113,8 +113,8 @@ import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 
 import Tag from "primevue/tag";
-import SnowBootstrap5Icon from "@/svg/Snow-Bootstrap5-Icon.vue";
-import FireBootstrap5Icon from "@/svg/Fire-Bootstrap5-Icon.vue";
+import SnowBootstrap5Icon from "../../icons/Snow-Bootstrap5-Icon.vue";
+import FireBootstrap5Icon from "../../icons/Fire-Bootstrap5-Icon.vue";
 
 export default {
     props: {
@@ -148,8 +148,8 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/products').then(resp => {
-                this.collectionInfo = resp.data;
-                this.count = resp.data.length;
+                this.collectionInfo = resp.data.data;
+                this.count = resp.data.data.length;
                 this.loading = false;
             });
         },

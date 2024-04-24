@@ -3,15 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-md-8 h-100">
+        <div class="col-md-8 h-100 p-5" style="border: 5px #F39326 dashed; border-radius: 20px">
             <div class="form-group mb-3 d-flex justify-content-center">
-                <img class="w-25" src="dist/img/AdminLTELogo.png" alt="">
+                <img class="w-25" src="" alt="">
             </div>
-            <h1 class="text-center text-secondary text-uppercase">Авторизация</h1>
+            <h1 class="text-center text-uppercase" style="color: #F39326">Авторизация</h1>
             <div class="__login_form_border">
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-{{--                    csrf защитное поле для отправки данных на сервер--}}
                     <div class="form-group mb-3">
                         <label class="text-secondary fs-4">Электронная почта</label>
                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -36,7 +35,6 @@
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group mb-3 d-flex justify-content-center">
                         <button type="submit" class="btn btn-secondary text-uppercase">Войти</button>
                     </div>

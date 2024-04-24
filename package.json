@@ -24,6 +24,8 @@
         "datatables.net": "^1.13.8",
         "jquery": "^3.7.1",
         "primeicons": "^6.0.1",
-        "primevue": "^3.47.2"
+        "primevue": "^3.47.2",
+        "vue-router": "^4.3.2",
+        "vuex": "^4.1.0"
     }
 }
