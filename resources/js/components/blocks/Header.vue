@@ -27,9 +27,9 @@
                 </li>
                 <li>
                     <div class="header__user_info">
-                        <router-link v-if="this.authenticated" to="/catalog/profile-user" class="header__user_info">
+                        <router-link v-if="saveUserData.authenticated" to="/catalog/profile-user" class="header__user_info">
                             <icon-user></icon-user>
-                            {{ this.profile.email }}
+                            {{ saveUserData.userData.uIDData.email }}
                         </router-link>
                         <a href="/login" v-else class="header__user_info">
                             <icon-user></icon-user>
@@ -63,9 +63,9 @@
                 <img class="logo" src="/image/Logo.png" alt="MishkaMebelLogo">
                 <!--        Auth functions-->
                 <div class="header__tool_kit-user header__nav--open">
-                    <router-link to="/catalog/profile-user" v-if="this.authenticated" class="header__user_info">
+                    <router-link to="/catalog/profile-user" v-if="saveUserData.authenticated" class="header__user_info">
                         <icon-user></icon-user>
-                        {{ this.profile.email }}
+                        {{ saveUserData.userData.uIDData.email }}
                     </router-link>
                     <a href="/login" v-else class="header__user_info">
                         <icon-user></icon-user>
@@ -128,12 +128,15 @@ import Button from 'primevue/button';
 import Listbox from "primevue/listbox";
 import Dialog from 'primevue/dialog';
 //Functions
-import {store} from "@/store/index.js";
+import { store, saveUserData } from "@/store/index.js";
 
 export default {
     computed: {
         store() {
             return store;
+        },
+        saveUserData(){
+            return saveUserData;
         }
     },
     components: {
@@ -148,34 +151,13 @@ export default {
     data() {
         return {
             profile: null,
-            authenticated: false,
-
+            authenticated: null,
             visible: false,
-            selectPage: null,
-            pages: [
-                {name: 'Главная', code: 'main'},
-                {name: 'Матрасы', code: 'mattress'},
-                {name: 'Чехлы', code: 'mattress-cover'},
-                {name: 'Кровати', code: 'beds'},
-                {name: 'Хранилища вещей', code: 'storage'},
-                {name: 'Контакты', code: 'contacts'}
-            ],
         };
-    },
-    mounted() {
-        this.axios.get('/api/user')
-            .then(response => {
-                console.log(response);
-                this.profile = response.data;
-                this.authenticated = true;
-            })
-            .catch(error => {
-                this.authenticated = false;
-            });
     },
     methods: {
         getAccess() {
-            return this.authenticated ? this.profile.role === "admin" : false;
+            return saveUserData.authenticated ? saveUserData.userData.uIDData.role === "admin" : false;
         }
     }
 }

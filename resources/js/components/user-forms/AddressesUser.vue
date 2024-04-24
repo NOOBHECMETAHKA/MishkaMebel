@@ -7,7 +7,7 @@
         </div>
         <div v-else class="empty-content-massage">
             <i class="pi pi-box" style="color: var(--primary-color)"></i>
-            <h4>Похоже записей нету</h4>
+            <h4>Похоже записей нет</h4>
             <p>Стоит добавить!</p>
         </div>
     </div>
@@ -18,10 +18,6 @@ import Button from 'primevue/button';
 export default {
     components: {
         "VuePrimeButton": Button,
-    },
-    props: {
-        profile: Object,
-        personalInformation: Object
     },
     data(){
         return {

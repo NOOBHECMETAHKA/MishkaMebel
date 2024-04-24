@@ -14,7 +14,7 @@ class PersonalInformationAddController extends Controller
     public function store(PersonalInformationAddRequest $request){
         $data = $request->validated();
 
-        DB::table(PersonalInformation::$tableName)->insert($data);
+        DB::table(PersonalInformation::$tableName)->updateOrInsert(['personal_information_user_id' => $data['personal_information_user_id']], $data);
         Log::channel('single-users-action')->info('Добавление одной из моделей "Пернсональная информация"');
 
         return response()->json(['message' => 'Данные успешно добавлены!'], JSON_UNESCAPED_UNICODE);

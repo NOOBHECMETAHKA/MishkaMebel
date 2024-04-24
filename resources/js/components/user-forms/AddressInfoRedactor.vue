@@ -1,7 +1,7 @@
 <template>
     <Toast />
     <div class="catalog-user-action">
-        <p class="catalog-sub-title">Адрес</p>
+        <p class="catalog-sub-title">Добавление адреса</p>
         <div class="catalog-user-action-form-input">
             <label>Какой у вас город?</label>
             <InputText v-model="city" style="color: var(--main-color);"/>
@@ -28,7 +28,7 @@
             <small v-if="apartment === ''"><span>#</span> Поле должно быть заполнено!</small>
         </div>
         <div>
-            <vue-prime-button label="Сохранить" @click="addAddressInformation()"/>
+            <vue-prime-button label="Добавить ещё!" @click="addAddressInformation()"/>
         </div>
     </div>
 </template>
@@ -41,9 +41,6 @@ import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 export default {
-    props: {
-        profile: Object,
-    },
     components: {
         Checkbox,
         InputMask,

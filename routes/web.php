@@ -13,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('main-page');
-
-Route::get('/catalog/{page}', function() {
-    return view('welcome');
-})->where(['page' => '.*']);
+Route::get('/', [\App\Http\Controllers\CatalogController::class, 'index'])->name('main-page');
+Route::get('/catalog/{page}', [\App\Http\Controllers\CatalogController::class, 'index'])->where(['page' => '.*']);
 
 Auth::routes();
 
