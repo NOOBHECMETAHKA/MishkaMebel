@@ -23,7 +23,7 @@
                 <p class="row-info">Общая стоимость: <span>{{ totalCost }}</span> рублей</p>
                 <div class="catalog-user-action-form-input">
                     <label>Адрес доставки:</label>
-                    <dropdown v-model="selectedAddress" :options="getFormAddress()" option-label="name" option-value="id" placeholder="Адрес доставки" style="color: var(--main-color);"/>
+                    <dropdown v-model="selectedAddress" empty-message="Адресов нету. Добавить адрес можно на вкладке профиль. Нажмите на свою учётую запись" :options="getFormAddress()" option-label="name" option-value="id" placeholder="Адрес доставки" style="color: var(--main-color);"/>
                     <small v-if="!selectedAddress"><span>#</span> Поле должно быть заполнено!</small>
                     <small><span>?</span> После создания заказа менеджер с вами свяжемся чтобы подтвердить заказ. Оплата заказа происходит строго на месте доставки</small>
                     <div>
@@ -32,11 +32,12 @@
                 </div>
             </div>
         </div>
-        <div v-else class="empty-content-massage">
-            <i class="pi pi-box" style="color: var(--primary-color)"></i>
-            <h4>Корзина пуста!</h4>
-            <p>Добавте товаров</p>
-        </div>
+        <empty-content v-else :is-finished="!loading"
+                       title-loading="Получения данных о товарах"
+                       :sub-titles-loading="['Проводятся расчеты стоимости заказа']"
+                       title-finished="Корзина пуста"
+                       :sub-titles-finished="['Ваша корзина пуста!', 'Для пополнения корзины добавьте товар на страницах каталога']"
+        ></empty-content>
     </div>
 </template>
 
@@ -46,6 +47,7 @@ import Button from "primevue/button";
 import { saveUserData, store} from "@/store/index.js";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
+import EmptyContent from "@/components/blocks/EmptyContent.vue";
 
 export default {
     computed: {
@@ -57,6 +59,7 @@ export default {
         }
     },
     components: {
+        EmptyContent,
         Dropdown,
         "VuePrimeButton": Button,
         Toast
@@ -67,6 +70,7 @@ export default {
             totalCost: 0,
             selectedAddress: null,
             dataOrderList: null,
+            loading: true,
         };
     },
     setup(){
@@ -87,6 +91,7 @@ export default {
         },
         getProducts(){
             this.axios.get('/api/catalog/products').then(response => {
+                this.loading = false;
                 this.products = this.getFilterProduct(response.data.data);
                 this.totalCost = this.getFullPrice(this.getFilterProduct(response.data.data));
             }).catch(error => { });

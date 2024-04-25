@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Resources\PersonalInformation;
+namespace App\Http\Resources\User;
 
+use App\Http\Resources\Address\AddressUserModelMountedResource;
+use App\Http\Resources\PersonalInformation\PersonalInformationResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +21,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'role' => $this->role,
             'personal_information' => new PersonalInformationResource($this->personal_information),
-            'addresses' => AddressResource::collection($this->addresses),
+            'addresses' => AddressUserModelMountedResource::collection($this->addresses),
         ];
     }
 }

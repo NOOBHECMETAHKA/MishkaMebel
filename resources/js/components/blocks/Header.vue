@@ -36,6 +36,7 @@
                             Личный кабинет
                         </a>
                         <prime-vue-button
+                            @click="this.$router.push({name: 'basket'})"
                             v-if="store.personalBasket.cartItemsCount"
                             :badge="store.personalBasket.cartItemsCount.toString()"
                             icon="pi pi-shopping-cart"/>
@@ -44,6 +45,7 @@
                             icon="pi pi-shopping-cart"/>
                         <prime-vue-button v-if="store.personalBasket.cartItemsCount" icon="pi pi-trash"
                                           @click.prevent="store.personalBasket.clearCart()"/>
+                        <prime-vue-button v-if="saveUserData.authenticated" @click="logout()" icon="pi pi-sign-out"/>
                     </div>
                 </li>
                 <li v-if="getAccess()">
@@ -63,7 +65,7 @@
                 <img class="logo" src="/image/Logo.png" alt="MishkaMebelLogo">
                 <!--        Auth functions-->
                 <div class="header__tool_kit-user header__nav--open">
-                    <router-link to="/catalog/profile-user" v-if="saveUserData.authenticated" class="header__user_info">
+                    <router-link v-if="saveUserData.authenticated" to="/catalog/profile-user" class="header__user_info">
                         <icon-user></icon-user>
                         {{ saveUserData.userData.uIDData.email }}
                     </router-link>
@@ -80,6 +82,7 @@
                         icon="pi pi-shopping-cart"/>
                     <prime-vue-button v-if="store.personalBasket.cartItemsCount" icon="pi pi-trash"
                                       @click.prevent="store.personalBasket.clearCart()"/>
+                    <prime-vue-button v-if="saveUserData.authenticated" @click="logout()" icon="pi pi-sign-out"/>
                 </div>
                 <!--        End Auth functions-->
                 <!--        Admin function-->
@@ -158,6 +161,13 @@ export default {
     methods: {
         getAccess() {
             return saveUserData.authenticated ? saveUserData.userData.uIDData.role === "admin" : false;
+        },
+        logout(){
+            this.axios.post('/logout').then(response => {
+                store.personalBasket.clearCart();
+                saveUserData = { authenticated: false, userData: { uIDData: {}, personalInformation: null, addresses: null }};
+                this.$router.push({name: 'home'});
+            });
         }
     }
 }

@@ -4,7 +4,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Заказ #{{ this.selectedElement !== null ? this.selectedElement.id : '?' }}</h4>
+                    <h4 class="modal-title">Заказ #{{ selectedElement !== null ? selectedElement.id : '?' }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -115,9 +115,6 @@
                 <Column>
                     <template #body="slotProps">
                         <div class="d-flex" style="gap: 20px">
-<!--                            <a :href='`/admin/_/edit/${slotProps.data.id}`'>-->
-<!--                                <i class="pi pi-pencil" style="font-size: 1rem; color: var(&#45;&#45;primary-color);" ></i>-->
-<!--                            </a>-->
                             <span>
                                 <i @click="chooseElement(slotProps.data)"
                                    class="pi pi-pencil" style="font-size: 1rem; color: var(--primary-color);"
@@ -153,7 +150,7 @@ import axios from "axios";
 import {FilterMatchMode} from "primevue/api";
 import { PrimeIcons } from 'primevue/api';
 import {useVuelidate} from "@vuelidate/core";
-import {maxLength, minLength, required} from "@vuelidate/validators";
+import { required} from "@vuelidate/validators";
 
 export default {
     setup(){
@@ -217,12 +214,12 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/orders').then(resp => {
-                this.collectionInfo = resp.data;
-                this.count = resp.data.length;
+                this.collectionInfo = resp.data.data;
+                this.count = resp.data.data.length;
             });
             axios.get('/api/products').then(
                 resp => {
-                    this.subCollectionInfo = resp.data;
+                    this.subCollectionInfo = resp.data.data;
                     this.loading = false;
                 }
             );

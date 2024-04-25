@@ -27,7 +27,7 @@
         </div>
     </Dialog>
     <div class="catalog-user-action">
-        <p class="catalog-sub-title">Персональная информация (Записанные)</p>
+        <p class="catalog-sub-title">Персональная информация</p>
         <div v-if="saveUserData.userData.personalInformation">
             <table>
                 <tr>
@@ -119,7 +119,6 @@ export default {
 
         addPersonalInformation(){
             const data = ({name: this.contactNameUser, phone_number: this.contactPhoneNumber, personal_information_user_id: saveUserData.userData.uIDData.id });
-            console.log(data);
             this.axios.post('/api/personal-information/store', data).then(resp => {
                 this.setPersonalInfo(false)
                 this.$toast.add({ severity: 'success', summary: 'Данные успешно записаны', detail: 'Мы запомнили ваши данные', life: 3000 });

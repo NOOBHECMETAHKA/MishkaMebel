@@ -4,6 +4,7 @@ import 'primeicons/primeicons.css';
 
 import ToastService from 'primevue/toastservice';
 import PrimeVue from "primevue/config";
+import Tooltip from 'primevue/tooltip';
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -19,5 +20,7 @@ app.config.globalProperties.axios = axios;
 app.use(router);
 app.use(PrimeVue);
 app.use(ToastService);
+
+app.directive('tooltip', Tooltip);
 
 app.mount('#app');

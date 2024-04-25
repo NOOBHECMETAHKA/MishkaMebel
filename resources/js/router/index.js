@@ -44,7 +44,7 @@ const router = createRouter({
             component: () => import('../views/ProfilePage.vue')
         },
         {
-            ath: '/catalog/basket',
+            path: '/catalog/basket',
             name: 'basket',
             component: () => import('../views/Basket.vue')
         }
@@ -62,9 +62,7 @@ router.beforeEach((to, from, next) => {
     if(!saveUserData.authenticated){
         axios.get('/api/user').then(response => {
             setUpInfo(response.data.data);
-        }).catch(error => {
-            console.log(error);
-        });
+        }).catch(error => {});
     }
 
     next();

@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td class="__text_main-color">Цена:</td>
-                        <td v-if="selectedProduct.discounts" class="__text_second-color"><del>{{ getPrice(selectedProduct.price, selectedProduct.discounts.percent) }}</del> {{ getPrice(selectedProduct.price, 0) }} рублей</td>
+                        <td v-if="selectedProduct.discounts" class="__text_second-color"><del>{{ getPrice(selectedProduct.price, 0) }}</del> {{ getPrice(selectedProduct.price, selectedProduct.discounts.percent) }} рублей</td>
                         <td v-else class="__text_second-color">{{ getPrice(selectedProduct.price, 0) }} рублей </td>
                     </tr>
                     <tr>
@@ -77,7 +77,12 @@
                     </div>
                 </template>
                 <template #empty>
-                    <empty-content :is-finished="loading"></empty-content>
+                    <empty-content :is-finished="!loading"
+                                   title-loading="Поиск товаров..."
+                                   :sub-titles-loading="['Загрузка каталог товаров']"
+                                   title-finished="Каталог пуст!"
+                                   :sub-titles-finished="['На данный момент ассортимент пуст.', 'Но менеджеры уже работают над этой задачей!']"
+                    ></empty-content>
                 </template>
                 <template #list="slotProps">
                     <div class="catalog_list__list">
@@ -91,7 +96,7 @@
                                     <p class="__text_main-color">{{ item.name }}</p>
                                 </td>
                                 <td>
-                                    <p v-if="item.discounts" class="__text_second-color"><del>{{ getPrice(item.price, item.discounts.percent) }}</del> {{ getPrice(item.price, 0) }} рублей</p>
+                                    <p v-if="item.discounts" class="__text_second-color"><del>{{ getPrice(item.price, 0) }}</del> {{ getPrice(item.price, item.discounts.percent) }} рублей</p>
                                     <p v-else class="__text_second-color">{{ getPrice(item.price, 0) }} рублей </p>
                                 </td>
                                 <td>
@@ -114,7 +119,7 @@
                                 <img v-if="item.photos.length > 0" class="catalog_grid__card__img" :src="item.photos[0].link" alt="">
                                 <img v-else class="catalog_grid__card__img" src="/image/Empty.jpg" alt="">
                                 <p class="catalog_grid__card__title __text_main-color">{{ item.name }}</p>
-                                <p v-if="item.discounts" class="catalog_grid__card__subtitle __text_second-color"><del>{{ getPrice(item.price, item.discounts.percent) }}</del> {{ getPrice(item.price, 0) }} рублей</p>
+                                <p v-if="item.discounts" class="catalog_grid__card__subtitle __text_second-color"><del>{{ getPrice(item.price, 0) }}</del> {{ getPrice(item.price, item.discounts.percent) }} рублей</p>
                                 <p v-else class="catalog_grid__card__subtitle __text_second-color">{{ getPrice(item.price, 0) }} рублей </p>
                                 <p></p>
                                 <p><Tag severity="secondary" :value="item.guarantee"></Tag></p>

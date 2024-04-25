@@ -604,6 +604,8 @@ footer .container{
 }
 
 
+
+
 @media (max-width: 1200px) {
     .__recommendations_content{
         flex-wrap: wrap;
@@ -684,6 +686,23 @@ footer .container{
         display: flex;
     }
 
+    .catalog-sub-title{
+        font-size: 18px;
+    }
+
+    .row-info{
+        font-size: 14px;
+    }
+
+    .catalog-user-action{
+        gap: 10px;
+        width: 600px;
+        margin: 30px 0;
+    }
+
+    .catalog-title{
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 620px) {
@@ -712,6 +731,16 @@ footer .container{
     .catalog_grid__list{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    .catalog-user-action{
+        gap: 5px;
+        width: 400px;
+        margin: 10px 0;
+    }
+
+    .catalog-title{
+        font-size: 20px;
     }
 }
 
@@ -756,6 +785,20 @@ footer .container{
 
     .__about_production-content_block-first p{
         font-size: 10px;
+    }
+
+    .catalog-user-action{
+        gap: 5px;
+        width: 315px;
+        margin: 10px 0;
+    }
+
+    .row-info{
+        font-size: 8px;
+    }
+
+    .catalog-title{
+        font-size: 18px;
     }
 }
 

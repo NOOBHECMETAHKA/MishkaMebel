@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Resources\PersonalInformation\UserResource;
+use App\Http\Resources\User\UserResource;
 use App\Models\User;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

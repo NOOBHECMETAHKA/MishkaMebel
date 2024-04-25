@@ -9,11 +9,14 @@
                 <span @click="deleteAddressUser(address.id)">Удалить</span>
             </div>
         </div>
-        <div v-else class="empty-content-massage">
-            <i class="pi pi-box" style="color: var(--primary-color)"></i>
-            <h4>Похоже записей нет</h4>
-            <p>Стоит добавить!</p>
-        </div>
+       <empty-content v-else
+                      :is-finished="!loading"
+                      title-loading="Поиск ваших адресов"
+                      :sub-titles-loading="['Это быстро, подождём!']"
+                      title-finished="Данные об адресах отсуствует"
+                      :sub-titles-finished="['Требуюется добавить хотя бы 1 адрес',
+                        'для совершения заказов']"
+       ></empty-content>
     </div>
 </template>
 
@@ -21,9 +24,15 @@
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 import {saveUserData} from "@/store/index.js";
+import EmptyContent from "../blocks/EmptyContent.vue";
 export default {
     setup() {
         useToast();
+    },
+    data(){
+      return {
+          loading: false,
+      };
     },
     computed: {
         saveUserData(){
@@ -31,15 +40,20 @@ export default {
         }
     },
     components: {
-        Toast
+        Toast,
+        EmptyContent
     },
     methods: {
         deleteAddressUser(IDAddress){
+            this.loading = true;
             this.axios.post(`/api/addresses/delete/${IDAddress}`)
                 .then(response =>  {
+                    this.loading = false;
                     saveUserData.userData.addresses = saveUserData.userData.addresses.filter(address => address.id !== IDAddress);
                     this.$toast.add({ severity: 'success', summary: 'Успешно удаление', detail: 'Адрес успешно удалён!', life: 3000 });
-                }).catch(error =>  {});
+                }).catch(error =>  {
+                this.loading = false;
+            });
         },
         isEmpty(obj) {
             if (obj === null) {

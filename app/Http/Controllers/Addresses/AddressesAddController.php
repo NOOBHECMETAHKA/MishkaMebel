@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Addresses;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Address\AddressAddRequest;
 use App\Http\Resources\Address\AddressAPIResource;
-use App\Http\Resources\PersonalInformation\AddressResource;
 use App\Models\Address;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 

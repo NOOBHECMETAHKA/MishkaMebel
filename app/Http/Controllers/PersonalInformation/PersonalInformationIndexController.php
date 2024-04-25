@@ -3,13 +3,8 @@
 namespace App\Http\Controllers\PersonalInformation;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PersonalInformation\PersonalInformationIndexRequest;
-use App\Http\Resources\PersonalInformation\PersonalInformationResource;
-use App\Http\Resources\PersonalInformation\UserResource;
-use App\Models\Address;
-use App\Models\PersonalInformation;
+use App\Http\Resources\User\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class PersonalInformationIndexController extends Controller
 {

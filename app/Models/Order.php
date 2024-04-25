@@ -18,13 +18,13 @@ class Order extends Model
         'updated_at',
     ];
     public function order_lists(){
-        return $this
-            ->hasMany(OrderList::class, 'order_order_list_id', 'id');
+        return $this->hasMany(OrderList::class, 'order_order_list_id', 'id');
     }
     public function statuses(){
         return $this->belongsTo(Status::class, 'order_status_id', 'id');
     }
-    public function products() : BelongsToMany{
-        return $this->belongsToMany(Product::class);
+
+    public function addresses(){
+        return $this->belongsTo(Address::class, 'order_address_id', 'id');
     }
 }
