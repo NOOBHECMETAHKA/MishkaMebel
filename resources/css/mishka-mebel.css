@@ -589,6 +589,8 @@ footer .container{
     gap: 20px;
 }
 
+
+
 @media (max-width: 1200px) {
     .__recommendations_content{
         flex-wrap: wrap;

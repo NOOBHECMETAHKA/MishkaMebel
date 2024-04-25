@@ -42,6 +42,11 @@ const router = createRouter({
             path: '/catalog/profile-user',
             name: 'profile',
             component: () => import('../views/ProfilePage.vue')
+        },
+        {
+            ath: '/catalog/basket',
+            name: 'basket',
+            component: () => import('../views/Basket.vue')
         }
     ]
 });

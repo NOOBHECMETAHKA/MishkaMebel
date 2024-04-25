@@ -20,4 +20,13 @@ class ProductsIndexController extends Controller
         Log::channel('single-users-action')->info('Вывод данных из модели "Товары"');
         return ProductResource::collection($data);
     }
+
+    public function subIndex(ProductIndexRequest $request){
+        $data = $request->validated();
+        $filter = app()->make(ProductFilter::class, ['queryParams' => array_filter($data)]);
+        $data = Product::filter($filter)->get();
+        $data = $data->where('is_deleted', 0);
+        Log::channel('single-users-action')->info('Вывод данных из модели "Товары"');
+        return ProductResource::collection($data);
+    }
 }

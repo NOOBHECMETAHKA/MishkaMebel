@@ -39,6 +39,7 @@ Route::group([], function () {
     Route::get('/personal-information/{id}', [\App\Http\Controllers\PersonalInformation\PersonalInformationIndexController::class, 'show'])->where(['id', '+[0-9]']);
     Route::get('/photos', [\App\Http\Controllers\Photos\PhotosIndexController::class, 'index']);
     Route::get('/products', [\App\Http\Controllers\Products\ProductsIndexController::class, 'index']);
+    Route::get('/catalog/products', [\App\Http\Controllers\Products\ProductsIndexController::class, 'subIndex']);
     Route::get('/statuses', [\App\Http\Controllers\Statuses\StatusesIndexController::class, 'index']);
     Route::get('/addresses', [\App\Http\Controllers\Addresses\AddressesIndexController::class, 'index']);
     Route::get('/orders', [\App\Http\Controllers\Orders\OrdersIndexController::class, 'index']);

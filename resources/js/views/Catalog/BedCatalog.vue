@@ -238,7 +238,7 @@ export default {
      * { params: { 'category': 'beds'}}
      */
     getProducts(){
-      this.axios.get('/api/products', { params: { 'category': 'beds'}}).then(resp => {
+      this.axios.get('/api/catalog/products', { params: { 'category': 'beds'}}).then(resp => {
         this.collectionInfo = resp.data.data;
         this.count = resp.data.data.length;
         this.loading = false;

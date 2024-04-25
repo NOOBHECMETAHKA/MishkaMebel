@@ -41,6 +41,10 @@
             </table>
             <vue-prime-button label="Отредактировать" @click="setPersonalInfo(true)"></vue-prime-button>
         </div>
+        <div v-else>
+            <p class="__text_second-color">Персональная информация отсутствует требуется её заполнить. Потому что могут возникнуть трудности с тем чтобы связаться с вами.</p>
+            <vue-prime-button label="Отредактировать" @click="setPersonalInfo(true)"></vue-prime-button>
+        </div>
     </div>
 </template>
 
@@ -127,6 +131,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 
 </style>

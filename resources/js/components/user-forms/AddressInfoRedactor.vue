@@ -40,13 +40,22 @@ import InputText from "primevue/inputtext";
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
+import { saveUserData } from "@/store/index.js";
 export default {
+    computed: {
+        saveUserData(){
+            return saveUserData;
+        }
+    },
     components: {
         Checkbox,
         InputMask,
         InputText,
         "VuePrimeButton": Button,
         Toast
+    },
+    mounted() {
+        useToast();
     },
     data(){
         return {
@@ -59,28 +68,27 @@ export default {
     },
     methods: {
         addAddressInformation(){
-            if(this.profile){
-                const data = (
-                    {
-                        City: this.city,
-                        Street: this.street,
-                        House: this.house,
-                        Entrance: this.entrance,
-                        Apartment: this.apartment,
-                        addresses_user_id: this.profile.id
-                    }
-                );
-                this.axios.post('/api/addresses/store', data).then(resp => {
-                    this.$toast.add({ severity: 'success', summary: 'Данные успешно записаны', detail: 'Мы запомнили ваши данные', life: 3000 });
-                    this.city = "";
-                    this.street = "";
-                    this.house = "";
-                    this.entrance = "";
-                    this.apartment = "";
-                }).catch(error => {
-                    console.log(error);
-                });
-            }
+            const data = (
+                {
+                    City: this.city,
+                    Street: this.street,
+                    House: this.house,
+                    Entrance: this.entrance,
+                    Apartment: this.apartment,
+                    addresses_user_id: saveUserData.userData.uIDData.id
+                }
+            );
+            this.axios.post('/api/addresses/store', data).then(resp => {
+                this.$toast.add({ severity: 'success', summary: 'Данные успешно записаны', detail: 'Мы запомнили ваши данные', life: 3000 });
+                saveUserData.userData.addresses.push(resp.data.data);
+                this.city = "";
+                this.street = "";
+                this.house = "";
+                this.entrance = "";
+                this.apartment = "";
+            }).catch(error => {
+                console.log(error);
+            });
         }
     }
 }

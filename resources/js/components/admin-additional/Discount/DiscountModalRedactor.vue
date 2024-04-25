@@ -104,7 +104,7 @@ export default {
         },
         getProducts(){
             axios.get('/api/products').then(resp => {
-                this.products = resp.data;
+                this.products = resp.data.data;
                 this.loading = false;
             });
         }

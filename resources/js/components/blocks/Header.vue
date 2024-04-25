@@ -74,7 +74,7 @@
                     <prime-vue-button
                         v-if="store.personalBasket.cartItemsCount"
                         :badge="store.personalBasket.cartItemsCount.toString()"
-                        icon="pi pi-shopping-cart"/>
+                        icon="pi pi-shopping-cart" @click="this.$router.push({name: 'basket'})"/>
                     <prime-vue-button
                         v-else
                         icon="pi pi-shopping-cart"/>

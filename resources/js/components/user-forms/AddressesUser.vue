@@ -1,9 +1,13 @@
 <template>
+    <Toast />
     <div class="catalog-user-action">
         <p class="catalog-sub-title">Ваши адреса</p>
-        <div v-if="addresses !== null" v-for="address in addresses" class="__text_second-color">
-            <span class="__text_main-color address-row">#</span> {{ `Город: ${address.City}; улица: ${address.Street}; дом: ${address.House}; подъезд: ${address.Entrance}; квартира: ${address.Apartment};` }}
-            <vue-prime-button icon="pi pi-trash"></vue-prime-button>
+        <div v-if="!isEmpty(saveUserData.userData.addresses)" v-for="address in saveUserData.userData.addresses" class="__text_second-color">
+            <div class="address-row">
+                <span class="__text_main-color">#</span>
+                {{`Город: ${address.City}; улица: ${address.Street}; дом: ${address.House}; подъезд: ${address.Entrance}; квартира: ${address.Apartment};` }}
+                <span @click="deleteAddressUser(address.id)">Удалить</span>
+            </div>
         </div>
         <div v-else class="empty-content-massage">
             <i class="pi pi-box" style="color: var(--primary-color)"></i>
@@ -14,22 +18,39 @@
 </template>
 
 <script>
-import Button from 'primevue/button';
+import Toast from 'primevue/toast';
+import { useToast } from 'primevue/usetoast';
+import {saveUserData} from "@/store/index.js";
 export default {
-    components: {
-        "VuePrimeButton": Button,
+    setup() {
+        useToast();
     },
-    data(){
-        return {
-            addresses: null,
-        };
-    },
-    mounted() {
-        if(this.personalInformation){
-            console.log(this.personalInformation);
-            this.addresses = this.personalInformation[0].addresses;
+    computed: {
+        saveUserData(){
+            return saveUserData;
         }
     },
+    components: {
+        Toast
+    },
+    methods: {
+        deleteAddressUser(IDAddress){
+            this.axios.post(`/api/addresses/delete/${IDAddress}`)
+                .then(response =>  {
+                    saveUserData.userData.addresses = saveUserData.userData.addresses.filter(address => address.id !== IDAddress);
+                    this.$toast.add({ severity: 'success', summary: 'Успешно удаление', detail: 'Адрес успешно удалён!', life: 3000 });
+                }).catch(error =>  {});
+        },
+        isEmpty(obj) {
+            if (obj === null) {
+                return true;
+            }
+            if (Array.isArray(obj)) {
+                return obj.length === 0;
+            }
+            return Object.keys(obj).length === 0;
+        }
+    }
 }
 </script>
 
