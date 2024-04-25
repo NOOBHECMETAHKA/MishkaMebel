@@ -589,6 +589,19 @@ footer .container{
     gap: 20px;
 }
 
+.basket-table{
+    width: 50%;
+    margin: 0 50px;
+}
+
+.row-info {
+    text-align: left;
+    color: var(--font-color);
+}
+
+.row-info span {
+    color: var(--main-color);
+}
 
 
 @media (max-width: 1200px) {

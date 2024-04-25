@@ -52,6 +52,7 @@ Route::group([], function () {
     Route::post('/furniture-dimensions/store', [\App\Http\Controllers\FurnitureDimensions\FurnitureDimensionsAddController::class, 'store']);
     Route::post('/furniture-sizes/store', [\App\Http\Controllers\FurnitureSize\FurnitureSizeAddController::class, 'store']);
     Route::post('/addresses/store', [\App\Http\Controllers\Addresses\AddressesAddController::class, 'store']);
+    Route::post('/orders/store', [\App\Http\Controllers\Orders\OrdersAddController::class, 'store']);
 
     Route::post('/products/{id}/freeze/{isFreeze}', [\App\Http\Controllers\Products\ProductsUpdateController::class, 'freeze'])->where(['id','+[0-9]'], ['isFreeze' => 'frost|defrost']);
     Route::post('/products/store', [\App\Http\Controllers\Products\ProductsAddController::class, 'store'])->name('admin.products.store');

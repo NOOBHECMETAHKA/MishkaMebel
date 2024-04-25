@@ -11,7 +11,7 @@ class OrdersAddRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class OrdersAddRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'total_cost' => 'required',
+            'order_address_id' => 'required',
+            'order_list' => 'required|array'
         ];
     }
 }
