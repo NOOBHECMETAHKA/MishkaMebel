@@ -44,7 +44,7 @@
 <script>
 import Dropdown from 'primevue/dropdown';
 import Button from "primevue/button";
-import { saveUserData, store} from "../store/index.js";
+import { store} from "../store/index.js";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 import EmptyContent from "@/components/blocks/EmptyContent.vue";
@@ -53,9 +53,6 @@ export default {
     computed: {
         store(){
             return store;
-        },
-        saveUserData(){
-            return saveUserData;
         }
     },
     components: {
@@ -142,7 +139,7 @@ export default {
         },
         getFormAddress(){
             const formData = [];
-            const addresses = saveUserData.userData.addresses;
+            const addresses = store.user.userData.addresses;
             for (const addressesKey in addresses) {
                 const address = addresses[addressesKey];
                 formData.push({ id: address.id, name: `Город: ${address.City}; улица: ${address.Street}; дом: ${address.House}; подъезд: ${address.Entrance}; квартира: ${address.Apartment};` });

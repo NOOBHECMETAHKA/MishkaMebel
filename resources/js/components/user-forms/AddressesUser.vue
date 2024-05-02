@@ -2,7 +2,7 @@
     <Toast />
     <div class="catalog-user-action">
         <p class="catalog-sub-title">Ваши адреса</p>
-        <div v-if="!isEmpty(saveUserData.userData.addresses)" v-for="address in saveUserData.userData.addresses" class="__text_second-color">
+        <div v-if="!isEmpty(store.user.userData.addresses)" v-for="address in store.user.userData.addresses" class="__text_second-color">
             <div class="address-row">
                 <span class="__text_main-color">#</span>
                 {{`Город: ${address.City}; улица: ${address.Street}; дом: ${address.House}; подъезд: ${address.Entrance}; квартира: ${address.Apartment};` }}
@@ -23,7 +23,7 @@
 <script>
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import { saveUserData } from "../../store/index.js";
+import { store } from "../../store/index.js";
 import EmptyContent from "../blocks/EmptyContent.vue";
 export default {
     setup() {
@@ -35,8 +35,8 @@ export default {
       };
     },
     computed: {
-        saveUserData(){
-            return saveUserData;
+        store(){
+            return store;
         }
     },
     components: {
@@ -49,7 +49,7 @@ export default {
             this.axios.post(`/api/addresses/delete/${IDAddress}`)
                 .then(response =>  {
                     this.loading = false;
-                    saveUserData.userData.addresses = saveUserData.userData.addresses.filter(address => address.id !== IDAddress);
+                    store.user.userData.addresses = store.user.userData.addresses.filter(address => address.id !== IDAddress);
                     this.$toast.add({ severity: 'success', summary: 'Успешно удаление', detail: 'Адрес успешно удалён!', life: 3000 });
                 }).catch(error =>  {
                 this.loading = false;

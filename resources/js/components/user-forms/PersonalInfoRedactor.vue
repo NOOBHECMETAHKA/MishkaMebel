@@ -28,15 +28,15 @@
     </Dialog>
     <div class="catalog-user-action">
         <p class="catalog-sub-title">Персональная информация</p>
-        <div v-if="saveUserData.userData.personalInformation">
+        <div v-if="store.user.userData.personalInformation">
             <table>
                 <tr>
                     <td class="__text_second-color">Вас зовут<span>:</span></td>
-                    <td class="__text_main-color">{{ saveUserData.userData.personalInformation.name }}</td>
+                    <td class="__text_main-color">{{ store.user.userData.personalInformation.name }}</td>
                 </tr>
                 <tr>
                     <td class="__text_second-color">Ваш номер телефон<span>:</span></td>
-                    <td class="__text_main-color">{{ saveUserData.userData.personalInformation.phone_number }}</td>
+                    <td class="__text_main-color">{{ store.user.userData.personalInformation.phone_number }}</td>
                 </tr>
             </table>
             <vue-prime-button label="Отредактировать" @click="setPersonalInfo(true)"></vue-prime-button>
@@ -57,14 +57,14 @@ import {useVuelidate} from "@vuelidate/core";
 import {maxLength, minLength, required} from "@vuelidate/validators";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import {saveUserData} from "../../store/index.js";
+import { store } from "../../store/index.js";
 
 import Dialog from 'primevue/dialog';
 
 export default {
     computed: {
-        saveUserData(){
-            return saveUserData;
+        store(){
+            return store;
         }
     },
     setup(){
@@ -106,19 +106,19 @@ export default {
         setPersonalInfo(isSet){
             if(isSet){
                 this.isPersonalInfoRedactorActive = true;
-                if(saveUserData.authenticated && saveUserData.userData.personalInformation !== null){
-                    this.contactNameUser = saveUserData.userData.personalInformation.name;
-                    this.contactPhoneNumber = saveUserData.userData.personalInformation.phone_number;
+                if(store.user.authenticated && store.user.userData.personalInformation !== null){
+                    this.contactNameUser = store.user.userData.personalInformation.name;
+                    this.contactPhoneNumber = store.user.userData.personalInformation.phone_number;
                 }
             } else {
                 this.isPersonalInfoRedactorActive = false;
-                saveUserData.userData.personalInformation =
-                    {name: this.contactNameUser, phone_number: this.contactPhoneNumber, personal_information_user_id: saveUserData.userData.uIDData.id }
+                store.user.userData.personalInformation =
+                    {name: this.contactNameUser, phone_number: this.contactPhoneNumber, personal_information_user_id: store.user.userData.uIDData.id }
             }
         },
 
         addPersonalInformation(){
-            const data = ({name: this.contactNameUser, phone_number: this.contactPhoneNumber, personal_information_user_id: saveUserData.userData.uIDData.id });
+            const data = ({name: this.contactNameUser, phone_number: this.contactPhoneNumber, personal_information_user_id: store.user.userData.uIDData.id });
             this.axios.post('/api/personal-information/store', data).then(resp => {
                 this.setPersonalInfo(false)
                 this.$toast.add({ severity: 'success', summary: 'Данные успешно записаны', detail: 'Мы запомнили ваши данные', life: 3000 });

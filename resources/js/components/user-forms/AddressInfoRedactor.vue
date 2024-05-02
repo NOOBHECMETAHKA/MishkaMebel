@@ -40,11 +40,11 @@ import InputText from "primevue/inputtext";
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import { saveUserData } from "../../store/index.js";
+import { store } from "../../store/index.js";
 export default {
     computed: {
-        saveUserData(){
-            return saveUserData;
+        store(){
+            return store;
         }
     },
     components: {
@@ -75,12 +75,12 @@ export default {
                     House: this.house,
                     Entrance: this.entrance,
                     Apartment: this.apartment,
-                    addresses_user_id: saveUserData.userData.uIDData.id
+                    addresses_user_id: store.user.userData.uIDData.id
                 }
             );
             this.axios.post('/api/addresses/store', data).then(resp => {
                 this.$toast.add({ severity: 'success', summary: 'Данные успешно записаны', detail: 'Мы запомнили ваши данные', life: 3000 });
-                saveUserData.userData.addresses.push(resp.data.data);
+                store.user.userData.addresses.push(resp.data.data);
                 this.city = "";
                 this.street = "";
                 this.house = "";

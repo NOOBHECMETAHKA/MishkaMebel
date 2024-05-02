@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { saveUserData } from "../../store/index.js";
+import { store } from "../../store/index.js";
 import Button from "primevue/button";
 import EmptyContent from "../blocks/EmptyContent.vue";
 import Tag from 'primevue/tag';
@@ -60,8 +60,8 @@ import Dialog from 'primevue/dialog';
 export default {
     components: {EmptyContent, Tag, Tooltip, "VuePrimeButton": Button, Dialog},
     computed:{
-        saveUserData(){
-            return saveUserData;
+        store(){
+            return store;
         }
     },
     data(){
@@ -81,7 +81,7 @@ export default {
                 const responseData = response.data.data;
                 this.loading = false;
                 if(!this.isEmpty(responseData)){
-                    this.orders = responseData.filter(order => saveUserData.userData.uIDData.id === order.addresses.addresses_user_id);
+                    this.orders = responseData.filter(order => store.user.userData.uIDData.id === order.addresses.addresses_user_id);
                 }
             });
         },

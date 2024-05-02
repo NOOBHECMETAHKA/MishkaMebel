@@ -27,9 +27,9 @@
                 </li>
                 <li>
                     <div class="header__user_info">
-                        <router-link v-if="saveUserData.authenticated" to="/catalog/profile-user" class="header__user_info">
+                        <router-link v-if="store.user.authenticated" to="/catalog/profile-user" class="header__user_info">
                             <icon-user></icon-user>
-                            {{ saveUserData.userData.uIDData.email }}
+                            {{ store.user.userData.uIDData.email }}
                         </router-link>
                         <a href="/login" v-else class="header__user_info">
                             <icon-user></icon-user>
@@ -45,7 +45,7 @@
                             icon="pi pi-shopping-cart"/>
                         <prime-vue-button v-if="store.personalBasket.cartItemsCount" icon="pi pi-trash"
                                           @click.prevent="store.personalBasket.clearCart()"/>
-                        <prime-vue-button v-if="saveUserData.authenticated" @click="logout()" icon="pi pi-sign-out"/>
+                        <prime-vue-button v-if="store.user.authenticated" @click="logout()" icon="pi pi-sign-out"/>
                     </div>
                 </li>
                 <li v-if="getAccess()">
@@ -65,9 +65,9 @@
                 <img class="logo" src="/image/Logo.png" alt="MishkaMebelLogo">
                 <!--        Auth functions-->
                 <div class="header__tool_kit-user header__nav--open">
-                    <router-link v-if="saveUserData.authenticated" to="/catalog/profile-user" class="header__user_info">
+                    <router-link v-if="store.user.authenticated" to="/catalog/profile-user" class="header__user_info">
                         <icon-user></icon-user>
-                        {{ saveUserData.userData.uIDData.email }}
+                        {{ store.user.userData.uIDData.email }}
                     </router-link>
                     <a href="/login" v-else class="header__user_info">
                         <icon-user></icon-user>
@@ -82,7 +82,7 @@
                         icon="pi pi-shopping-cart"/>
                     <prime-vue-button v-if="store.personalBasket.cartItemsCount" icon="pi pi-trash"
                                       @click.prevent="store.personalBasket.clearCart()"/>
-                    <prime-vue-button v-if="saveUserData.authenticated" @click="logout()" icon="pi pi-sign-out"/>
+                    <prime-vue-button v-if="store.user.authenticated" @click="logout()" icon="pi pi-sign-out"/>
                 </div>
                 <!--        End Auth functions-->
                 <!--        Admin function-->
@@ -131,16 +131,13 @@ import Button from 'primevue/button';
 import Listbox from "primevue/listbox";
 import Dialog from 'primevue/dialog';
 //Functions
-import { store, saveUserData } from "../../store/index.js";
+import { store } from "../../store/index.js";
 
 export default {
     computed: {
         store() {
             return store;
         },
-        saveUserData(){
-            return saveUserData;
-        }
     },
     components: {
         IconUser,
@@ -160,12 +157,12 @@ export default {
     },
     methods: {
         getAccess() {
-            return saveUserData.authenticated ? saveUserData.userData.uIDData.role === "admin" : false;
+            return store.user.authenticated ? store.user.getUIDData().role === "admin" : false;
         },
         logout(){
             this.axios.post('/logout').then(response => {
                 store.personalBasket.clearCart();
-                saveUserData = { authenticated: false, userData: { uIDData: {}, personalInformation: null, addresses: null }};
+                store.user.reset();
                 this.$router.push({name: 'home'});
             });
         }

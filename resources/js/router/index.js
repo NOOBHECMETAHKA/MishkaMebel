@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import axios from "axios";
-import { saveUserData } from "@/store/index.js";
+import { store } from "../store/index.js";
 
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -53,13 +53,13 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     function setUpInfo(responseData) {
-        saveUserData.authenticated = true;
-        saveUserData.userData.uIDData = { id: responseData.id, email: responseData.email, role: responseData.role };
-        saveUserData.userData.personalInformation = responseData.personal_information;
-        saveUserData.userData.addresses = responseData.addresses;
+        store.user.authenticated = true;
+        store.user.userData.uIDData = { id: responseData.id, email: responseData.email, role: responseData.role };
+        store.user.userData.personalInformation = responseData.personal_information;
+        store.user.userData.addresses = responseData.addresses;
     }
 
-    if(!saveUserData.authenticated){
+    if(!store.user.authenticated){
         axios.get('/api/user').then(response => {
             setUpInfo(response.data.data);
         }).catch(error => {});
