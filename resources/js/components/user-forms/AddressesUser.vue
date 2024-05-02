@@ -23,7 +23,7 @@
 <script>
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import {saveUserData} from "@/store/index.js";
+import { saveUserData } from "../../store/index.js";
 import EmptyContent from "../blocks/EmptyContent.vue";
 export default {
     setup() {

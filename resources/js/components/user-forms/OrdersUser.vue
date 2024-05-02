@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import { saveUserData } from "@/store/index.js";
+import { saveUserData } from "../../store/index.js";
 import Button from "primevue/button";
 import EmptyContent from "../blocks/EmptyContent.vue";
 import Tag from 'primevue/tag';

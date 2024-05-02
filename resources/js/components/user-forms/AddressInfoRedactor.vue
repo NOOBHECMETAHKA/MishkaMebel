@@ -40,7 +40,7 @@ import InputText from "primevue/inputtext";
 import Button from 'primevue/button';
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import { saveUserData } from "@/store/index.js";
+import { saveUserData } from "../../store/index.js";
 export default {
     computed: {
         saveUserData(){

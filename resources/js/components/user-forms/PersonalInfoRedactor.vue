@@ -57,7 +57,7 @@ import {useVuelidate} from "@vuelidate/core";
 import {maxLength, minLength, required} from "@vuelidate/validators";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
-import {saveUserData} from "@/store/index.js";
+import {saveUserData} from "../../store/index.js";
 
 import Dialog from 'primevue/dialog';
 

@@ -131,7 +131,7 @@ import Button from 'primevue/button';
 import Listbox from "primevue/listbox";
 import Dialog from 'primevue/dialog';
 //Functions
-import { store, saveUserData } from "@/store/index.js";
+import { store, saveUserData } from "../../store/index.js";
 
 export default {
     computed: {

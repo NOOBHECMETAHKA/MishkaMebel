@@ -44,7 +44,7 @@
 <script>
 import Dropdown from 'primevue/dropdown';
 import Button from "primevue/button";
-import { saveUserData, store} from "@/store/index.js";
+import { saveUserData, store} from "../store/index.js";
 import Toast from 'primevue/toast';
 import { useToast } from 'primevue/usetoast';
 import EmptyContent from "@/components/blocks/EmptyContent.vue";
