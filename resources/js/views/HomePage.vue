@@ -6,7 +6,7 @@
           <div class="__individual_projects">
             <h1 class="__individual_projects__text">Наши индивидуальные проекты</h1>
             <div class="__individual_projects__title_content_deliver">
-              <h3>⩶⩶⩶⩶⩶</h3>
+              <h3>===</h3>
             </div>
             <h3 class="__individual_projects__text">Мы <span>ищем вдохновение</span> в ваших словах и мыслях для вложения их в
               наши чертежи и проекты.</h3>
