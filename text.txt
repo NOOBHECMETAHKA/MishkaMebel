@@ -1,0 +1,5 @@
+sudo chmod -R 775 /var/www/MishkaMebel/
+
+sudo chmod -R 775 /var/www/MishkaMebel/storage
+
+sudo chmod -R 775 /var/www/MishkaMebel/bootstrap/cache

@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import vue from '@vitejs/plugin-vue';
 
 export default defineConfig({
+
     plugins: [
         laravel({
             input: [
@@ -11,11 +12,8 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/default.js',
                 //Admin styles
-                'resources/sass/admin-page-content.scss',
-                'resources/js/admin-page-content.js',
-
-                'resources/css/mishka-mebel.css',
-                'resources/css/normalize.css'
+                'resources/js/admin.js',
+                'resources/js/admin-additional.js',
             ],
             refresh: true,
         }),

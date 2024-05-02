@@ -9,7 +9,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="/public/dist/img/AdminLTELogo.png">
-    @vite(['resources/js/default.js', '/resources/css/mishka-mebel.css', '/resources/css/normalize.css'])
+    <link rel="stylesheet" href="{{ asset('css/mishka-mebel.css')  }}">
+    <link rel="stylesheet" href="{{ asset('css/normalize.css')  }}">
+    @vite(['resources/js/default.js'])
 </head>
 <body>
     @yield('content')
