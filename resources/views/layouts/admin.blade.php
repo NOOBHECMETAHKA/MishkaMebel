@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Панель управления</title>
     <base href="{{ asset('/') }}">
-    <link rel="icon" href="/public/dist/img/AdminLTELogo.png">
+    <link rel="icon" href="{{ asset('dist/img/AdminLTELogo.png') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Ionicons -->
