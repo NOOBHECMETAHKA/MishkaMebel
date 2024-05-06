@@ -64,7 +64,6 @@ app.use(PrimeVue, {
     }
 });
 
-axios.defaults.baseURL = 'http://127.0.0.1';
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 app.config.globalProperties.axios = axios;

@@ -63,7 +63,7 @@
                         <span class="text-secondary">{{ `${slotProps.data.price} рублей` }}</span>
                     </template>
                 </Column>
-                <Column header="Категория" class="text-secondary" :sortable="true">
+                <Column field="category" header="Категория" class="text-secondary" :sortable="true">
                     <template #body="slotProps">
                         <span class="text-secondary">{{ getCategory(slotProps.data.category) }}</span>
                     </template>

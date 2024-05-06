@@ -243,7 +243,7 @@ export default {
          * { params: { 'category': 'beds'}}
          */
         getProducts(){
-            this.axios.get('/api/catalog/products', { params: { 'category': 'mattresses-cover'}}).then(resp => {
+            this.axios.get('/api/catalog/products', { params: { 'category': 'mattress-covers'}}).then(resp => {
                 this.collectionInfo = resp.data.data;
                 this.count = resp.data.data.length;
                 this.loading = false;
