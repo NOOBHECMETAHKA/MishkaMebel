@@ -27,7 +27,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
 
-    @vite(['resources/sass/admin.scss', 'resources/js/admin.js', 'resources/js/admin-additional.js'])
+    @vite(['resources/js/admin.js', 'resources/js/admin-additional.js'])
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

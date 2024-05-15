@@ -157,7 +157,7 @@ export default {
     },
     methods: {
         getAccess() {
-            return store.user.authenticated ? store.user.getUIDData().role === "admin" : false;
+            return store.user.authenticated ? store.user.getUIDData().role === "admin" || store.user.getUIDData().role === "manager" : false;
         },
         logout(){
             this.axios.post('/logout').then(response => {

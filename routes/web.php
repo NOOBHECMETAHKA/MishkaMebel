@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\CatalogController::class, 'index'])->name('main-page');
+Route::get('/build/catalog/{page}', [\App\Http\Controllers\CatalogController::class, 'index'])->where(['page' => '.*']);
 Route::get('/catalog/{page}', [\App\Http\Controllers\CatalogController::class, 'index'])->where(['page' => '.*']);
 
 Auth::routes();

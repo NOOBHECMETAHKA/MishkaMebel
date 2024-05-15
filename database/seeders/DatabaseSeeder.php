@@ -14,6 +14,7 @@ use App\Models\TypeTable;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -95,7 +96,21 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Рассмотрение возврата', 'description' => 'Запрос на возврат товаров находится на рассмотрении администрации'],
             ['name' => 'Завершен', 'description' => 'Заказ успешно выполнен, оплачен и получен клиентом, завершенный статус']
         ]);
+        //Создание пользователей со случайным логино и пароль "Password123"
         User::factory(30)->create();
+        //Создание главных ролей
+        DB::table(User::$tableName)->insert([
+           [
+               'email' => 'admin@admin.ru',
+               'role' => 'admin',
+               'password' => Hash::make('Password123'),
+           ],
+            [
+                'email' => 'manager@manager.ru',
+                'role' => 'manager',
+                'password' => Hash::make('Password123'),
+            ]
+        ]);
     }
 
 

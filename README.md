@@ -1,4 +1,4 @@
-<p align="center"><a href="https://83.222.10.4" target="_blank"><img src="https://raw.githubusercontent.com/NOOBHECMETAHKA/MishkaMebel/SPAClient/public/image/svg/Bear.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="http://83.222.10.4" target="_blank"><img src="https://raw.githubusercontent.com/NOOBHECMETAHKA/MishkaMebel/SPAClient/public/image/svg/Bear.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>

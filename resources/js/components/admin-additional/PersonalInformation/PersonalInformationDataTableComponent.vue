@@ -1,6 +1,7 @@
 <template>
     <div class="col-12">
         <div class="card p-3">
+<!--            <p>{{ collectionInfo }}</p>-->
             <DataTable
                 v-model:expanded-rows="expandedRows"
                 selectionMode="single"
@@ -145,8 +146,8 @@ export default {
         refresh(){
             this.loading = true;
             axios.get('/api/personal-information').then(resp => {
-                this.collectionInfo = resp.data;
-                this.count = resp.data.length;
+                this.collectionInfo = resp.data.data;
+                this.count = resp.data.data.length;
 
                 if(this.userRole === 'manager'){
                     this.collectionInfo = this.collectionInfo.filter(el => el.personal_information !== null);
